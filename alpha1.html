@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pre-Op Evaluation — alpha1.2</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root{
+    --bg:#0f1323; --card:#111a2f; --muted:#9fb1d5; --line:#203155; --txt:#e9eef9;
+    --focus:#3562ad; --chip:#2a4675; --errRing:#7a2d2d;
+  }
+  html,body{background:var(--bg);color:var(--txt);-webkit-font-smoothing:antialiased}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px}
+  .muted{color:var(--muted)}
+  .btn{border:1px solid var(--chip);border-radius:10px;padding:10px 14px}
+  .btn:hover{background:#122241}
+  .btn-primary{background:#244475;border:1px solid var(--focus)}
+  .btn-primary:hover{background:#2a5089}
+  input,select,textarea{background:#0c1527;border:1px solid #1d2c4c;border-radius:10px;padding:10px;color:var(--txt);width:100%}
+  input::placeholder,textarea::placeholder{color:#7d91bb}
+  select:focus, input:focus, textarea:focus{outline:2px solid var(--focus);outline-offset:1px}
+  .mono{font-family: ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", monospace}
+  th,td{white-space:nowrap}
+  .h2{font-size:1.05rem;font-weight:600}
+  .sub{font-size:.84rem}
+  .grid-gap{gap:14px}
+  .band{border-radius:8px;padding:4px 8px;display:inline-block}
+  .band-low{background:#103724;border:1px solid #1e6b47;color:#b8f0d3}
+  .band-mid{background:#3a2a0e;border:1px solid #73521a;color:#fbd39c}
+  .band-high{background:#441a1a;border:1px solid #7a2d2d;color:#ffc1c1}
+  .invalid{border-color:var(--errRing)!important; box-shadow:0 0 0 2px rgba(122,45,45,.35)}
+  /* Uniform checkbox alignment */
+  .chk{display:flex; align-items:center; gap:.55rem; line-height:1.2}
+  .chk input[type=checkbox]{width:1.05rem; height:1.05rem; flex:0 0 auto; accent-color: var(--focus)}
+  .chk span{display:inline-block}
+  @media (max-width:420px){ .h2{font-size:1rem} }
+</style>
+</head>
+<body class="min-h-screen">
+<header class="max-w-6xl mx-auto px-4 pt-6 pb-2">
+  <div class="flex items-center justify-between flex-wrap gap-3">
+    <h1 class="text-xl font-semibold tracking-tight">Pre-Operative Evaluation <span class="muted text-sm">alpha1.2</span></h1>
+    <div class="flex items-center gap-2">
+      <button id="resetForm" class="btn" title="Reset all fields">Reset</button>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-4 pb-24">
+  <form id="form" class="grid grid-cols-1 gap-6" novalidate>
+
+    <!-- 1) Patient -->
+    <section class="card p-4">
+      <div class="h2">1) Patient</div>
+      <div class="grid md:grid-cols-5 grid-cols-1 grid-gap mt-3">
+        <div>
+          <label class="muted sub block mb-1">Age (years)</label>
+          <input type="number" id="age" min="0" max="130" placeholder="54" inputmode="numeric">
+        </div>
+        <div>
+          <label class="muted sub block mb-1">Sex at birth</label>
+          <select id="sex"><option value="">—</option><option value="female">Female</option><option value="male">Male</option></select>
+        </div>
+        <div>
+          <label class="muted sub block mb-1">Weight (kg)</label>
+          <input type="number" id="weight" min="0" max="300" step="0.1" placeholder="82.5" inputmode="decimal">
+        </div>
+        <div>
+          <label class="muted sub block mb-1">Height (cm)</label>
+          <input type="number" id="height" min="0" max="250" step="0.5" placeholder="175" inputmode="decimal">
+        </div>
+        <div class="flex items-end">
+          <div class="w-full muted sub">BMI: <span id="bmi" class="mono">—</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2) Diseases / STOP-BANG key questions -->
+    <section class="card p-4">
+      <div class="h2">2) Diseases & Comorbidities</div>
+      <div class="grid md:grid-cols-5 grid-cols-2 grid-gap mt-3 text-sm">
+        <label class="chk"><input type="checkbox" id="cHTN"><span>Hypertension</span></label>
+        <label class="chk"><input type="checkbox" id="cDM"><span>Diabetes</span></label>
+        <label class="chk"><input type="checkbox" id="cCAD"><span>Ischemic heart disease</span></label>
+        <label class="chk"><input type="checkbox" id="cCHF"><span>Heart failure</span></label>
+        <label class="chk"><input type="checkbox" id="cCVD"><span>Stroke/TIA</span></label>
+        <label class="chk"><input type="checkbox" id="cCOPD"><span>COPD/Asthma</span></label>
+        <label class="chk"><input type="checkbox" id="cCKD"><span>CKD</span></label>
+        <label class="chk"><input type="checkbox" id="cLiver"><span>Liver disease</span></label>
+        <label class="chk"><input type="checkbox" id="cAnemiaKnown"><span>Anemia (known)</span></label>
+        <label class="chk"><input type="checkbox" id="cOther"><span>Other</span></label>
+      </div>
+
+      <div class="grid md:grid-cols-4 grid-cols-1 grid-gap mt-4">
+        <div>
+          <label class="muted sub block mb-1">Smoking status</label>
+          <select id="smoking"><option value="">—</option><option value="never">Never</option><option value="former">Former</option><option value="current">Current</option></select>
+        </div>
+        <div>
+          <label class="muted sub block mb-1">STOP-BANG: Snoring (loud)</label>
+          <select id="sbSnore"><option value="">—</option><option value="yes">Yes</option><option value="no">No</option></select>
+        </div>
+        <div>
+          <label class="muted sub block mb-1">STOP-BANG: Daytime tiredness</label>
+          <select id="sbTired"><option value="">—</option><option value="yes">Yes</option><option value="no">No</option></select>
+        </div>
+        <div>
+          <label class="muted sub block mb-1">STOP-BANG: Observed apnea</label>
+          <select id="sbObserved"><option value="">—</option><option value="yes">Yes</option><option value="no">No</option></select>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3) Drugs -->
+    <section class="card p-4">
+      <div class="h2">3) Drugs taken</div>
+      <div class="grid md:grid-cols-4 grid-cols-1 grid-gap mt-3">
+        <div>
+          <label class="muted sub block mb-1">Insulin therapy (RCRI)</label>
+          <select id="insulin"><option value="">—</option><option value="yes">Yes</option><option value="no">No</option></select>
+        </div>
+        <div>
+          <label class="muted sub block mb-1">Antithrombotics</label>
+          <input id="antithrombotics" placeholder="ASA, clopidogrel, DOAC, warfarin">
+        </div>
+        <div class="md:col-span-2">
+          <label class="muted sub block mb-1">Other meds (comma-sep)</label>
+          <input id="otherMeds" placeholder="beta-blocker, ACEi, etc.">
+        </div>
+      </div>
+    </section>
+
+    <!-- 4) Allergies -->
+    <section class="card p-4">
+      <div class="h2">4) Allergies</div>
+      <div class="grid md:grid-cols-2 grid-cols-1 grid-gap mt-3">
+        <div>
+          <label class="muted sub block mb-1">Allergies + reactions</label>
+          <input id="allergies" placeholder="Penicillin — anaphylaxis">
+        </div>
+        <div>
+          <label class="muted sub block mb-1">Worst reaction severity</label>
+          <select id="allergySeverity"><option value="">—</option><option value="mild">Mild</option><option value="moderate">Moderate</option><option value="severe">Severe (anaphylaxis)</option></select>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5) Surgical history & complications -->
+    <section class="card p-4">
+      <div class="h2">5) History of surgeries & complications</div>
+      <div class="grid md:grid-cols-3 grid-cols-1 grid-gap mt-3 items-start">
+        <div class="md:col-span-2">
+          <label class="muted sub block mb-1">Prior surgeries (brief; avoid PHI)</label>
+          <textarea id="surgHistory" rows="3" placeholder="Open cholecystectomy 2010; TKR 2022 — uneventful"></textarea>
+        </div>
+        <div>
+          <label class="muted sub block mb-1">Targeted history (tick if present)</label>
+          <div class="grid grid-cols-1 gap-2 text-sm pt-1">
+            <label class="chk"><input type="checkbox" id="hxPONV"><span>Prior PONV / motion sickness</span></label>
+            <label class="chk"><input type="checkbox" id="hxDI"><span>Prior difficult airway / intubation</span></label>
+            <label class="chk"><input type="checkbox" id="hxPain"><span>Prior poorly controlled postop pain</span></label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6) Airway evaluation -->
+    <section class="card p-4">
+      <div class="h2">6) Airway evaluation (physical exam)</div>
+      <div class="grid md:grid-cols-6 grid-cols-1 grid-gap mt-3">
+        <div><label class="muted sub block mb-1">Mallampati</label>
+          <select id="mallampati"><option value="">—</option><option>I</option><option>II</option><option>III</option><option>IV</option></select>
+        </div>
+        <div><label class="muted sub block mb-1">Mouth opening (cm)</label><input type="number" id="mouthOpen" step="0.1" placeholder="4.0" inputmode="decimal"></div>
+        <div><label class="muted sub block mb-1">Thyromental (cm)</label><input type="number" id="tmd" step="0.1" placeholder="6.5" inputmode="decimal"></div>
+        <div><label class="muted sub block mb-1">Neck mobility</label>
+          <select id="neckMob"><option value="">—</option><option value="normal">Normal</option><option value="limited">Limited</option></select>
+        </div>
+        <div><label class="muted sub block mb-1">Prognathism</label>
+          <select id="prognath"><option value="">—</option><option value="adequate">Adequate</option><option value="reduced">Reduced</option></select>
+        </div>
+        <div><label class="muted sub block mb-1">Neck circumference (cm)</label><input type="number" id="neckCirc" step="0.1" placeholder="41.0" inputmode="decimal"></div>
+      </div>
+      <div class="grid md:grid-cols-3 grid-cols-1 grid-gap mt-3">
+        <div><label class="muted sub block mb-1">Dentition</label>
+          <select id="dentition"><option value="">—</option><option>Normal</option><option>Loose / prosthesis</option></select>
+        </div>
+        <div class="md:col-span-2"><label class="muted sub block mb-1">Airway notes (optional)</label><input id="airwayNotes" placeholder="short note"></div>
+      </div>
+    </section>
+
+    <!-- 7) Remaining predictors -->
+    <section class="card p-4">
+      <div class="h2">7) Remaining predictors</div>
+      <div class="grid md:grid-cols-4 grid-cols-1 grid-gap mt-3">
+        <div><label class="muted sub block mb-1">Pre-op SpO₂ (%)</label><input type="number" id="spo2" min="50" max="100" placeholder="97" inputmode="numeric"></div>
+        <div><label class="muted sub block mb-1">Resp. infection ≤1 mo</label>
+          <select id="respInfect"><option value="">—</option><option value="yes">Yes</option><option value="no">No</option></select>
+        </div>
+        <div><label class="muted sub block mb-1">Hb ≤10 g/dL</label>
+          <select id="hbLow"><option value="">—</option><option value="yes">Yes</option><option value="no">No/unknown</option></select>
+        </div>
+        <div><label class="muted sub block mb-1">Urgency</label>
+          <select id="urgency"><option value="">—</option><option value="elective">Elective</option><option value="emergency">Emergency</option></select>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-4 grid-cols-1 grid-gap mt-3">
+        <div><label class="muted sub block mb-1">Incision site</label>
+          <select id="incision"><option value="">—</option><option value="peripheral">Peripheral</option><option value="upperAbd">Upper abdominal</option><option value="intrathoracic">Intrathoracic</option></select>
+        </div>
+        <div><label class="muted sub block mb-1">Duration (planned, hours)</label>
+          <select id="duration"><option value="">—</option><option value="<=2">≤ 2</option><option value="2-3">2–3</option><option value=">3">&gt; 3</option></select>
+        </div>
+        <div><label class="muted sub block mb-1">High-risk surgery (RCRI)</label>
+          <select id="rcriHighRisk"><option value="">—</option><option value="yes">Yes</option><option value="no">No</option></select>
+        </div>
+        <div><label class="muted sub block mb-1">Creatinine &gt; 2.0 mg/dL (RCRI)</label>
+          <select id="rcriCrHigh"><option value="">—</option><option value="yes">Yes</option><option value="no">No/unknown</option></select>
+        </div>
+      </div>
+      <div class="grid md:grid-cols-3 grid-cols-1 grid-gap mt-3">
+        <div><label class="muted sub block mb-1">Post-op opioids planned (Apfel)</label>
+          <select id="apfelOpioids"><option value="">—</option><option value="yes">Yes</option><option value="no">No</option></select>
+        </div>
+        <div><label class="muted sub block mb-1">Clinical Frailty Scale (1–9)</label>
+          <select id="cfs"><option value="">—</option>
+            <option value="1">1 Very Fit</option><option value="2">2 Well</option><option value="3">3 Managing Well</option>
+            <option value="4">4 Vulnerable</option><option value="5">5 Mildly Frail</option><option value="6">6 Moderately Frail</option>
+            <option value="7">7 Severely Frail</option><option value="8">8 Very Severely Frail</option><option value="9">9 Terminally Ill</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8) Results (read-only) -->
+    <section class="card p-4">
+      <div class="h2">8) Results & Interpretation</div>
+
+      <!-- Mallampati -->
+      <div class="mt-3">
+        <h3 class="font-semibold">Mallampati</h3>
+        <p class="muted sub">Higher grades correlate with difficult laryngoscopy.</p>
+        <div class="text-sm mt-1">
+          Grade: <span id="resMallampati" class="mono">—</span>
+          <span class="ml-3">Est. probability of difficult intubation:</span>
+          <span id="resMallampatiProb" class="mono">—</span>
+        </div>
+      </div>
+      <hr class="border-[var(--line)] my-4" />
+
+      <!-- STOP-BANG -->
+      <div>
+        <h3 class="font-semibold">STOP-BANG (OSA)</h3>
+        <p class="muted sub">Screening for moderate–severe OSA; probabilities are pragmatic bands.</p>
+        <div class="text-sm mt-1">
+          Score: <span id="resSBscore" class="mono">0</span>
+          <span class="ml-3">Band: <span id="resSBband" class="band">—</span></span>
+          <span class="ml-3">AHI ≥15 (mod–sev): <span id="resSBprob" class="mono">—</span></span>
+          <span class="ml-3">AHI ≥30 (severe): <span id="resSBprobSev" class="mono">—</span></span>
+        </div>
+      </div>
+      <hr class="border-[var(--line)] my-4" />
+
+      <!-- Apfel -->
+      <div>
+        <h3 class="font-semibold">Apfel (PONV)</h3>
+        <p class="muted sub">Risk of postoperative nausea/vomiting with general anesthesia + opioids.</p>
+        <div class="text-sm mt-1">
+          Points: <span id="resApfelPts" class="mono">0</span>
+          <span class="ml-3">Est. probability of PONV: <span id="resApfelProb" class="mono">~10%</span></span>
+          <span class="ml-3 muted">Typical prophylaxis escalation at ≥2 points.</span>
+        </div>
+      </div>
+      <hr class="border-[var(--line)] my-4" />
+
+      <!-- ARISCAT -->
+      <div>
+        <h3 class="font-semibold">ARISCAT (post-operative pulmonary complications)</h3>
+        <p class="muted sub">Any PPC (e.g., failure, infection); severe PPC shown as additional estimate.</p>
+        <div class="text-sm mt-1">
+          Points: <span id="resAriscatPts" class="mono">0</span>
+          <span class="ml-3">Band: <span id="resAriscatBand" class="band">—</span></span>
+          <span class="ml-3">Any PPC: <span id="resAriscatProb" class="mono">—</span></span>
+          <span class="ml-3">Severe PPC: <span id="resAriscatProbSev" class="mono">—</span></span>
+        </div>
+      </div>
+      <hr class="border-[var(--line)] my-4" />
+
+      <!-- El-Ganzouri -->
+      <div>
+        <h3 class="font-semibold">El-Ganzouri (difficult intubation)</h3>
+        <p class="muted sub">SARI/EGRI-style index: Mallampati, mouth opening, thyromental, neck movement, prognathism, weight, prior DI.</p>
+        <div class="text-sm mt-1">
+          Score: <span id="resEGRI" class="mono">0</span>
+          <span class="ml-3">Bin: <span id="resEGRIBin" class="band">—</span></span>
+          <span class="ml-3">Est. probability of DI: <span id="resEGRIProb" class="mono">—</span></span>
+        </div>
+      </div>
+      <hr class="border-[var(--line)] my-4" />
+
+      <!-- RCRI -->
+      <div>
+        <h3 class="font-semibold">RCRI (cardiac complications)</h3>
+        <p class="muted sub">30-day major adverse cardiac events (MACE) in non-cardiac surgery.</p>
+        <div class="text-sm mt-1">
+          Points: <span id="resRCRI" class="mono">0</span>
+          <span class="ml-3">Est. MACE probability: <span id="resRCRIProb" class="mono">—</span></span>
+          <span class="ml-3">Class: <span id="resRCRIClass" class="mono">—</span></span>
+        </div>
+      </div>
+      <hr class="border-[var(--line)] my-4" />
+
+      <!-- CFS -->
+      <div>
+        <h3 class="font-semibold">Clinical Frailty Scale</h3>
+        <p class="muted sub">Frailty correlates with complications, LOS, mortality; no universal single %.</p>
+        <div class="text-sm mt-1">
+          Level: <span id="resCFS" class="mono">—</span>
+          <span class="ml-3">Descriptor: <span id="resCFSdesc" class="mono">—</span></span>
+          <span class="ml-3">Risk note: <span id="resCFSnote" class="mono">—</span></span>
+        </div>
+      </div>
+    </section>
+  </form>
+</main>
+
+<script>
+/* ========= alpha1.2 core state ========= */
+const S = {
+  age:null, sex:"", weight:null, height:null,
+  cHTN:false, cDM:false, cCAD:false, cCHF:false, cCVD:false, cCOPD:false, cCKD:false, cLiver:false, cAnemiaKnown:false, cOther:false,
+  smoking:"", sbSnore:null, sbTired:null, sbObserved:null,
+  insulin:null, antithrombotics:"", otherMeds:"",
+  allergies:"", allergySeverity:"",
+  surgHistory:"", hxPONV:false, hxDI:false, hxPain:false,
+  mallampati:"", mouthOpen:null, tmd:null, neckMob:"", prognath:"", neckCirc:null, dentition:"", airwayNotes:"",
+  spo2:null, respInfect:null, hbLow:null, urgency:"", incision:"", duration:"",
+  rcriHighRisk:null, rcriCrHigh:null,
+  apfelOpioids:null,
+  cfs:""
+};
+const $ = id => document.getElementById(id);
+const num = v => { const n=parseFloat(v); return Number.isFinite(n)?n:null; };
+
+/* ========= validation (no warning text; mark invalid & ignore) ========= */
+function setInvalid(inputId, isInvalid){
+  const el=$(inputId); if(!el) return;
+  if(isInvalid) el.classList.add('invalid'), el.setAttribute('aria-invalid','true');
+  else el.classList.remove('invalid'), el.removeAttribute('aria-invalid');
+}
+function validAge(){
+  const a = (S.age!==null?S.age:null);
+  const ok = (a===null) || (a>=0 && a<=130);
+  setInvalid('age', !ok);
+  return ok? a : null;
+}
+function validWeight(){
+  const w = (S.weight!==null?S.weight:null);
+  const ok = (w===null) || (w>=0 && w<=300);
+  setInvalid('weight', !ok);
+  return ok? w : null;
+}
+function validHeight(){
+  const h = (S.height!==null?S.height:null);
+  const ok = (h===null) || (h>=0 && h<=250);
+  setInvalid('height', !ok);
+  return ok? h : null;
+}
+
+/* ========= binding helpers ========= */
+const bind = (id, key, parse=(v)=>v) => {
+  const el=$(id); const ev=(el.tagName==='INPUT'&&el.type==='number')?'input':'change';
+  el.addEventListener(ev, ()=>{ S[key]=parse(el.value); recalc(); });
+};
+const bindCheck = (id, key) => $(id).addEventListener('change', ()=>{ S[key]=$(id).checked; recalc(); });
+
+/* Patient */
+bind('age','age', v=>{ const n=parseInt(v); return Number.isFinite(n)?n:null; });
+bind('sex','sex');
+bind('weight','weight', num);
+bind('height','height', num);
+
+/* Diseases & STOP-BANG */
+['cHTN','cDM','cCAD','cCHF','cCVD','cCOPD','cCKD','cLiver','cAnemiaKnown','cOther'].forEach(id=>bindCheck(id,id));
+bind('smoking','smoking');
+bind('sbSnore','sbSnore'); bind('sbTired','sbTired'); bind('sbObserved','sbObserved');
+
+/* Drugs */
+bind('insulin','insulin');
+bind('antithrombotics','antithrombotics'); bind('otherMeds','otherMeds');
+
+/* Allergies */
+bind('allergies','allergies'); bind('allergySeverity','allergySeverity');
+
+/* History */
+bind('surgHistory','surgHistory');
+bindCheck('hxPONV','hxPONV'); bindCheck('hxDI','hxDI'); bindCheck('hxPain','hxPain');
+
+/* Airway */
+bind('mallampati','mallampati');
+bind('mouthOpen','mouthOpen', num);
+bind('tmd','tmd', num);
+bind('neckMob','neckMob'); bind('prognath','prognath'); bind('neckCirc','neckCirc', num);
+bind('dentition','dentition'); bind('airwayNotes','airwayNotes');
+
+/* Remaining predictors */
+bind('spo2','spo2', v=>{ const n=parseInt(v); return Number.isFinite(n)?n:null; });
+bind('respInfect','respInfect'); bind('hbLow','hbLow'); bind('urgency','urgency');
+bind('incision','incision'); bind('duration','duration'); bind('rcriHighRisk','rcriHighRisk'); bind('rcriCrHigh','rcriCrHigh');
+bind('apfelOpioids','apfelOpioids'); bind('cfs','cfs');
+
+/* Reset */
+$('resetForm').addEventListener('click', ()=>{
+  document.getElementById('form').reset();
+  for(const k in S){ S[k] = (typeof S[k]==='boolean' ? false : null); }
+  S.sex=""; S.smoking=""; S.neckMob=""; S.prognath=""; S.dentition=""; S.urgency=""; S.incision=""; S.duration="";
+  S.rcriHighRisk=null; S.rcriCrHigh=null; S.apfelOpioids=null; S.cfs="";
+  recalc();
+});
+
+/* ========= calculators ========= */
+function BMI(){
+  const w=validWeight(), h=validHeight();
+  if(w!==null && h!==null && h>0) return w/((h/100)**2);
+  return null;
+}
+function mallampatiProb(){
+  switch (S.mallampati) {
+    case 'I': return '~1–2%'; case 'II': return '~2–3%'; case 'III': return '~5–10%'; case 'IV': return '~10–20%';
+    default: return '—';
+  }
+}
+function stopbang(){
+  const b = BMI(); const age = validAge();
+  const bmi35 = (b && b>35) ? 1 : 0;
+  const age50 = (age && age>50) ? 1 : 0;
+  const neck40 = (S.neckCirc && S.neckCirc>40) ? 1 : 0;
+  const male   = (S.sex==='male') ? 1 : 0;
+  const snore = (S.sbSnore==='yes')?1:0;
+  const tired = (S.sbTired==='yes')?1:0;
+  const obs   = (S.sbObserved==='yes')?1:0;
+  const htn   = S.cHTN ? 1 : 0;
+  const score = snore + tired + obs + htn + bmi35 + age50 + neck40 + male;
+  let band = 'Low'; if(score>=5) band='High'; else if(score>=3) band='Intermediate';
+  const prob15 = (score<=2)?'~20%':(score<=4?'~45%':'~70%');
+  const prob30 = (score<=2)?'~10%':(score<=4?'~25%':'~45%');
+  return {score, band, prob15, prob30};
+}
+function apfel(){
+  const female = (S.sex==='female') ? 1 : 0;
+  const nonsmoker = (S.smoking && S.smoking!=='current') ? 1 : 0;
+  const history = S.hxPONV ? 1 : 0;
+  const opioids = (S.apfelOpioids==='yes') ? 1 : 0;
+  const pts = female + nonsmoker + history + opioids;
+  const map = {0:'~10%',1:'~20%',2:'~40%',3:'~60%',4:'~80%'};
+  return {pts, prob: map[pts]};
+}
+function ariscat(){
+  let pts = 0;
+  const age=validAge();
+  if(age!==null){ if(age<=50) pts+=0; else if(age<=80) pts+=3; else pts+=16; }
+  if(Number.isFinite(S.spo2)){ if(S.spo2>=96) pts+=0; else if(S.spo2>=91) pts+=8; else pts+=24; }
+  if(S.respInfect==='yes') pts+=17;
+  if(S.hbLow==='yes') pts+=11;
+  if(S.urgency==='emergency') pts+=8;
+  if(S.incision==='upperAbd') pts+=15; else if(S.incision==='intrathoracic') pts+=24;
+  if(S.duration==='2-3') pts+=16; else if(S.duration==='>3') pts+=23;
+  let band='Low'; if(pts>=26 && pts<=44) band='Intermediate'; if(pts>=45) band='High';
+  const probAny = (pts<26)?'~2%':(pts<=44?'~15%':'~40%');
+  const probSev = (pts<26)?'~0.5–1%':(pts<=44?'~3–5%':'~8–12%');
+  return {pts, band, probAny, probSev};
+}
+function egrI(){
+  let pts = 0;
+  if(S.mallampati==='III' || S.mallampati==='IV') pts += 1;
+  if(Number.isFinite(S.mouthOpen) && S.mouthOpen < 4) pts += 1;
+  if(Number.isFinite(S.tmd) && S.tmd < 6.5) pts += 1;
+  if(S.neckMob==='limited') pts += 1;
+  if(S.prognath==='reduced') pts += 1;
+  const w=validWeight(); if(w && w>110) pts += 1;
+  if(S.hxDI) pts += 2;
+  const bin = (pts<=2)?'Low':(pts<=4?'Intermediate':'High');
+  const prob = (pts<=2)?'~1–2%':(pts<=4?'~5–10%':'≥10–20%');
+  return {pts, bin, prob};
+}
+function rcri(){
+  let pts = 0;
+  if(S.rcriHighRisk==='yes') pts += 1;
+  if(S.cCAD) pts += 1;
+  if(S.cCHF) pts += 1;
+  if(S.cCVD) pts += 1;
+  if(S.insulin==='yes') pts += 1;
+  if(S.rcriCrHigh==='yes') pts += 1;
+  const prob = (pts===0)?'~0.4%':(pts===1?'~0.9%':(pts===2?'~6.6%':'>11%'));
+  const cls = (pts===0)?'Class I':(pts===1?'Class II':(pts===2?'Class III':'Class IV'));
+  return {pts, prob, cls};
+}
+const CFS_DESC = {
+  "1":"Very Fit – robust, active, energetic; exercises regularly.",
+  "2":"Well – no active disease symptoms; less fit than level 1.",
+  "3":"Managing Well – medical problems well controlled; not regularly active beyond routine walking.",
+  "4":"Vulnerable – not dependent; symptoms limit activities; often fatigued.",
+  "5":"Mildly Frail – need help with higher-order IADLs; ADLs independent.",
+  "6":"Moderately Frail – need help outside home and with housework; may need help bathing.",
+  "7":"Severely Frail – completely dependent for personal care but stable.",
+  "8":"Very Severely Frail – completely dependent; near end-of-life.",
+  "9":"Terminally Ill – life expectancy <6 months."
+};
+function cfsNote(){
+  if(!S.cfs) return '—';
+  const n=parseInt(S.cfs,10);
+  if(n<=3) return 'Low frailty burden; routine periop care.';
+  if(n===4) return 'Vulnerable; consider prehab/optimization.';
+  if(n<=6) return '↑ complications & LOS; plan delirium prevention & early mobilization.';
+  return 'High periop risk; shared decision-making & goals-of-care recommended.';
+}
+
+/* ========= UI updater ========= */
+function recalc(){
+  // validation state (no visible warnings)
+  validAge(); validWeight(); validHeight();
+
+  // BMI
+  const b = BMI(); $('bmi').textContent = (b? b.toFixed(1) : '—');
+
+  // Mallampati
+  $('resMallampati').textContent = S.mallampati || '—';
+  $('resMallampatiProb').textContent = mallampatiProb();
+
+  // STOP-BANG
+  const sb = stopbang();
+  $('resSBscore').textContent = sb.score;
+  $('resSBband').textContent = sb.band;
+  $('resSBband').className = 'band ' + (sb.band==='High' ? 'band-high' : (sb.band==='Intermediate'?'band-mid':'band-low'));
+  $('resSBprob').textContent = sb.prob15;
+  $('resSBprobSev').textContent = sb.prob30;
+
+  // Apfel
+  const ap = apfel();
+  $('resApfelPts').textContent = ap.pts;
+  $('resApfelProb').textContent = ap.prob || '—';
+
+  // ARISCAT
+  const ar = ariscat();
+  $('resAriscatPts').textContent = ar.pts;
+  $('resAriscatBand').textContent = ar.band;
+  $('resAriscatBand').className = 'band ' + (ar.band==='High' ? 'band-high' : (ar.band==='Intermediate'?'band-mid':'band-low'));
+  $('resAriscatProb').textContent = ar.probAny;
+  $('resAriscatProbSev').textContent = ar.probSev;
+
+  // El-Ganzouri
+  const eg = egrI();
+  $('resEGRI').textContent = eg.pts;
+  $('resEGRIBin').textContent = eg.bin;
+  $('resEGRIBin').className = 'band ' + (eg.bin==='High' ? 'band-high' : (eg.bin==='Intermediate'?'band-mid':'band-low'));
+  $('resEGRIProb').textContent = eg.prob;
+
+  // RCRI
+  const rc = rcri();
+  $('resRCRI').textContent = rc.pts;
+  $('resRCRIProb').textContent = rc.prob;
+  $('resRCRIClass').textContent = rc.cls;
+
+  // CFS
+  $('resCFS').textContent = S.cfs || '—';
+  $('resCFSdesc').textContent = (S.cfs && CFS_DESC[S.cfs]) ? CFS_DESC[S.cfs] : '—';
+  $('resCFSnote').textContent = cfsNote();
+}
+
+/* Initial compute */
+recalc();
+</script>
+</body>
+</html>
