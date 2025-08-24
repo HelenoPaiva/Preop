@@ -478,7 +478,11 @@ function egrI(){
   if(Number.isFinite(S.tmd) && S.tmd < 6.5) pts += 1;
   if(S.neckMob==='limited') pts += 1;
   if(S.prognath==='reduced') pts += 1;
-  const w=validWeight(); if(w && w>110) pts += 1;
+  const w=validWeight();
+if (w) {
+  if (w > 110) pts += 2;
+  else if (w > 90) pts += 1;
+}
   if(S.hxDI) pts += 2;
   const bin = (pts<=2)?'Low':(pts<=4?'Intermediate':'High');
   const prob = (pts<=2)?'~1–2%':(pts<=4?'~5–10%':'≥10–20%');
@@ -573,3 +577,4 @@ recalc();
 </script>
 </body>
 </html>
+
