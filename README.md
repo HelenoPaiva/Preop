@@ -1,6 +1,6 @@
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.xxxxxxxx-blue)](https://doi.org/10.5281/zenodo.xxxxxxxx)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.18403120-blue)](https://doi.org/10.5281/zenodo.18403120)
 [![GitHub Pages](https://img.shields.io/badge/live-GitHub%20Pages-brightgreen)](https://helenopaiva.github.io/Preop/)
-[![GitHub release](https://img.shields.io/github/v/release/HelenoPaiva/<REPO_NAME>)](https://github.com/HelenoPaiva/Preop/releases/tag/v1.0.0)
+[![GitHub release](https://img.shields.io/github/v/release/HelenoPaiva/Preop)](https://github.com/HelenoPaiva/Preop/releases/tag/v1.0.0)
 ![Last commit](https://img.shields.io/github/last-commit/HelenoPaiva/Preop)
 ![License](https://img.shields.io/github/license/HelenoPaiva/Preop)
 
