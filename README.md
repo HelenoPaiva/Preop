@@ -55,27 +55,6 @@ It is intended to **support**, not replace, clinical judgment.
 
 ---
 
-## How to use the Preoperative Evaluation webpage
-
-1. Open the live site:  
-   https://helenopaiva.github.io/<REPO_NAME>/
-2. Fill in:
-   - Name, age, sex
-   - Height (cm) and weight (kg)
-   - ASA class and planned procedure
-   - Relevant free-text notes (comorbidities, airway, anticoagulation, etc.)
-3. Review:
-   - Automatically calculated BMI and Devine ideal body weight
-   - Quick risk snapshot (ASA + BMI category + brief comment)
-4. Click **“Generate summary / Gerar resumo”**.
-5. Review and adjust the generated **bilingual PT/EN summary**.
-6. Click **“Copy to clipboard / Copiar”** and paste into the EMR or pre-op form.
-
-The interface validates input ranges (e.g. implausible height or weight) and flags
-potential typos with user-friendly messages.
-
----
-
 ## Design principles
 
 - Static, dependency-light web application
@@ -107,30 +86,15 @@ with institutional protocols and current guidelines.
 
 ---
 
+## License
+
+This project is released under the **MIT License**.
+
+---
+
 ## Author
 
 Developed and maintained by  
 **Heleno de Paiva Oliveira, MD, PhD**  
 Professor of Anesthesiology  
 Universidade Federal do Rio Grande do Norte (UFRN)
-
----
-
-## License
-
-This project is released under the **MIT License**.
-
-See the [`LICENSE`](LICENSE) file for details.
-
----
-
-## How to adapt for local use
-
-If you fork or adapt this project, you are encouraged to:
-
-- Adjust text templates to match local language and institutional style.
-- Extend the tool with additional structured fields (e.g. STOP-BANG, RCRI, ARISCAT).
-- Document any new formulas clearly in the code and/or README.
-
-Please update the DOI, live URL and repository name (`<REPO_NAME>`) as appropriate
-for your deployment.
