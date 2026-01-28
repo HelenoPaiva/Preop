@@ -6,112 +6,216 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    /* App baseline (match BariCalc / Gastric Volume Estimator vibe) */
+    :root{
+      --bg0:#050814;
+      --bg1:#070b1c;
+      --card:rgba(14,18,38,.72);
+      --card2:rgba(14,18,38,.55);
+      --stroke:rgba(148,163,184,.18);
+      --stroke2:rgba(148,163,184,.12);
+      --text:#e5e7eb;
+      --muted:rgba(226,232,240,.75);
+      --muted2:rgba(226,232,240,.55);
+      --accent:#22c55e; /* green */
+      --accent2:#3b82f6; /* blue */
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+    }
+    html, body { height: 100%; }
+    body{
+      background:
+        radial-gradient(900px 900px at 30% -10%, rgba(59,130,246,.20), transparent 55%),
+        radial-gradient(900px 900px at 80% 10%, rgba(34,197,94,.12), transparent 60%),
+        radial-gradient(1200px 900px at 50% 110%, rgba(2,6,23,.9), rgba(2,6,23,1) 45%),
+        linear-gradient(180deg, var(--bg1), var(--bg0));
+      color: var(--text);
+    }
     /* Avoid iOS zoom on inputs */
     input, select, textarea { font-size: 16px; }
-    /* Make range sliders look decent everywhere */
+    /* Range */
     input[type="range"] { width: 100%; }
+    /* Subtle glass */
+    .glass{
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      border-radius: 1.25rem;
+    }
+    .glass-soft{
+      background: var(--card2);
+      border: 1px solid var(--stroke2);
+      backdrop-filter: blur(8px);
+      border-radius: 1.25rem;
+    }
+    .field{
+      background: rgba(2,6,23,.55);
+      border: 1px solid rgba(148,163,184,.22);
+      border-radius: 0.75rem;
+    }
+    .field:focus{
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59,130,246,.25);
+      border-color: rgba(59,130,246,.45);
+    }
+    .chip{
+      background: rgba(2,6,23,.55);
+      border-radius: 9999px;
+      border: 1px solid rgba(148,163,184,.18);
+    }
+    .divider{
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(148,163,184,.18), transparent);
+    }
+    .topbar{
+      border-bottom: 1px solid rgba(148,163,184,.14);
+      background: linear-gradient(180deg, rgba(2,6,23,.85), rgba(2,6,23,.55));
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+    .bottombar{
+      position: sticky;
+      bottom: 0;
+      z-index: 40;
+      border-top: 1px solid rgba(148,163,184,.14);
+      background: linear-gradient(180deg, rgba(2,6,23,.20), rgba(2,6,23,.90));
+      backdrop-filter: blur(10px);
+    }
+    .btn{
+      background: rgba(2,6,23,.55);
+      border-radius: 9999px;
+      border: 1px solid rgba(148,163,184,.22);
+      padding: 0.4rem 0.9rem;
+    }
+    .btn:hover{ border-color: rgba(148,163,184,.35); }
+    .btn:focus{
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59,130,246,.25);
+      border-color: rgba(59,130,246,.45);
+    }
+    .btn-primary{
+      background: rgba(34,197,94,.12);
+      border-color: rgba(34,197,94,.30);
+    }
+    .btn-primary:hover{ border-color: rgba(34,197,94,.45); }
+    .badge-ok{
+      background: rgba(34,197,94,.14);
+      border-radius: 9999px;
+      border: 1px solid rgba(34,197,94,.28);
+      color: rgba(187,247,208,.95);
+    }
+    .badge-warn{
+      background: rgba(245,158,11,.12);
+      border-radius: 9999px;
+      border: 1px solid rgba(245,158,11,.26);
+      color: rgba(254,243,199,.95);
+    }
+    .badge-bad{
+      background: rgba(244,63,94,.12);
+      border-radius: 9999px;
+      border: 1px solid rgba(244,63,94,.28);
+      color: rgba(255,228,230,.95);
+    }
   </style>
 </head>
 
-<body class="bg-slate-950 text-slate-100 min-h-screen">
-  <div class="max-w-6xl mx-auto px-3 sm:px-4 py-4 sm:py-6">
-    <!-- Header -->
-    <header class="mb-4 sm:mb-6">
-      <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+<body class="min-h-screen">
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="max-w-6xl mx-auto px-3 sm:px-4 py-3 sm:py-4">
+      <div class="flex items-center justify-between gap-3">
         <div class="min-w-0">
-          <h1 class="text-xl sm:text-3xl font-semibold tracking-tight leading-tight">
-            Preoperative Evaluation / Avaliação Pré-operatória
-          </h1>
-          <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-2xl" data-i18n="app_subtitle">
-            Ferramenta local (no navegador) para estruturar avaliação perioperatória e gerar um resumo pronto para copiar.
-            Nenhum dado é enviado para servidor.
-          </p>
+          <div class="text-base sm:text-lg font-semibold leading-tight">
+            <span>Preoperative Evaluation</span>
+            <span class="text-slate-400">/</span>
+            <span class="text-slate-200">Avaliação Pré-operatória</span>
+          </div>
+          <div class="text-[11px] sm:text-xs text-slate-300/80 mt-0.5 max-w-2xl" data-i18n="app_subtitle">
+            Ferramenta local (no navegador) para estruturar avaliação perioperatória e gerar um resumo pronto para copiar. Nenhum dado é enviado para servidor.
+          </div>
         </div>
 
-        <div class="flex items-center justify-between gap-3 sm:justify-end w-full sm:w-auto">
-          <!-- Language toggle -->
-          <div class="inline-flex items-center gap-2 rounded-full bg-slate-800 border border-slate-600 px-2 py-1 text-xs shrink-0">
+        <div class="flex items-center gap-2 shrink-0">
+          <!-- EN-PT toggle -->
+          <div class="inline-flex items-center gap-2 rounded-full chip px-2 py-1 text-[11px]">
             <span class="text-slate-300 select-none">EN-PT</span>
             <div class="inline-flex items-center rounded-full bg-slate-900/60 border border-slate-700 p-0.5">
-              <button id="lang-pt-btn"
-                      class="px-2 py-1 rounded-full bg-blue-500 text-white font-medium"
-                      aria-label="Português">
-                PT
-              </button>
-              <button id="lang-en-btn"
-                      class="px-2 py-1 rounded-full text-slate-200"
-                      aria-label="English">
-                EN
-              </button>
+              <button id="lang-pt-btn" class="px-2 py-1 rounded-full bg-blue-500 text-white font-medium" aria-label="Português">PT</button>
+              <button id="lang-en-btn" class="px-2 py-1 rounded-full text-slate-200" aria-label="English">EN</button>
             </div>
           </div>
 
           <a href="https://github.com/HelenoPaiva/Preoperative-Composer"
              target="_blank"
-             class="text-xs sm:text-sm text-blue-400 hover:text-blue-300 underline decoration-dotted shrink-0 whitespace-nowrap">
+             class="text-[11px] sm:text-xs text-blue-400 hover:text-blue-300 underline decoration-dotted">
             <span data-i18n="github_link">Ver no GitHub</span>
           </a>
         </div>
       </div>
-    </header>
+    </div>
+  </div>
 
+  <div class="max-w-6xl mx-auto px-3 sm:px-4 py-4 sm:py-6">
     <!-- Validation banner -->
-    <div id="validation-banner"
-         class="hidden mb-4 rounded-2xl border border-rose-700/70 bg-rose-950/40 px-4 py-3 text-sm">
+    <div id="validation-banner" class="hidden mb-4 rounded-2xl border border-rose-700/40 bg-rose-950/30 px-4 py-3 text-sm">
       <div class="font-semibold text-rose-200" data-i18n="validation_title">Revise os itens abaixo:</div>
       <ul id="validation-list" class="mt-2 list-disc pl-5 text-rose-100/90 space-y-1"></ul>
     </div>
 
-    <!-- Main layout -->
+    <!-- Main -->
     <main class="grid gap-4 sm:gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
-      <!-- LEFT: Inputs -->
+      <!-- LEFT -->
       <section class="space-y-4">
         <!-- Patient & Surgical Data -->
-        <div class="bg-slate-900/70 border border-slate-700 rounded-2xl shadow-lg shadow-black/40">
+        <div class="glass">
           <div class="px-4 sm:px-5 py-4">
             <div class="flex items-start justify-between gap-3">
               <div>
+                <div class="text-xs text-slate-400/90 uppercase tracking-wide mb-1" data-i18n="section_patient_kicker">Paciente</div>
                 <h2 class="text-base sm:text-lg font-semibold" data-i18n="section_patient_title">Dados do Paciente e Cirurgia</h2>
-                <p class="text-xs text-slate-400 mt-0.5" data-i18n="section_patient_hint">Demografia e contexto do procedimento</p>
+              </div>
+              <div class="hidden sm:flex items-center gap-2">
+                <div class="text-[11px] text-slate-300/70" data-i18n="local_only">Local</div>
+                <div class="h-1.5 w-1.5 rounded-full bg-emerald-400/80"></div>
               </div>
             </div>
 
             <div class="mt-3 grid gap-3 sm:grid-cols-2">
-              <label class="flex flex-col text-sm">
-                <span class="mb-1 text-slate-200" data-i18n="age_label">Idade (anos)</span>
+              <label class="flex flex-col">
+                <span class="mb-1 text-xs text-slate-200" data-i18n="age_label">Idade (anos)</span>
                 <input id="age" type="number" min="16" max="100"
-                       class="rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950"
+                       class="field px-3 py-2 text-sm"
                        placeholder="52" data-i18n-placeholder="age_ph" />
               </label>
 
-              <label class="flex flex-col text-sm">
-                <span class="mb-1 text-slate-200" data-i18n="sex_label">Sexo ao nascimento</span>
-                <select id="sex"
-                        class="rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950">
+              <label class="flex flex-col">
+                <span class="mb-1 text-xs text-slate-200" data-i18n="sex_label">Sexo ao nascimento</span>
+                <select id="sex" class="field px-3 py-2 text-sm">
                   <option value="" data-i18n="select">Selecionar…</option>
                   <option value="male" data-i18n="male">Masculino</option>
                   <option value="female" data-i18n="female">Feminino</option>
                 </select>
               </label>
 
-              <label class="flex flex-col text-sm">
-                <span class="mb-1 text-slate-200" data-i18n="height_label">Altura (cm)</span>
+              <label class="flex flex-col">
+                <span class="mb-1 text-xs text-slate-200" data-i18n="height_label">Altura (cm)</span>
                 <input id="height" type="number" min="120" max="220"
-                       class="rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950"
+                       class="field px-3 py-2 text-sm"
                        placeholder="170" data-i18n-placeholder="height_ph" />
               </label>
 
-              <label class="flex flex-col text-sm">
-                <span class="mb-1 text-slate-200" data-i18n="weight_label">Peso (kg)</span>
+              <label class="flex flex-col">
+                <span class="mb-1 text-xs text-slate-200" data-i18n="weight_label">Peso (kg)</span>
                 <input id="weight" type="number" min="30" max="300"
-                       class="rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950"
+                       class="field px-3 py-2 text-sm"
                        placeholder="120" data-i18n-placeholder="weight_ph" />
               </label>
 
-              <label class="flex flex-col text-sm">
-                <span class="mb-1 text-slate-200" data-i18n="asa_label">Classificação ASA</span>
-                <select id="asa"
-                        class="rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950">
+              <label class="flex flex-col">
+                <span class="mb-1 text-xs text-slate-200" data-i18n="asa_label">Classificação ASA</span>
+                <select id="asa" class="field px-3 py-2 text-sm">
                   <option value="" data-i18n="select">Selecionar…</option>
                   <option value="I">ASA I</option>
                   <option value="II">ASA II</option>
@@ -121,10 +225,9 @@
                 </select>
               </label>
 
-              <label class="flex flex-col text-sm">
-                <span class="mb-1 text-slate-200" data-i18n="anesthesia_label">Anestesia planejada</span>
-                <select id="anesthesia-type"
-                        class="rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950">
+              <label class="flex flex-col">
+                <span class="mb-1 text-xs text-slate-200" data-i18n="anesthesia_label">Anestesia planejada</span>
+                <select id="anesthesia-type" class="field px-3 py-2 text-sm">
                   <option value="" data-i18n="select">Selecionar…</option>
                   <option value="general" data-i18n="an_general">Anestesia geral</option>
                   <option value="neuraxial" data-i18n="an_neuraxial">Anestesia neuroaxial</option>
@@ -132,64 +235,60 @@
                   <option value="sedation" data-i18n="an_sedation">Sedação / cuidado monitorizado</option>
                 </select>
               </label>
-            </div>
 
-            <div class="mt-4 grid gap-3 sm:grid-cols-2">
-              <label class="flex flex-col text-sm sm:col-span-2">
-                <span class="mb-1 text-slate-200" data-i18n="procedure_label">Procedimento planejado (texto livre)</span>
-                <input id="procedure"
-                       class="rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950"
+              <label class="flex flex-col sm:col-span-2">
+                <span class="mb-1 text-xs text-slate-200" data-i18n="procedure_label">Procedimento planejado (texto livre)</span>
+                <input id="procedure" class="field px-3 py-2 text-sm"
                        placeholder="Bypass gástrico laparoscópico" data-i18n-placeholder="procedure_ph" />
               </label>
 
-              <label class="flex flex-col text-sm">
-                <span class="mb-1 text-slate-200" data-i18n="duration_label">Duração estimada (horas)</span>
+              <label class="flex flex-col">
+                <span class="mb-1 text-xs text-slate-200" data-i18n="duration_label">Duração estimada (horas)</span>
                 <input id="surgery-duration" type="number" step="0.5" min="0" max="12"
-                       class="rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950"
+                       class="field px-3 py-2 text-sm"
                        placeholder="3" data-i18n-placeholder="duration_ph" />
               </label>
 
-              <label class="inline-flex items-center gap-2 text-sm mt-1 sm:mt-6">
+              <label class="inline-flex items-center gap-2 mt-1 sm:mt-6">
                 <input id="emergency-surgery" type="checkbox"
                        class="h-4 w-4 rounded border-slate-500 bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950" />
-                <span class="text-slate-200" data-i18n="emergency_label">Cirurgia de urgência/emergência</span>
+                <span class="text-sm text-slate-200" data-i18n="emergency_label">Cirurgia de urgência/emergência</span>
               </label>
             </div>
 
             <div class="mt-4 grid gap-3 sm:grid-cols-3 text-xs">
-              <div class="rounded-xl bg-slate-800/80 border border-slate-700 px-3 py-2">
-                <div class="text-slate-400 uppercase tracking-wide mb-1" data-i18n="bmi_chip">IMC</div>
+              <div class="chip px-3 py-2">
+                <div class="text-slate-400/90 uppercase tracking-wide mb-1" data-i18n="bmi_chip">IMC</div>
                 <div id="bmi-display" class="text-sm font-semibold">—</div>
-                <div id="bmi-category" class="text-[11px] text-slate-400 mt-1" data-i18n="bmi_hint">Informe altura e peso</div>
+                <div id="bmi-category" class="text-[11px] text-slate-400/90 mt-1" data-i18n="bmi_hint">Informe altura e peso</div>
               </div>
 
-              <div class="rounded-xl bg-slate-800/80 border border-slate-700 px-3 py-2">
-                <div class="text-slate-400 uppercase tracking-wide mb-1" data-i18n="ibw_chip">Peso ideal (Devine)</div>
+              <div class="chip px-3 py-2">
+                <div class="text-slate-400/90 uppercase tracking-wide mb-1" data-i18n="ibw_chip">Peso ideal (Devine)</div>
                 <div id="ibw-display" class="text-sm font-semibold">—</div>
-                <div id="ibw-hint" class="text-[11px] text-slate-400 mt-1" data-i18n="ibw_hint">Requer sexo + altura</div>
+                <div id="ibw-hint" class="text-[11px] text-slate-400/90 mt-1" data-i18n="ibw_hint">Requer sexo + altura</div>
               </div>
 
-              <div class="rounded-xl bg-slate-800/80 border border-slate-700 px-3 py-2">
-                <div class="text-slate-400 uppercase tracking-wide mb-1" data-i18n="context_chip">Contexto</div>
+              <div class="chip px-3 py-2">
+                <div class="text-slate-400/90 uppercase tracking-wide mb-1" data-i18n="context_chip">Contexto</div>
                 <div id="context-display" class="text-sm font-semibold">—</div>
-                <div class="text-[11px] text-slate-400 mt-1" data-i18n="context_hint">Urgência influencia ARISCAT</div>
+                <div class="text-[11px] text-slate-400/90 mt-1" data-i18n="context_hint">Urgência influencia ARISCAT</div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Airway: Mallampati + El-Ganzouri -->
-        <div class="bg-slate-900/70 border border-slate-700 rounded-2xl shadow-lg shadow-black/40">
+        <!-- Airway -->
+        <div class="glass">
           <div class="px-4 sm:px-5 py-4">
+            <div class="text-xs text-slate-400/90 uppercase tracking-wide mb-1" data-i18n="section_airway_kicker">Via aérea</div>
             <h2 class="text-base sm:text-lg font-semibold" data-i18n="section_airway_title">Via Aérea</h2>
-            <p class="text-xs text-slate-400 mt-0.5" data-i18n="section_airway_hint">Mallampati e Índice de El-Ganzouri (EGRI)</p>
+            <p class="text-[11px] text-slate-300/70 mt-1" data-i18n="section_airway_hint">Mallampati e Índice de El-Ganzouri (EGRI)</p>
 
             <div class="mt-3 grid gap-3 sm:grid-cols-2">
-              <!-- Mallampati -->
-              <label class="flex flex-col text-sm">
-                <span class="mb-1 text-slate-200" data-i18n="mallampati_label">Mallampati</span>
-                <select id="mallampati"
-                        class="rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950">
+              <label class="flex flex-col">
+                <span class="mb-1 text-xs text-slate-200" data-i18n="mallampati_label">Mallampati</span>
+                <select id="mallampati" class="field px-3 py-2 text-sm">
                   <option value="" data-i18n="select">Selecionar…</option>
                   <option value="1">I</option>
                   <option value="2">II</option>
@@ -198,83 +297,74 @@
                 </select>
               </label>
 
-              <!-- Mouth opening -->
-              <label class="flex flex-col text-sm">
-                <span class="mb-1 text-slate-200" data-i18n="mouth_opening_label">Abertura bucal (cm)</span>
+              <label class="flex flex-col">
+                <span class="mb-1 text-xs text-slate-200" data-i18n="mouth_opening_label">Abertura bucal (cm)</span>
                 <input id="mouth-opening" type="number" step="0.1" min="0" max="10"
-                       class="rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950"
+                       class="field px-3 py-2 text-sm"
                        placeholder="4,5" data-i18n-placeholder="mouth_opening_ph" />
               </label>
 
-              <!-- Thyromental -->
-              <label class="flex flex-col text-sm">
-                <span class="mb-1 text-slate-200" data-i18n="tmd_label">Distância tireomentoniana (cm)</span>
+              <label class="flex flex-col">
+                <span class="mb-1 text-xs text-slate-200" data-i18n="tmd_label">Distância tireomentoniana (cm)</span>
                 <input id="tmd" type="number" step="0.1" min="0" max="15"
-                       class="rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950"
+                       class="field px-3 py-2 text-sm"
                        placeholder="7,0" data-i18n-placeholder="tmd_ph" />
               </label>
 
-              <!-- Jaw protrusion -->
-              <label class="inline-flex items-center gap-2 text-sm mt-1 sm:mt-6">
+              <label class="inline-flex items-center gap-2 mt-1 sm:mt-6">
                 <input id="jaw-limited" type="checkbox"
                        class="h-4 w-4 rounded border-slate-500 bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950" />
-                <span class="text-slate-200" data-i18n="jaw_limited_label">Não consegue protruir a mandíbula</span>
+                <span class="text-sm text-slate-200" data-i18n="jaw_limited_label">Não consegue protruir a mandíbula</span>
               </label>
 
               <!-- Neck mobility slider -->
-              <div class="sm:col-span-2 rounded-xl border border-slate-700 bg-slate-900/40 p-3">
+              <div class="sm:col-span-2 glass-soft p-3">
                 <div class="flex items-center justify-between gap-3">
                   <div class="text-sm text-slate-200 font-medium" data-i18n="neck_mobility_title">Mobilidade cervical</div>
-                  <div class="text-xs text-slate-300">
+                  <div class="text-xs text-slate-300/80">
                     <span data-i18n="points_label">Pontos:</span>
                     <span id="neck-mobility-points" class="font-semibold">0</span>
                   </div>
                 </div>
                 <div class="mt-2">
-                  <input id="neck-mobility" type="range" min="0" max="2" step="1"
-                         class="accent-blue-500" />
+                  <input id="neck-mobility" type="range" min="0" max="2" step="1" class="accent-blue-500" />
                 </div>
-                <div class="mt-2 text-xs text-slate-300">
+                <div class="mt-2 text-[11px] text-slate-300/80">
                   <span id="neck-mobility-label">—</span>
                 </div>
               </div>
 
               <!-- Difficult intubation history slider -->
-              <div class="sm:col-span-2 rounded-xl border border-slate-700 bg-slate-900/40 p-3">
+              <div class="sm:col-span-2 glass-soft p-3">
                 <div class="flex items-center justify-between gap-3">
                   <div class="text-sm text-slate-200 font-medium" data-i18n="diff_history_title">História de intubação difícil</div>
-                  <div class="text-xs text-slate-300">
+                  <div class="text-xs text-slate-300/80">
                     <span data-i18n="points_label">Pontos:</span>
                     <span id="diff-history-points" class="font-semibold">0</span>
                   </div>
                 </div>
                 <div class="mt-2">
-                  <input id="diff-history" type="range" min="0" max="2" step="1"
-                         class="accent-blue-500" />
+                  <input id="diff-history" type="range" min="0" max="2" step="1" class="accent-blue-500" />
                 </div>
-                <div class="mt-2 text-xs text-slate-300">
+                <div class="mt-2 text-[11px] text-slate-300/80">
                   <span id="diff-history-label">—</span>
                 </div>
               </div>
             </div>
 
-            <div class="mt-4 grid gap-3 sm:grid-cols-3 text-xs">
-              <div class="rounded-xl bg-slate-800/80 border border-slate-700 px-3 py-2">
-                <div class="text-slate-400 uppercase tracking-wide mb-1" data-i18n="egri_chip">El-Ganzouri (EGRI)</div>
-                <div class="text-sm font-semibold">
+            <!-- El-Ganzouri chip ONLY (no rule-used chip) -->
+            <div class="mt-4 grid gap-3 sm:grid-cols-1 text-xs">
+              <div class="chip px-3 py-2 rounded-2xl">
+                <div class="flex items-center justify-between">
+                  <div class="text-slate-400/90 uppercase tracking-wide" data-i18n="egri_chip">El-Ganzouri (EGRI)</div>
+                  <div id="egri-badge" class="badge-ok text-[11px] px-2 py-1">—</div>
+                </div>
+                <div class="mt-1 text-sm font-semibold">
                   <span id="egri-score">0</span>
                 </div>
-                <div class="text-[11px] text-slate-400 mt-1">
+                <div class="text-[11px] text-slate-400/90 mt-1">
                   <span data-i18n="category_label">Categoria:</span>
                   <span id="egri-category" class="font-semibold">—</span>
-                </div>
-              </div>
-
-              <div class="rounded-xl bg-slate-800/80 border border-slate-700 px-3 py-2 sm:col-span-2">
-                <div class="text-slate-400 uppercase tracking-wide mb-1" data-i18n="egri_hint_title">Regra usada</div>
-                <div class="text-[11px] text-slate-300/90" data-i18n="egri_hint_text">
-                  Peso: &lt;90=0; 90–110=1; &gt;110=2. Mobilidade cervical e história de intubação difícil: 0/1/2 pontos via slider.
-                  Mallampati: I=0, II=1, III=2, IV=2. Risco alto se EGRI ≥ 4.
                 </div>
               </div>
             </div>
@@ -282,260 +372,267 @@
         </div>
 
         <!-- STOP-BANG -->
-        <div class="bg-slate-900/70 border border-slate-700 rounded-2xl shadow-lg shadow-black/40">
+        <div class="glass">
           <div class="px-4 sm:px-5 py-4">
+            <div class="text-xs text-slate-400/90 uppercase tracking-wide mb-1" data-i18n="section_stopbang_kicker">Sono</div>
             <h2 class="text-base sm:text-lg font-semibold" data-i18n="section_stopbang_title">STOP-BANG (risco de AOS)</h2>
-            <p class="text-xs text-slate-400 mt-0.5" data-i18n="section_stopbang_hint">Apenas rastreio (não diagnóstico)</p>
+            <p class="text-[11px] text-slate-300/70 mt-1" data-i18n="section_stopbang_hint">Apenas rastreio (não diagnóstico)</p>
 
             <div class="mt-3 grid gap-2 sm:grid-cols-2 text-sm">
               <label class="inline-flex items-start gap-2">
-                <input type="checkbox" id="sb-snoring"
-                       class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950" />
+                <input type="checkbox" id="sb-snoring" class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800" />
                 <span data-i18n="sb_snoring">Ronco alto.</span>
               </label>
-
               <label class="inline-flex items-start gap-2">
-                <input type="checkbox" id="sb-tired"
-                       class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950" />
+                <input type="checkbox" id="sb-tired" class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800" />
                 <span data-i18n="sb_tired">Sonolência/fadiga diurna.</span>
               </label>
-
               <label class="inline-flex items-start gap-2">
-                <input type="checkbox" id="sb-observed"
-                       class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950" />
+                <input type="checkbox" id="sb-observed" class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800" />
                 <span data-i18n="sb_observed">Apneia/engasgos observados.</span>
               </label>
-
               <label class="inline-flex items-start gap-2">
-                <input type="checkbox" id="sb-pressure"
-                       class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950" />
+                <input type="checkbox" id="sb-pressure" class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800" />
                 <span data-i18n="sb_pressure">Hipertensão.</span>
               </label>
-
               <label class="inline-flex items-start gap-2">
-                <input type="checkbox" id="sb-bmi"
-                       class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800"
-                       disabled />
+                <input type="checkbox" id="sb-bmi" class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800" disabled />
                 <span data-i18n="sb_bmi">IMC &gt; 35 kg/m² (auto).</span>
               </label>
-
               <label class="inline-flex items-start gap-2">
-                <input type="checkbox" id="sb-age"
-                       class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800"
-                       disabled />
+                <input type="checkbox" id="sb-age" class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800" disabled />
                 <span data-i18n="sb_age">Idade &gt; 50 anos (auto).</span>
               </label>
-
               <label class="inline-flex items-start gap-2">
-                <input type="checkbox" id="sb-neck"
-                       class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950" />
+                <input type="checkbox" id="sb-neck" class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800" />
                 <span data-i18n="sb_neck">Circunferência do pescoço &gt; 40 cm.</span>
               </label>
-
               <label class="inline-flex items-start gap-2">
-                <input type="checkbox" id="sb-gender"
-                       class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800"
-                       disabled />
+                <input type="checkbox" id="sb-gender" class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800" disabled />
                 <span data-i18n="sb_gender">Sexo masculino (auto).</span>
               </label>
             </div>
 
             <div class="mt-4 flex flex-wrap items-center gap-3 text-xs">
-              <div class="rounded-full bg-slate-800/80 border border-slate-700 px-3 py-1">
+              <div class="chip px-3 py-1">
                 <span data-i18n="score_label">Escore:</span>
                 <span id="sb-score" class="font-semibold">0</span> / 8
               </div>
-              <div class="rounded-full bg-slate-800/80 border border-slate-700 px-3 py-1">
+              <div class="chip px-3 py-1">
                 <span data-i18n="category_label">Categoria:</span>
                 <span id="sb-category" class="font-semibold">—</span>
               </div>
-              <div class="text-slate-400" data-i18n="sb_footer">
+              <div class="text-slate-400/80 text-[11px]" data-i18n="sb_footer">
                 Escore alto sugere maior risco de AOS; interpretar clinicamente.
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Risk Scores: RCRI + ARISCAT + Apfel -->
-        <div class="bg-slate-900/70 border border-slate-700 rounded-2xl shadow-lg shadow-black/40">
-          <div class="px-4 sm:px-5 py-4 space-y-4">
-            <div>
-              <h2 class="text-base sm:text-lg font-semibold" data-i18n="section_risk_title">Escores de Risco</h2>
-              <p class="text-xs text-slate-400 mt-0.5" data-i18n="section_risk_hint">RCRI, ARISCAT e Apfel (NVPO)</p>
+        <!-- RISK SCORES CARD (RCRI / ARISCAT / Apfel each chip) -->
+        <div class="glass">
+          <div class="px-4 sm:px-5 py-4">
+            <div class="text-xs text-slate-400/90 uppercase tracking-wide mb-1" data-i18n="section_risk_kicker">Risco</div>
+            <h2 class="text-base sm:text-lg font-semibold" data-i18n="section_risk_title2">Escores</h2>
+
+            <div class="mt-3 grid gap-4">
+              <!-- RCRI chip -->
+              <div class="chip p-3 rounded-2xl">
+                <div class="flex items-start justify-between gap-3">
+                  <div>
+                    <div class="text-sm font-semibold" data-i18n="rcri_title">
+                      RCRI — Índice de Risco Cardíaco Revisado
+                    </div>
+                    <div class="text-[11px] text-slate-300/70" data-i18n="rcri_title_en">
+                      (Revised Cardiac Risk Index)
+                    </div>
+                  </div>
+                  <div class="chip px-3 py-1 text-xs">
+                    <span data-i18n="score_label">Escore:</span>
+                    <span id="rcri-score" class="font-semibold">0</span> / 6
+                  </div>
+                </div>
+
+                <div class="mt-3 grid gap-2 sm:grid-cols-2 text-sm">
+                  <label class="inline-flex items-start gap-2">
+                    <input type="checkbox" id="rcri-highrisk" class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800" />
+                    <span data-i18n="rcri_highrisk">Cirurgia de alto risco (intraperitoneal, intratorácica, vascular suprainguinal).</span>
+                  </label>
+                  <label class="inline-flex items-start gap-2">
+                    <input type="checkbox" id="rcri-ihd" class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800" />
+                    <span data-i18n="rcri_ihd">Doença arterial coronariana/isquêmica.</span>
+                  </label>
+                  <label class="inline-flex items-start gap-2">
+                    <input type="checkbox" id="rcri-chf" class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800" />
+                    <span data-i18n="rcri_chf">Insuficiência cardíaca congestiva.</span>
+                  </label>
+                  <label class="inline-flex items-start gap-2">
+                    <input type="checkbox" id="rcri-cva" class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800" />
+                    <span data-i18n="rcri_cva">Doença cerebrovascular.</span>
+                  </label>
+                  <label class="inline-flex items-start gap-2">
+                    <input type="checkbox" id="rcri-insulin" class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800" />
+                    <span data-i18n="rcri_insulin">Diabetes em uso de insulina.</span>
+                  </label>
+                  <label class="inline-flex items-start gap-2">
+                    <input type="checkbox" id="rcri-creatinine" class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800" />
+                    <span data-i18n="rcri_creat">Creatinina &gt; 2,0 mg/dL.</span>
+                  </label>
+                </div>
+
+                <div class="mt-3 flex flex-wrap items-center gap-3 text-xs">
+                  <div class="chip px-3 py-1">
+                    <span data-i18n="category_label">Categoria:</span>
+                    <span id="rcri-category" class="font-semibold">—</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ARISCAT chip -->
+              <div class="chip p-3 rounded-2xl">
+                <div class="flex items-start justify-between gap-3">
+                  <div>
+                    <div class="text-sm font-semibold" data-i18n="ariscat_title">
+                      ARISCAT — Escore de complicação pulmonar pós-operatória
+                    </div>
+                    <div class="text-[11px] text-slate-300/70" data-i18n="ariscat_title_en">
+                      (Score for Postoperative Pulmonary Complications)
+                    </div>
+                  </div>
+                  <div class="chip px-3 py-1 text-xs">
+                    <span data-i18n="score_label">Escore:</span>
+                    <span id="ariscat-score" class="font-semibold">0</span>
+                  </div>
+                </div>
+
+                <div class="mt-3 grid gap-3 sm:grid-cols-2 text-sm">
+                  <label class="flex flex-col">
+                    <span class="mb-1 text-xs text-slate-200" data-i18n="spo2_label">SpO₂ pré-op em ar ambiente (%)</span>
+                    <input id="ariscat-spo2" type="number" min="70" max="100"
+                           class="field px-3 py-2 text-sm"
+                           placeholder="98" data-i18n-placeholder="spo2_ph" />
+                  </label>
+
+                  <label class="inline-flex items-center gap-2 mt-1 sm:mt-6">
+                    <input type="checkbox" id="ariscat-infection" class="h-4 w-4 rounded border-slate-500 bg-slate-800" />
+                    <span data-i18n="ariscat_infection">Infecção respiratória no último mês</span>
+                  </label>
+
+                  <label class="inline-flex items-center gap-2">
+                    <input type="checkbox" id="ariscat-anemia" class="h-4 w-4 rounded border-slate-500 bg-slate-800" />
+                    <span data-i18n="ariscat_anemia">Hb ≤ 10 g/dL</span>
+                  </label>
+
+                  <label class="flex flex-col">
+                    <span class="mb-1 text-xs text-slate-200" data-i18n="incision_label">Sítio da incisão</span>
+                    <select id="ariscat-incision" class="field px-3 py-2 text-sm">
+                      <option value="" data-i18n="select">Selecionar…</option>
+                      <option value="peripheral" data-i18n="inc_peripheral">Periférica</option>
+                      <option value="upper-abdominal" data-i18n="inc_upper">Abdominal superior</option>
+                      <option value="intrathoracic" data-i18n="inc_thoracic">Intratorácica</option>
+                    </select>
+                  </label>
+                </div>
+
+                <div class="mt-3 flex flex-wrap items-center gap-3 text-xs">
+                  <div class="chip px-3 py-1">
+                    <span data-i18n="category_label">Categoria:</span>
+                    <span id="ariscat-category" class="font-semibold">—</span>
+                  </div>
+                  <div class="chip px-3 py-1">
+                    <span data-i18n="estimated_risk_label">Risco estimado:</span>
+                    <span id="ariscat-risk" class="font-semibold">—</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Apfel chip -->
+              <div class="chip p-3 rounded-2xl">
+                <div class="flex items-start justify-between gap-3">
+                  <div>
+                    <div class="text-sm font-semibold" data-i18n="apfel_title2">
+                      Apfel (NVPO / PONV)
+                    </div>
+                  </div>
+                  <div class="chip px-3 py-1 text-xs">
+                    <span data-i18n="score_label">Escore:</span>
+                    <span id="apfel-score" class="font-semibold">0</span> / 4
+                  </div>
+                </div>
+
+                <div class="mt-3 grid gap-2 sm:grid-cols-2 text-sm">
+                  <label class="inline-flex items-start gap-2">
+                    <input type="checkbox" id="apfel-nonsmoker" class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800" />
+                    <span data-i18n="apfel_nonsmoker">Não fumante</span>
+                  </label>
+                  <label class="inline-flex items-start gap-2">
+                    <input type="checkbox" id="apfel-history" class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800" />
+                    <span data-i18n="apfel_history">História de NVPO ou cinetose</span>
+                  </label>
+                  <label class="inline-flex items-start gap-2">
+                    <input type="checkbox" id="apfel-opioids" class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800" />
+                    <span data-i18n="apfel_opioids">Planeja opioide no pós-operatório</span>
+                  </label>
+                  <div class="text-[11px] text-slate-300/70 sm:mt-1" data-i18n="apfel_sex_auto">
+                    Sexo feminino é contado automaticamente a partir da demografia.
+                  </div>
+                </div>
+
+                <div class="mt-3 flex flex-wrap items-center gap-3 text-xs">
+                  <div class="chip px-3 py-1">
+                    <span data-i18n="estimated_risk_label">Risco estimado:</span>
+                    <span id="apfel-risk" class="font-semibold">—</span>
+                  </div>
+                </div>
+              </div>
+
             </div>
-
-            <!-- RCRI -->
-            <div>
-              <h3 class="text-sm font-semibold mb-2">RCRI</h3>
-              <div class="grid gap-2 sm:grid-cols-2 text-sm">
-                <label class="inline-flex items-start gap-2">
-                  <input type="checkbox" id="rcri-highrisk"
-                         class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950" />
-                  <span data-i18n="rcri_highrisk">Cirurgia de alto risco (intraperitoneal, intratorácica, vascular suprainguinal).</span>
-                </label>
-                <label class="inline-flex items-start gap-2">
-                  <input type="checkbox" id="rcri-ihd"
-                         class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950" />
-                  <span data-i18n="rcri_ihd">Doença arterial coronariana/isquêmica.</span>
-                </label>
-                <label class="inline-flex items-start gap-2">
-                  <input type="checkbox" id="rcri-chf"
-                         class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950" />
-                  <span data-i18n="rcri_chf">Insuficiência cardíaca congestiva.</span>
-                </label>
-                <label class="inline-flex items-start gap-2">
-                  <input type="checkbox" id="rcri-cva"
-                         class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950" />
-                  <span data-i18n="rcri_cva">Doença cerebrovascular.</span>
-                </label>
-                <label class="inline-flex items-start gap-2">
-                  <input type="checkbox" id="rcri-insulin"
-                         class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950" />
-                  <span data-i18n="rcri_insulin">Diabetes em uso de insulina.</span>
-                </label>
-                <label class="inline-flex items-start gap-2">
-                  <input type="checkbox" id="rcri-creatinine"
-                         class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950" />
-                  <span data-i18n="rcri_creat">Creatinina &gt; 2,0 mg/dL.</span>
-                </label>
-              </div>
-
-              <div class="mt-3 flex flex-wrap items-center gap-3 text-xs">
-                <div class="rounded-full bg-slate-800/80 border border-slate-700 px-3 py-1">
-                  <span data-i18n="score_label">Escore:</span>
-                  <span id="rcri-score" class="font-semibold">0</span> / 6
-                </div>
-                <div class="rounded-full bg-slate-800/80 border border-slate-700 px-3 py-1">
-                  <span data-i18n="category_label">Categoria:</span>
-                  <span id="rcri-category" class="font-semibold">—</span>
-                </div>
-              </div>
-            </div>
-
-            <hr class="border-slate-700/70" />
-
-            <!-- ARISCAT -->
-            <div>
-              <h3 class="text-sm font-semibold mb-2">ARISCAT</h3>
-              <div class="grid gap-3 sm:grid-cols-2 text-sm">
-                <label class="flex flex-col">
-                  <span class="mb-1 text-slate-200" data-i18n="spo2_label">SpO₂ pré-op em ar ambiente (%)</span>
-                  <input id="ariscat-spo2" type="number" min="70" max="100"
-                         class="rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950"
-                         placeholder="98" data-i18n-placeholder="spo2_ph" />
-                </label>
-
-                <label class="inline-flex items-center gap-2 mt-1 sm:mt-6">
-                  <input type="checkbox" id="ariscat-infection"
-                         class="h-4 w-4 rounded border-slate-500 bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950" />
-                  <span data-i18n="ariscat_infection">Infecção respiratória no último mês</span>
-                </label>
-
-                <label class="inline-flex items-center gap-2">
-                  <input type="checkbox" id="ariscat-anemia"
-                         class="h-4 w-4 rounded border-slate-500 bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950" />
-                  <span data-i18n="ariscat_anemia">Hb ≤ 10 g/dL</span>
-                </label>
-
-                <label class="flex flex-col">
-                  <span class="mb-1 text-slate-200" data-i18n="incision_label">Sítio da incisão</span>
-                  <select id="ariscat-incision"
-                          class="rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950">
-                    <option value="" data-i18n="select">Selecionar…</option>
-                    <option value="peripheral" data-i18n="inc_peripheral">Periférica</option>
-                    <option value="upper-abdominal" data-i18n="inc_upper">Abdominal superior</option>
-                    <option value="intrathoracic" data-i18n="inc_thoracic">Intratorácica</option>
-                  </select>
-                </label>
-              </div>
-
-              <div class="mt-3 flex flex-wrap items-center gap-3 text-xs">
-                <div class="rounded-full bg-slate-800/80 border border-slate-700 px-3 py-1">
-                  <span data-i18n="score_label">Escore:</span>
-                  <span id="ariscat-score" class="font-semibold">0</span>
-                </div>
-                <div class="rounded-full bg-slate-800/80 border border-slate-700 px-3 py-1">
-                  <span data-i18n="category_label">Categoria:</span>
-                  <span id="ariscat-category" class="font-semibold">—</span>
-                </div>
-                <div class="rounded-full bg-slate-800/80 border border-slate-700 px-3 py-1">
-                  <span data-i18n="estimated_risk_label">Risco estimado:</span>
-                  <span id="ariscat-risk" class="font-semibold">—</span>
-                </div>
-              </div>
-            </div>
-
-            <hr class="border-slate-700/70" />
-
-            <!-- Apfel -->
-            <div>
-              <h3 class="text-sm font-semibold mb-2" data-i18n="apfel_title">Escore de Apfel (NVPO)</h3>
-              <div class="grid gap-2 sm:grid-cols-2 text-sm">
-                <label class="inline-flex items-start gap-2">
-                  <input type="checkbox" id="apfel-nonsmoker"
-                         class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950" />
-                  <span data-i18n="apfel_nonsmoker">Não fumante</span>
-                </label>
-                <label class="inline-flex items-start gap-2">
-                  <input type="checkbox" id="apfel-history"
-                         class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950" />
-                  <span data-i18n="apfel_history">História de NVPO ou cinetose</span>
-                </label>
-                <label class="inline-flex items-start gap-2">
-                  <input type="checkbox" id="apfel-opioids"
-                         class="mt-1 h-4 w-4 rounded border-slate-500 bg-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950" />
-                  <span data-i18n="apfel_opioids">Planeja opioide no pós-operatório</span>
-                </label>
-                <div class="text-xs text-slate-400 sm:mt-1" data-i18n="apfel_sex_auto">
-                  Sexo feminino é contado automaticamente a partir da demografia.
-                </div>
-              </div>
-
-              <div class="mt-3 flex flex-wrap items-center gap-3 text-xs">
-                <div class="rounded-full bg-slate-800/80 border border-slate-700 px-3 py-1">
-                  <span data-i18n="score_label">Escore:</span>
-                  <span id="apfel-score" class="font-semibold">0</span> / 4
-                </div>
-                <div class="rounded-full bg-slate-800/80 border border-slate-700 px-3 py-1">
-                  <span data-i18n="estimated_risk_label">Risco estimado:</span>
-                  <span id="apfel-risk" class="font-semibold">—</span>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
       </section>
 
-      <!-- RIGHT: Output -->
+      <!-- RIGHT -->
       <section class="space-y-4">
-        <div class="bg-slate-900/70 border border-slate-700 rounded-2xl p-4 sm:p-5 shadow-lg shadow-black/40">
+        <div class="glass p-4 sm:p-5">
           <div class="flex items-start justify-between gap-3 mb-3">
             <div class="min-w-0">
+              <div class="text-xs text-slate-400/90 uppercase tracking-wide mb-1" data-i18n="output_kicker">Resumo</div>
               <h2 class="text-base sm:text-lg font-semibold" data-i18n="output_title">Resumo Pré-Operatório (pronto para copiar)</h2>
-              <p class="text-xs text-slate-300 mt-1" data-i18n="output_hint">
+              <p class="text-[11px] text-slate-300/70 mt-1" data-i18n="output_hint">
                 Narrativa e escores gerados automaticamente. Revise antes do uso clínico.
               </p>
             </div>
             <button id="copy-output-btn"
-                    class="text-xs inline-flex items-center gap-1 rounded-full bg-slate-800 border border-slate-600 px-3 py-1
-                           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950 shrink-0">
+                    class="btn btn-primary text-xs inline-flex items-center gap-1 shrink-0">
               <span data-i18n="copy">Copiar</span>
             </button>
           </div>
 
           <textarea id="output"
-                    rows="18"
-                    class="w-full rounded-xl border border-slate-700 bg-slate-950/60 px-3 py-2 text-xs sm:text-sm font-mono leading-relaxed
-                           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-950 resize-y"
+                    rows="20"
+                    class="w-full rounded-2xl border border-slate-700/40 bg-slate-950/55 px-3 py-3 text-xs sm:text-sm font-mono leading-relaxed
+                           focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:ring-offset-2 focus:ring-offset-slate-950 resize-y"
                     spellcheck="false"></textarea>
 
-          <div class="mt-3 text-[10px] leading-snug text-slate-400" data-i18n="disclaimer">
+          <div class="mt-3 text-[10px] leading-snug text-slate-400/80" data-i18n="disclaimer">
             Esta ferramenta não substitui julgamento clínico, protocolos institucionais ou diretrizes. Escores são aproximações e devem ser verificados.
           </div>
         </div>
       </section>
     </main>
+  </div>
+
+  <!-- Bottom bar (mobile-friendly copy button) -->
+  <div class="bottombar">
+    <div class="max-w-6xl mx-auto px-3 sm:px-4 py-3 flex items-center justify-between gap-3">
+      <div class="text-[11px] text-slate-300/70">
+        <span data-i18n="footer_hint">Pronto para copiar para o prontuário.</span>
+      </div>
+      <button id="copy-output-btn-bottom"
+              class="btn btn-primary text-xs inline-flex items-center gap-2">
+        <span data-i18n="copy_summary">Copiar resumo</span>
+      </button>
+    </div>
   </div>
 
   <script>
@@ -551,8 +648,9 @@
         male: "Male",
         female: "Female",
 
+        section_patient_kicker: "Patient",
         section_patient_title: "Patient & Surgical Data",
-        section_patient_hint: "Core demographics and procedure context",
+        local_only: "Local",
         age_label: "Age (years)",
         age_ph: "52",
         sex_label: "Sex at birth",
@@ -579,6 +677,7 @@
         context_chip: "Context",
         context_hint: "Emergency flag affects ARISCAT",
 
+        section_airway_kicker: "Airway",
         section_airway_title: "Airway",
         section_airway_hint: "Mallampati and El-Ganzouri Risk Index (EGRI)",
         mallampati_label: "Mallampati",
@@ -587,17 +686,14 @@
         tmd_label: "Thyromental distance (cm)",
         tmd_ph: "7.0",
         jaw_limited_label: "Unable to protrude mandible",
-
         neck_mobility_title: "Neck mobility",
         diff_history_title: "History of difficult intubation",
         points_label: "Points:",
-
         egri_chip: "El-Ganzouri (EGRI)",
         category_label: "Category:",
-        egri_hint_title: "Rule used",
-        egri_hint_text: "Weight: <90=0; 90–110=1; >110=2. Neck mobility and difficult intubation history: 0/1/2 points via slider. Mallampati: I=0, II=1, III=2, IV=2. High risk if EGRI ≥ 4.",
         score_label: "Score:",
 
+        section_stopbang_kicker: "Sleep",
         section_stopbang_title: "STOP-BANG (OSA risk)",
         section_stopbang_hint: "Screening only (not diagnostic)",
         sb_snoring: "Loud snoring.",
@@ -610,8 +706,10 @@
         sb_gender: "Male sex (auto).",
         sb_footer: "Higher scores suggest increased OSA risk; interpret clinically.",
 
-        section_risk_title: "Risk Scores",
-        section_risk_hint: "RCRI, ARISCAT, and Apfel (PONV)",
+        section_risk_kicker: "Risk",
+        section_risk_title2: "Scores",
+        rcri_title: "RCRI — Revised Cardiac Risk Index",
+        rcri_title_en: "",
         rcri_highrisk: "High-risk surgery (intraperitoneal, intrathoracic, suprainguinal vascular).",
         rcri_ihd: "Ischemic heart disease.",
         rcri_chf: "Congestive heart failure.",
@@ -619,6 +717,8 @@
         rcri_insulin: "Diabetes on insulin.",
         rcri_creat: "Creatinine > 2.0 mg/dL.",
 
+        ariscat_title: "ARISCAT — Score for Postoperative Pulmonary Complications",
+        ariscat_title_en: "",
         spo2_label: "Pre-op SpO₂ on room air (%)",
         spo2_ph: "98",
         ariscat_infection: "Respiratory infection in last month",
@@ -629,18 +729,20 @@
         inc_thoracic: "Intrathoracic",
         estimated_risk_label: "Estimated risk:",
 
-        apfel_title: "Apfel score (PONV)",
+        apfel_title2: "Apfel (PONV / NVPO)",
         apfel_nonsmoker: "Non-smoker",
         apfel_history: "History of PONV or motion sickness",
         apfel_opioids: "Postoperative opioids planned",
         apfel_sex_auto: "Female sex is counted automatically from demographics.",
 
+        output_kicker: "Summary",
         output_title: "Preoperative Summary (copy-ready)",
         output_hint: "Auto-generated narrative and key scores. Please review before clinical use.",
         copy: "Copy",
         copied: "Copied!",
-
         disclaimer: "This tool does not replace clinical judgment, institutional protocols, or guidelines. Scores are approximations and must be verified.",
+        footer_hint: "Ready to paste into your note.",
+        copy_summary: "Copy summary",
 
         // Slider labels
         neck0: "Normal (>90°)",
@@ -676,7 +778,9 @@
         apfel_line: "Apfel (PONV): {score}/4 — estimated risk ~{risk}.",
         egri_line: "El-Ganzouri (difficult intubation): {score} ({cat}).",
 
-        vent_line: "If general anesthesia: consider lung-protective ventilation with tidal volume ≈ {vt} mL (≈ 7 mL/kg IBW).",
+        // Vent line (VT rounded to nearest 5 mL)
+        vent_line: "If general anesthesia: consider lung-protective ventilation with tidal volume ≈ {vt} mL (≈ 7 mL/kg IBW, rounded to nearest 5 mL).",
+
         extras_title: "Additional considerations:",
         ponv_extra: "High PONV risk: consider multimodal prophylaxis.",
         osa_extra: "High STOP-BANG: consider intensified postoperative respiratory monitoring.",
@@ -701,7 +805,11 @@
         // ARISCAT categories
         ar_low: "Low",
         ar_int: "Intermediate",
-        ar_high: "High"
+        ar_high: "High",
+
+        // EGRI badge text
+        badge_low: "Low",
+        badge_high: "High"
       },
 
       pt: {
@@ -712,8 +820,9 @@
         male: "Masculino",
         female: "Feminino",
 
+        section_patient_kicker: "Paciente",
         section_patient_title: "Dados do Paciente e Cirurgia",
-        section_patient_hint: "Demografia e contexto do procedimento",
+        local_only: "Local",
         age_label: "Idade (anos)",
         age_ph: "52",
         sex_label: "Sexo ao nascimento",
@@ -740,6 +849,7 @@
         context_chip: "Contexto",
         context_hint: "Urgência influencia ARISCAT",
 
+        section_airway_kicker: "Via aérea",
         section_airway_title: "Via Aérea",
         section_airway_hint: "Mallampati e Índice de El-Ganzouri (EGRI)",
         mallampati_label: "Mallampati",
@@ -748,17 +858,14 @@
         tmd_label: "Distância tireomentoniana (cm)",
         tmd_ph: "7,0",
         jaw_limited_label: "Não consegue protruir a mandíbula",
-
         neck_mobility_title: "Mobilidade cervical",
         diff_history_title: "História de intubação difícil",
         points_label: "Pontos:",
-
         egri_chip: "El-Ganzouri (EGRI)",
         category_label: "Categoria:",
-        egri_hint_title: "Regra usada",
-        egri_hint_text: "Peso: <90=0; 90–110=1; >110=2. Mobilidade cervical e história de intubação difícil: 0/1/2 pontos via slider. Mallampati: I=0, II=1, III=2, IV=2. Risco alto se EGRI ≥ 4.",
         score_label: "Escore:",
 
+        section_stopbang_kicker: "Sono",
         section_stopbang_title: "STOP-BANG (risco de AOS)",
         section_stopbang_hint: "Apenas rastreio (não diagnóstico)",
         sb_snoring: "Ronco alto.",
@@ -771,8 +878,10 @@
         sb_gender: "Sexo masculino (auto).",
         sb_footer: "Escore alto sugere maior risco de AOS; interpretar clinicamente.",
 
-        section_risk_title: "Escores de Risco",
-        section_risk_hint: "RCRI, ARISCAT e Apfel (NVPO)",
+        section_risk_kicker: "Risco",
+        section_risk_title2: "Escores",
+        rcri_title: "RCRI — Índice de Risco Cardíaco Revisado",
+        rcri_title_en: "(Revised Cardiac Risk Index)",
         rcri_highrisk: "Cirurgia de alto risco (intraperitoneal, intratorácica, vascular suprainguinal).",
         rcri_ihd: "Doença arterial coronariana/isquêmica.",
         rcri_chf: "Insuficiência cardíaca congestiva.",
@@ -780,6 +889,8 @@
         rcri_insulin: "Diabetes em uso de insulina.",
         rcri_creat: "Creatinina > 2,0 mg/dL.",
 
+        ariscat_title: "ARISCAT — Escore de complicação pulmonar pós-operatória",
+        ariscat_title_en: "(Score for Postoperative Pulmonary Complications)",
         spo2_label: "SpO₂ pré-op em ar ambiente (%)",
         spo2_ph: "98",
         ariscat_infection: "Infecção respiratória no último mês",
@@ -790,18 +901,20 @@
         inc_thoracic: "Intratorácica",
         estimated_risk_label: "Risco estimado:",
 
-        apfel_title: "Escore de Apfel (NVPO)",
+        apfel_title2: "Apfel (NVPO / PONV)",
         apfel_nonsmoker: "Não fumante",
         apfel_history: "História de NVPO ou cinetose",
         apfel_opioids: "Planeja opioide no pós-operatório",
         apfel_sex_auto: "Sexo feminino é contado automaticamente a partir da demografia.",
 
+        output_kicker: "Resumo",
         output_title: "Resumo Pré-Operatório (pronto para copiar)",
         output_hint: "Narrativa e escores gerados automaticamente. Revise antes do uso clínico.",
         copy: "Copiar",
         copied: "Copiado!",
-
         disclaimer: "Esta ferramenta não substitui julgamento clínico, protocolos institucionais ou diretrizes. Escores são aproximações e devem ser verificados.",
+        footer_hint: "Pronto para colar no prontuário.",
+        copy_summary: "Copiar resumo",
 
         // Slider labels
         neck0: "Normal (>90°)",
@@ -837,7 +950,9 @@
         apfel_line: "Apfel (NVPO): {score}/4 — risco estimado ~{risk}.",
         egri_line: "El-Ganzouri (intubação difícil): {score} ({cat}).",
 
-        vent_line: "Se anestesia geral: considerar ventilação protetora com volume corrente ≈ {vt} mL (≈ 7 mL/kg do peso ideal).",
+        // VT rounded to nearest 5 mL
+        vent_line: "Se anestesia geral: considerar ventilação protetora com volume corrente ≈ {vt} mL (≈ 7 mL/kg do peso ideal, arredondado para múltiplo de 5 mL).",
+
         extras_title: "Pontos adicionais:",
         ponv_extra: "Risco elevado de NVPO: considerar profilaxia multimodal.",
         osa_extra: "STOP-BANG alto: considerar monitorização respiratória pós-op intensificada.",
@@ -862,7 +977,11 @@
         // ARISCAT categories
         ar_low: "Baixo",
         ar_int: "Intermediário",
-        ar_high: "Alto"
+        ar_high: "Alto",
+
+        // EGRI badge text
+        badge_low: "Baixo",
+        badge_high: "Alto"
       }
     };
 
@@ -900,6 +1019,10 @@
     function template(str, vars) {
       return str.replace(/\{(\w+)\}/g, (_, k) => (vars[k] ?? ""));
     }
+    // Round to nearest multiple of 5 (mL)
+    function roundToNearest5(x) {
+      return Math.round(x / 5) * 5;
+    }
 
     function classifyBMI(bmi) {
       if (bmi == null) return { label: "—" };
@@ -933,13 +1056,13 @@
       return Math.round(ibw * 10) / 10;
     }
 
-    // Apfel mapping
+    // Apfel mapping (classic simplified estimate)
     function apfelRiskPercent(score) {
       const map = { 0: "10%", 1: "21%", 2: "39%", 3: "61%", 4: "79%" };
       return map[clamp(score, 0, 4)] ?? "—";
     }
 
-    // ARISCAT (as specified)
+    // ARISCAT per specified cutoffs + risks
     function computeARISCAT(age, spo2, infection, anemia, incision, durationHours, emergency) {
       let score = 0;
 
@@ -990,263 +1113,277 @@
       return { score, category: t(categoryKey), risk: riskText };
     }
 
-    // El-Ganzouri Risk Index (EGRI) with your exact rules
+    // El-Ganzouri Risk Index (EGRI) with your requested cutoffs
     function computeEGRI({ mallampati, mouthOpening, tmd, jawLimited, weightKg, neckMobilityPoints, diffHistoryPoints }) {
       let score = 0;
 
-      // Weight: <90=0; 90–110=1; >110=2
+      // Mallampati: 1=0; 2=1; 3=2; 4=2
+      if (mallampati === 2) score += 1;
+      if (mallampati === 3 || mallampati === 4) score += 2;
+
+      // Mouth opening (cm). Simple scheme: <3.5 =>2; 3.5–4.0 =>1; >=4 =>0
+      if (mouthOpening != null) {
+        if (mouthOpening < 3.5) score += 2;
+        else if (mouthOpening < 4.0) score += 1;
+      }
+
+      // Thyromental distance (cm). <6 =>2; 6–6.5 =>1; >=6.5 =>0
+      if (tmd != null) {
+        if (tmd < 6) score += 2;
+        else if (tmd < 6.5) score += 1;
+      }
+
+      // Jaw protrusion inability: +1
+      if (jawLimited) score += 1;
+
+      // Weight: <90 =0; 90–110 =1; >110 =2
       if (weightKg != null) {
         if (weightKg >= 90 && weightKg <= 110) score += 1;
         else if (weightKg > 110) score += 2;
       }
 
-      // Neck mobility: 0/1/2 via slider
-      score += (neckMobilityPoints ?? 0);
+      // Neck mobility slider: 0/1/2 points already encoded
+      score += neckMobilityPoints || 0;
 
-      // Mouth opening <4 cm: +1
-      if (mouthOpening != null && mouthOpening < 4) score += 1;
+      // Difficult intubation history slider: 0/1/2
+      score += diffHistoryPoints || 0;
 
-      // Jaw protrusion limited: +1
-      if (jawLimited) score += 1;
+      // Category: ≥4 high risk, else low risk
+      const high = score >= 4;
+      const category = high ? t("egri_high") : t("egri_low");
+      const badgeText = high ? t("badge_high") : t("badge_low");
+      const badgeClass = high ? "badge-bad" : "badge-ok";
 
-      // Thyromental distance <6.5 cm: +1
-      if (tmd != null && tmd < 6.5) score += 1;
+      return { score, category, badgeText, badgeClass };
+    }
+    function computeSTOPBANG({ snoring, tired, observed, pressure, bmi, age, neckLarge, sex }) {
+      let score = 0;
 
-      // Mallampati: I=0; II=1; III=2; IV=2
-      if (mallampati === 2) score += 1;
-      else if (mallampati === 3) score += 2;
-      else if (mallampati === 4) score += 2;
+      if (snoring) score += 1;
+      if (tired) score += 1;
+      if (observed) score += 1;
+      if (pressure) score += 1;
 
-      // History of difficult intubation: 0/1/2 via slider
-      score += (diffHistoryPoints ?? 0);
+      // Auto BMI > 35
+      const bmiHigh = bmi != null && bmi >= 35;
+      if (bmiHigh) score += 1;
 
-      // High risk if ≥4 else low
-      const cat = (score >= 4) ? t("egri_high") : t("egri_low");
-      return { score, category: cat };
+      // Auto age > 50
+      const ageHigh = age != null && age > 50;
+      if (ageHigh) score += 1;
+
+      // Neck circumference > 40
+      if (neckLarge) score += 1;
+
+      // Sex male auto
+      const male = sex === "male";
+      if (male) score += 1;
+
+      const category = classifyStopBang(score);
+      return { score, category, bmiHigh, ageHigh, male };
+    }
+
+    function computeRCRI({
+      highRiskSurgery,
+      ischemicHeartDisease,
+      chf,
+      cva,
+      insulin,
+      creatinineHigh
+    }) {
+      let score = 0;
+      if (highRiskSurgery) score += 1;
+      if (ischemicHeartDisease) score += 1;
+      if (chf) score += 1;
+      if (cva) score += 1;
+      if (insulin) score += 1;
+      if (creatinineHigh) score += 1;
+
+      const category = classifyRCRI(score);
+      return { score, category };
+    }
+
+    function computeApfel({ sex, nonsmoker, historyPONV, opioids }) {
+      let score = 0;
+
+      // Female
+      if (sex === "female") score += 1;
+      if (nonsmoker) score += 1;
+      if (historyPONV) score += 1;
+      if (opioids) score += 1;
+
+      const risk = apfelRiskPercent(score);
+      return { score, risk };
     }
 
     // -------------------------
-    // DOM refs
+    // DOM + main update
     // -------------------------
-    const ageEl = document.getElementById("age");
-    const sexEl = document.getElementById("sex");
-    const heightEl = document.getElementById("height");
-    const weightEl = document.getElementById("weight");
-    const asaEl = document.getElementById("asa");
-    const anesthesiaTypeEl = document.getElementById("anesthesia-type");
-    const procedureEl = document.getElementById("procedure");
-    const durationEl = document.getElementById("surgery-duration");
-    const emergencyEl = document.getElementById("emergency-surgery");
-
-    const bmiDisplayEl = document.getElementById("bmi-display");
-    const bmiCategoryEl = document.getElementById("bmi-category");
-    const ibwDisplayEl = document.getElementById("ibw-display");
-    const contextDisplayEl = document.getElementById("context-display");
-
-    const mallampatiEl = document.getElementById("mallampati");
-    const mouthOpeningEl = document.getElementById("mouth-opening");
-    const tmdEl = document.getElementById("tmd");
-    const jawLimitedEl = document.getElementById("jaw-limited");
-
-    const neckMobilityEl = document.getElementById("neck-mobility");
-    const neckMobilityPointsEl = document.getElementById("neck-mobility-points");
-    const neckMobilityLabelEl = document.getElementById("neck-mobility-label");
-
-    const diffHistoryEl = document.getElementById("diff-history");
-    const diffHistoryPointsEl = document.getElementById("diff-history-points");
-    const diffHistoryLabelEl = document.getElementById("diff-history-label");
-
-    const egriScoreEl = document.getElementById("egri-score");
-    const egriCategoryEl = document.getElementById("egri-category");
-
-    const sbSnoringEl = document.getElementById("sb-snoring");
-    const sbTiredEl = document.getElementById("sb-tired");
-    const sbObservedEl = document.getElementById("sb-observed");
-    const sbPressureEl = document.getElementById("sb-pressure");
-    const sbBmiEl = document.getElementById("sb-bmi");
-    const sbAgeEl = document.getElementById("sb-age");
-    const sbNeckEl = document.getElementById("sb-neck");
-    const sbGenderEl = document.getElementById("sb-gender");
-    const sbScoreEl = document.getElementById("sb-score");
-    const sbCategoryEl = document.getElementById("sb-category");
-
-    const rcriHighRiskEl = document.getElementById("rcri-highrisk");
-    const rcriIhdEl = document.getElementById("rcri-ihd");
-    const rcriChfEl = document.getElementById("rcri-chf");
-    const rcriCvaEl = document.getElementById("rcri-cva");
-    const rcriInsulinEl = document.getElementById("rcri-insulin");
-    const rcriCreatEl = document.getElementById("rcri-creatinine");
-    const rcriScoreEl = document.getElementById("rcri-score");
-    const rcriCategoryEl = document.getElementById("rcri-category");
-
-    const ariscatSpo2El = document.getElementById("ariscat-spo2");
-    const ariscatInfectionEl = document.getElementById("ariscat-infection");
-    const ariscatAnemiaEl = document.getElementById("ariscat-anemia");
-    const ariscatIncisionEl = document.getElementById("ariscat-incision");
-    const ariscatScoreEl = document.getElementById("ariscat-score");
-    const ariscatCategoryEl = document.getElementById("ariscat-category");
-    const ariscatRiskEl = document.getElementById("ariscat-risk");
-
-    const apfelNonsmokerEl = document.getElementById("apfel-nonsmoker");
-    const apfelHistoryEl = document.getElementById("apfel-history");
-    const apfelOpioidsEl = document.getElementById("apfel-opioids");
-    const apfelScoreEl = document.getElementById("apfel-score");
-    const apfelRiskEl = document.getElementById("apfel-risk");
-
-    const outputEl = document.getElementById("output");
-    const copyBtn = document.getElementById("copy-output-btn");
-
-    const bannerEl = document.getElementById("validation-banner");
-    const vListEl = document.getElementById("validation-list");
-
-    const langEnBtn = document.getElementById("lang-en-btn");
-    const langPtBtn = document.getElementById("lang-pt-btn");
-
-    // -------------------------
-    // Validation
-    // -------------------------
-    function validateInputs({ age, height, weight, spo2, duration, mouthOpening, tmd }) {
-      const issues = [];
-      if (age != null && (age < 16 || age > 100)) issues.push(state.lang === "pt" ? "Idade fora do intervalo (16–100)." : "Age out of range (16–100).");
-      if (height != null && (height < 120 || height > 220)) issues.push(state.lang === "pt" ? "Altura fora do intervalo (120–220 cm)." : "Height out of range (120–220 cm).");
-      if (weight != null && (weight < 30 || weight > 300)) issues.push(state.lang === "pt" ? "Peso fora do intervalo (30–300 kg)." : "Weight out of range (30–300 kg).");
-      if (spo2 != null && (spo2 < 70 || spo2 > 100)) issues.push(state.lang === "pt" ? "SpO₂ fora do intervalo (70–100%)." : "SpO₂ out of range (70–100%).");
-      if (duration != null && (duration < 0 || duration > 12)) issues.push(state.lang === "pt" ? "Duração fora do intervalo (0–12 h)." : "Duration out of range (0–12 h).");
-      if (mouthOpening != null && (mouthOpening < 0 || mouthOpening > 10)) issues.push(state.lang === "pt" ? "Abertura bucal fora do intervalo (0–10 cm)." : "Mouth opening out of range (0–10 cm).");
-      if (tmd != null && (tmd < 0 || tmd > 15)) issues.push(state.lang === "pt" ? "Distância tireomentoniana fora do intervalo (0–15 cm)." : "Thyromental distance out of range (0–15 cm).");
-      if (height != null && height > 200 && weight != null && weight < 40) {
-        issues.push(state.lang === "pt" ? "Possível erro: altura muito alta com peso muito baixo." : "Possible typo: very tall height with very low weight.");
-      }
-      return issues;
-    }
-
-    function renderValidation(issues) {
-      if (!issues.length) {
-        bannerEl.classList.add("hidden");
-        vListEl.innerHTML = "";
-        return;
-      }
-      vListEl.innerHTML = "";
-      issues.forEach(msg => {
-        const li = document.createElement("li");
-        li.textContent = msg;
-        vListEl.appendChild(li);
-      });
-      bannerEl.classList.remove("hidden");
-    }
-
-    // -------------------------
-    // Slider label helpers
-    // -------------------------
-    function updateNeckMobilityUI(val) {
-      const v = Number(val);
-      neckMobilityPointsEl.textContent = String(v);
-      const key = v === 0 ? "neck0" : (v === 1 ? "neck1" : "neck2");
-      neckMobilityLabelEl.textContent = t(key);
-    }
-
-    function updateDiffHistoryUI(val) {
-      const v = Number(val);
-      diffHistoryPointsEl.textContent = String(v);
-      const key = v === 0 ? "hist0" : (v === 1 ? "hist1" : "hist2");
-      diffHistoryLabelEl.textContent = t(key);
-    }
-
-    // -------------------------
-    // Recompute
-    // -------------------------
-    function recompute() {
-      const age = toNumber(ageEl.value);
-      const sex = sexEl.value || null;
-      const height = toNumber(heightEl.value);
-      const weight = toNumber(weightEl.value);
-      const asa = asaEl.value || null;
-      const anesthesiaType = anesthesiaTypeEl.value || null;
-      const procedure = (procedureEl.value || "").trim();
-      const duration = toNumber(durationEl.value);
-      const emergency = emergencyEl.checked;
-
-      const mallampati = toNumber(mallampatiEl.value);
-      const mouthOpening = toNumber(mouthOpeningEl.value);
-      const tmd = toNumber(tmdEl.value);
-      const jawLimited = jawLimitedEl.checked;
-
-      const neckMobilityPoints = Number(neckMobilityEl.value || 0);
-      const diffHistoryPoints = Number(diffHistoryEl.value || 0);
-
-      const spo2 = toNumber(ariscatSpo2El.value);
-      const infection = ariscatInfectionEl.checked;
-      const anemia = ariscatAnemiaEl.checked;
-      const incision = ariscatIncisionEl.value || null;
-
-      // Keep slider UIs in sync (especially after language switch)
-      updateNeckMobilityUI(neckMobilityPoints);
-      updateDiffHistoryUI(diffHistoryPoints);
-
-      // Validation
-      const issues = validateInputs({ age, height, weight, spo2, duration, mouthOpening, tmd });
-      renderValidation(issues);
+    function updateDerivedMetrics() {
+      const age = toNumber(document.getElementById("age").value);
+      const sex = document.getElementById("sex").value;
+      const height = toNumber(document.getElementById("height").value);
+      const weight = toNumber(document.getElementById("weight").value);
+      const emergency = document.getElementById("emergency-surgery").checked;
 
       // BMI
-      let bmi = null;
+      let bmiValue = null;
       if (height != null && weight != null && height > 0) {
-        const hm = height / 100;
-        bmi = weight / (hm * hm);
+        const hMeters = height / 100;
+        bmiValue = weight / (hMeters * hMeters);
       }
-      if (bmi != null) bmiDisplayEl.textContent = `${fmt1(bmi)} kg/m²`;
-      else bmiDisplayEl.textContent = "—";
-      const bmiClass = classifyBMI(bmi);
-      bmiCategoryEl.textContent = (bmi != null) ? bmiClass.label : t("bmi_hint");
+
+      const bmiDisplay = document.getElementById("bmi-display");
+      const bmiCategory = document.getElementById("bmi-category");
+      if (bmiValue != null) {
+        const cls = classifyBMI(bmiValue);
+        bmiDisplay.textContent = fmt1(bmiValue);
+        bmiCategory.textContent = template(t("bmi_line"), {
+          bmi: fmt1(bmiValue),
+          bmiClass: cls.label
+        });
+      } else {
+        bmiDisplay.textContent = "—";
+        bmiCategory.textContent = t("bmi_hint");
+      }
 
       // IBW
       const ibw = devineIBW(sex, height);
-      if (ibw != null && ibw > 0 && Number.isFinite(ibw)) ibwDisplayEl.textContent = `${fmt1(ibw)} kg`;
-      else ibwDisplayEl.textContent = "—";
+      const ibwDisplay = document.getElementById("ibw-display");
+      const ibwHint = document.getElementById("ibw-hint");
+      if (ibw != null) {
+        ibwDisplay.textContent = fmt1(ibw);
+        ibwHint.textContent = template(t("ibw_line"), { ibw: fmt1(ibw) });
+      } else {
+        ibwDisplay.textContent = "—";
+        ibwHint.textContent = t("ibw_hint");
+      }
 
       // Context
-      contextDisplayEl.textContent = emergency ? t("emergency") : t("elective");
+      const contextDisplay = document.getElementById("context-display");
+      if (emergency) {
+        contextDisplay.textContent = t("emergency");
+      } else {
+        contextDisplay.textContent = t("elective");
+      }
 
-      // STOP-BANG auto flags
-      sbBmiEl.checked = (bmi != null && bmi > 35);
-      sbAgeEl.checked = (age != null && age > 50);
-      sbGenderEl.checked = (sex === "male");
+      // STOP-BANG auto flags & checkbox states
+      const sbBmi = document.getElementById("sb-bmi");
+      const sbAge = document.getElementById("sb-age");
+      const sbGender = document.getElementById("sb-gender");
 
-      let sbScore = 0;
-      [sbSnoringEl, sbTiredEl, sbObservedEl, sbPressureEl, sbBmiEl, sbAgeEl, sbNeckEl, sbGenderEl].forEach(el => {
-        if (el.checked) sbScore += 1;
-      });
-      sbScoreEl.textContent = sbScore;
-      const sbCat = classifyStopBang(sbScore);
-      sbCategoryEl.textContent = sbCat;
+      const bmiHigh = bmiValue != null && bmiValue >= 35;
+      const ageHigh = age != null && age > 50;
+      const male = sex === "male";
+
+      sbBmi.checked = bmiHigh;
+      sbAge.checked = ageHigh;
+      sbGender.checked = male;
+
+      return { bmiValue, ibw };
+    }
+
+    function updateScoresAndOutput() {
+      const { bmiValue, ibw } = updateDerivedMetrics();
+
+      const age = toNumber(document.getElementById("age").value);
+      const sex = document.getElementById("sex").value;
+      const height = toNumber(document.getElementById("height").value);
+      const weight = toNumber(document.getElementById("weight").value);
+      const asa = document.getElementById("asa").value;
+      const anesthesiaType = document.getElementById("anesthesia-type").value;
+      const procedure = document.getElementById("procedure").value.trim();
+      const duration = toNumber(document.getElementById("surgery-duration").value);
+      const emergency = document.getElementById("emergency-surgery").checked;
+
+      // Airway inputs
+      const mallampatiVal = toNumber(document.getElementById("mallampati").value);
+      const mouthOpening = toNumber(document.getElementById("mouth-opening").value);
+      const tmd = toNumber(document.getElementById("tmd").value);
+      const jawLimited = document.getElementById("jaw-limited").checked;
+      const neckMobilityPoints = toNumber(document.getElementById("neck-mobility").value) || 0;
+      const diffHistoryPoints = toNumber(document.getElementById("diff-history").value) || 0;
+
+      // STOP-BANG manual
+      const sbSnoring = document.getElementById("sb-snoring").checked;
+      const sbTired = document.getElementById("sb-tired").checked;
+      const sbObserved = document.getElementById("sb-observed").checked;
+      const sbPressure = document.getElementById("sb-pressure").checked;
+      const sbNeck = document.getElementById("sb-neck").checked;
 
       // RCRI
-      let rcriScore = 0;
-      [rcriHighRiskEl, rcriIhdEl, rcriChfEl, rcriCvaEl, rcriInsulinEl, rcriCreatEl].forEach(el => {
-        if (el.checked) rcriScore += 1;
-      });
-      rcriScoreEl.textContent = rcriScore;
-      const rcriCat = classifyRCRI(rcriScore);
-      rcriCategoryEl.textContent = rcriCat;
+      const rcriHighRisk = document.getElementById("rcri-highrisk").checked;
+      const rcriIHD = document.getElementById("rcri-ihd").checked;
+      const rcriCHF = document.getElementById("rcri-chf").checked;
+      const rcriCVA = document.getElementById("rcri-cva").checked;
+      const rcriInsulin = document.getElementById("rcri-insulin").checked;
+      const rcriCreat = document.getElementById("rcri-creatinine").checked;
 
-      // ARISCAT (with risks)
-      const ariscat = computeARISCAT(age, spo2, infection, anemia, incision, duration, emergency);
-      ariscatScoreEl.textContent = ariscat.score;
-      ariscatCategoryEl.textContent = ariscat.category;
-      ariscatRiskEl.textContent = ariscat.risk;
+      // ARISCAT
+      const arSpO2 = toNumber(document.getElementById("ariscat-spo2").value);
+      const arInfection = document.getElementById("ariscat-infection").checked;
+      const arAnemia = document.getElementById("ariscat-anemia").checked;
+      const arIncision = document.getElementById("ariscat-incision").value;
 
       // Apfel
-      const apfelFemale = (sex === "female") ? 1 : 0;
-      const apfelNonSmoker = apfelNonsmokerEl.checked ? 1 : 0;
-      const apfelHist = apfelHistoryEl.checked ? 1 : 0;
-      const apfelOpioids = apfelOpioidsEl.checked ? 1 : 0;
-      const apfelScore = apfelFemale + apfelNonSmoker + apfelHist + apfelOpioids;
-      apfelScoreEl.textContent = apfelScore;
-      const apfelRisk = apfelRiskPercent(apfelScore);
-      apfelRiskEl.textContent = apfelRisk;
+      const apfelNonsmoker = document.getElementById("apfel-nonsmoker").checked;
+      const apfelHistory = document.getElementById("apfel-history").checked;
+      const apfelOpioids = document.getElementById("apfel-opioids").checked;
 
-      // EGRI (El-Ganzouri)
-      const egri = computeEGRI({
-        mallampati: Number.isFinite(mallampati) ? mallampati : null,
+      // STOP-BANG computation
+      const sbResult = computeSTOPBANG({
+        snoring: sbSnoring,
+        tired: sbTired,
+        observed: sbObserved,
+        pressure: sbPressure,
+        bmi: bmiValue,
+        age,
+        neckLarge: sbNeck,
+        sex
+      });
+
+      document.getElementById("sb-score").textContent = sbResult.score;
+      document.getElementById("sb-category").textContent = sbResult.category;
+
+      // RCRI
+      const rcri = computeRCRI({
+        highRiskSurgery: rcriHighRisk,
+        ischemicHeartDisease: rcriIHD,
+        chf: rcriCHF,
+        cva: rcriCVA,
+        insulin: rcriInsulin,
+        creatinineHigh: rcriCreat
+      });
+      document.getElementById("rcri-score").textContent = rcri.score;
+      document.getElementById("rcri-category").textContent = rcri.category;
+
+      // ARISCAT
+      const ariscat = computeARISCAT(
+        age,
+        arSpO2,
+        arInfection,
+        arAnemia,
+        arIncision,
+        duration,
+        emergency
+      );
+      document.getElementById("ariscat-score").textContent = ariscat.score;
+      document.getElementById("ariscat-category").textContent = ariscat.category;
+      document.getElementById("ariscat-risk").textContent = ariscat.risk;
+
+      // Apfel
+      const apfel = computeApfel({
+        sex,
+        nonsmoker: apfelNonsmoker,
+        historyPONV: apfelHistory,
+        opioids: apfelOpioids
+      });
+      document.getElementById("apfel-score").textContent = apfel.score;
+      document.getElementById("apfel-risk").textContent = apfel.risk;
+
+      // EGRI
+      const egriResult = computeEGRI({
+        mallampati: mallampatiVal,
         mouthOpening,
         tmd,
         jawLimited,
@@ -1254,162 +1391,338 @@
         neckMobilityPoints,
         diffHistoryPoints
       });
-      egriScoreEl.textContent = egri.score;
-      egriCategoryEl.textContent = egri.category;
 
-      // Anesthesia label
-      const anesthesiaLabel = (() => {
-        if (!anesthesiaType) return t("anesthesia_unspecified");
-        const map = {
-          general: t("an_general"),
-          neuraxial: t("an_neuraxial"),
-          regional: t("an_regional"),
-          sedation: t("an_sedation")
-        };
-        return map[anesthesiaType] || t("anesthesia_unspecified");
-      })();
+      document.getElementById("egri-score").textContent = egriResult.score;
+      document.getElementById("egri-category").textContent = egriResult.category;
+      const egriBadge = document.getElementById("egri-badge");
+      egriBadge.textContent = egriResult.badgeText;
+      egriBadge.className = egriResult.badgeClass + " text-[11px] px-2 py-1";
 
-      // Intro
-      const intro = (() => {
-        const procText = procedure || (state.lang === "pt" ? "procedimento cirúrgico" : "surgical procedure");
-        const vars = {
-          age: (age != null ? age : ""),
-          scheduled_for: t("scheduled_for"),
-          procedure: procText,
-          under: t("under"),
-          anesthesia: anesthesiaLabel
-        };
-        if (sex === "male" && age != null) return template(t("patient_intro_male"), vars);
-        if (sex === "female" && age != null) return template(t("patient_intro_female"), vars);
-        return template(t("patient_intro_neutral"), vars);
-      })();
+      // Neck mobility labels
+      const neckLabel = document.getElementById("neck-mobility-label");
+      if (neckLabel) {
+        if (neckMobilityPoints === 0) neckLabel.textContent = t("neck0");
+        else if (neckMobilityPoints === 1) neckLabel.textContent = t("neck1");
+        else neckLabel.textContent = t("neck2");
+      }
+      const neckPointsSpan = document.getElementById("neck-mobility-points");
+      if (neckPointsSpan) neckPointsSpan.textContent = neckMobilityPoints;
 
-      const bmiLine = (bmi != null)
-        ? template(t("bmi_line"), { bmi: fmt1(bmi), bmiClass: bmiClass.label })
-        : t("bmi_missing");
+      const diffLabel = document.getElementById("diff-history-label");
+      if (diffLabel) {
+        if (diffHistoryPoints === 0) diffLabel.textContent = t("hist0");
+        else if (diffHistoryPoints === 1) diffLabel.textContent = t("hist1");
+        else diffLabel.textContent = t("hist2");
+      }
+      const diffPointsSpan = document.getElementById("diff-history-points");
+      if (diffPointsSpan) diffPointsSpan.textContent = diffHistoryPoints;
 
-      const ibwLine = (ibw != null && ibw > 0)
-        ? template(t("ibw_line"), { ibw: fmt1(ibw) })
-        : t("ibw_missing");
+      // Build output text
+      buildOutput({
+        age,
+        sex,
+        height,
+        weight,
+        asa,
+        anesthesiaType,
+        procedure,
+        duration,
+        emergency,
+        bmi: bmiValue,
+        ibw,
+        sbResult,
+        rcri,
+        ariscat,
+        apfel,
+        egriResult
+      });
+    }
 
-      const asaLine = asa
-        ? template(t("asa_line"), { asa })
-        : t("asa_unspecified");
+    function buildOutput(ctx) {
+      const {
+        age,
+        sex,
+        asa,
+        anesthesiaType,
+        procedure,
+        duration,
+        emergency,
+        bmi,
+        ibw,
+        sbResult,
+        rcri,
+        ariscat,
+        apfel,
+        egriResult
+      } = ctx;
 
-      const durationLine = (duration != null)
-        ? template(t("duration_line"), { dur: fmt1(duration) })
-        : t("duration_unspecified");
+      const lines = [];
 
-      const contextLine = emergency ? t("emergency") : t("elective");
+      // 1) Intro line
+      const anesthesiaText = anesthesiaType
+        ? document.querySelector(`#anesthesia-type option[value="${anesthesiaType}"]`)?.textContent
+        : t("anesthesia_unspecified");
 
-      // Ventilation suggestion for GA
-      let ventLine = "";
-      if (anesthesiaType === "general" && ibw != null && ibw > 0) {
-        const vtMl = Math.round(7 * ibw);
-        ventLine = template(t("vent_line"), { vt: String(vtMl) });
+      const scheduledFor = t("scheduled_for");
+      const under = t("under");
+      const procText = procedure || (state.lang === "pt" ? "cirurgia eletiva" : "elective surgery");
+
+      let introTemplate;
+      if (sex === "male") introTemplate = t("patient_intro_male");
+      else if (sex === "female") introTemplate = t("patient_intro_female");
+      else introTemplate = t("patient_intro_neutral");
+
+      const intro = template(introTemplate, {
+        age: age != null ? age : "",
+        scheduled_for: scheduledFor,
+        procedure: procText,
+        under,
+        anesthesia: anesthesiaText
+      });
+      lines.push(intro.trim());
+
+      // Context: elective vs emergency
+      lines.push(emergency ? t("emergency") : t("elective"));
+
+      // ASA
+      if (asa) {
+        lines.push(template(t("asa_line"), { asa }));
+      } else {
+        lines.push(t("asa_unspecified"));
       }
 
-      // Output lines
-      const sbLine = template(t("sb_line"), { score: sbScore, cat: sbCat });
-      const rcriLine = template(t("rcri_line"), { score: rcriScore, cat: rcriCat });
-      const ariscatLine = template(t("ariscat_line"), { score: ariscat.score, cat: ariscat.category, risk: ariscat.risk });
-      const apfelLine = template(t("apfel_line"), { score: apfelScore, risk: apfelRisk });
-      const egriLine = template(t("egri_line"), { score: egri.score, cat: egri.category });
+      // Duration
+      if (duration != null) {
+        lines.push(template(t("duration_line"), { dur: fmt1(duration) }));
+      } else {
+        lines.push(t("duration_unspecified"));
+      }
+
+      // BMI & IBW
+      if (bmi != null) {
+        const cls = classifyBMI(bmi);
+        lines.push(template(t("bmi_line"), {
+          bmi: fmt1(bmi),
+          bmiClass: cls.label
+        }));
+      } else {
+        lines.push(t("bmi_missing"));
+      }
+
+      if (ibw != null) {
+        lines.push(template(t("ibw_line"), { ibw: fmt1(ibw) }));
+      } else {
+        lines.push(t("ibw_missing"));
+      }
+
+      // STOP-BANG
+      lines.push(template(t("sb_line"), {
+        score: sbResult.score,
+        cat: sbResult.category
+      }));
+
+      // RCRI
+      lines.push(template(t("rcri_line"), {
+        score: rcri.score,
+        cat: rcri.category
+      }));
+
+      // ARISCAT
+      lines.push(template(t("ariscat_line"), {
+        score: ariscat.score,
+        cat: ariscat.category,
+        risk: ariscat.risk
+      }));
+
+      // Apfel
+      lines.push(template(t("apfel_line"), {
+        score: apfel.score,
+        risk: apfel.risk
+      }));
+
+      // El-Ganzouri
+      lines.push(template(t("egri_line"), {
+        score: egriResult.score,
+        cat: egriResult.category
+      }));
+
+      // Ventilation suggestion for general anesthesia
+      if (anesthesiaType === "general" && ibw != null) {
+        const vtRaw = ibw * 7;
+        const vt = roundToNearest5(vtRaw);
+        lines.push(template(t("vent_line"), { vt }));
+      }
 
       // Extras
       const extras = [];
+
+      // PONV high risk: Apfel ≥3
+      if (apfel.score >= 3) extras.push(t("ponv_extra"));
+
+      // OSA higher risk: STOP-BANG ≥5
+      if (sbResult.score >= 5) extras.push(t("osa_extra"));
+
+      // EGRI high
+      if (egriResult.score >= 4) extras.push(t("egri_extra"));
+
+      // Severe obesity
       if (bmi != null && bmi >= 40) extras.push(t("obesity_extra"));
-      if (sbScore >= 5) extras.push(t("osa_extra"));
-      if (egri.score >= 4) extras.push(t("egri_extra"));
-      if (apfelScore >= 3) extras.push(t("ponv_extra"));
 
-      const extrasBlock = extras.length
-        ? `${t("extras_title")}\n- ${extras.join("\n- ")}`
-        : "";
+      if (extras.length > 0) {
+        lines.push("");
+        lines.push(t("extras_title"));
+        extras.forEach(e => lines.push("• " + e));
+      }
 
-      const lines = [
-        intro,
-        "",
-        [bmiLine, ibwLine, asaLine, durationLine, contextLine].join(" "),
-        "",
-        egriLine,
-        sbLine,
-        rcriLine,
-        ariscatLine,
-        apfelLine,
-        (ventLine ? ventLine : ""),
-        "",
-        (extrasBlock ? extrasBlock : "")
-      ].filter(Boolean);
-
-      outputEl.value = lines.join("\n");
+      document.getElementById("output").value = lines.join("\n");
     }
 
     // -------------------------
-    // Events
+    // Validation
     // -------------------------
-    const watch = [
-      ageEl, sexEl, heightEl, weightEl, asaEl, anesthesiaTypeEl, procedureEl, durationEl, emergencyEl,
-      mallampatiEl, mouthOpeningEl, tmdEl, jawLimitedEl,
-      neckMobilityEl, diffHistoryEl,
-      sbSnoringEl, sbTiredEl, sbObservedEl, sbPressureEl, sbNeckEl,
-      rcriHighRiskEl, rcriIhdEl, rcriChfEl, rcriCvaEl, rcriInsulinEl, rcriCreatEl,
-      ariscatSpo2El, ariscatInfectionEl, ariscatAnemiaEl, ariscatIncisionEl,
-      apfelNonsmokerEl, apfelHistoryEl, apfelOpioidsEl
-    ];
+    function validateInputs() {
+      const issues = [];
+      const age = toNumber(document.getElementById("age").value);
+      const height = toNumber(document.getElementById("height").value);
+      const weight = toNumber(document.getElementById("weight").value);
 
-    watch.forEach(el => {
-      const ev = (el.type === "checkbox" || el.tagName === "SELECT" || el.type === "range") ? "change" : "input";
-      el.addEventListener(ev, recompute);
-    });
-
-    copyBtn.addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(outputEl.value);
-      } catch {
-        outputEl.select();
-        document.execCommand("copy");
+      if (age == null || age < 16 || age > 100) {
+        issues.push(state.lang === "pt"
+          ? "Idade fora do intervalo típico (16–100 anos) ou não informada."
+          : "Age missing or outside typical range (16–100 years).");
       }
-      copyBtn.textContent = t("copied");
-      setTimeout(() => { copyBtn.textContent = t("copy"); }, 1100);
-    });
+      if (height == null || height < 120 || height > 220) {
+        issues.push(state.lang === "pt"
+          ? "Altura fora do intervalo típico (120–220 cm) ou não informada."
+          : "Height missing or outside typical range (120–220 cm).");
+      }
+      if (weight == null || weight < 30 || weight > 300) {
+        issues.push(state.lang === "pt"
+          ? "Peso fora do intervalo típico (30–300 kg) ou não informado."
+          : "Weight missing or outside typical range (30–300 kg).");
+      }
+
+      const banner = document.getElementById("validation-banner");
+      const list = document.getElementById("validation-list");
+      if (!banner || !list) return;
+
+      if (issues.length > 0) {
+        banner.classList.remove("hidden");
+        list.innerHTML = "";
+        issues.forEach(msg => {
+          const li = document.createElement("li");
+          li.textContent = msg;
+          list.appendChild(li);
+        });
+      } else {
+        banner.classList.add("hidden");
+        list.innerHTML = "";
+      }
+    }
+
+    // -------------------------
+    // Copy to clipboard
+    // -------------------------
+    function setupCopyButtons() {
+      function doCopy() {
+        const text = document.getElementById("output").value;
+        if (!text) return;
+        navigator.clipboard.writeText(text).catch(() => {});
+      }
+
+      const mainBtn = document.getElementById("copy-output-btn");
+      const bottomBtn = document.getElementById("copy-output-btn-bottom");
+
+      if (mainBtn) {
+        mainBtn.addEventListener("click", () => {
+          doCopy();
+          mainBtn.classList.add("ring-2", "ring-emerald-400/60");
+          setTimeout(() => mainBtn.classList.remove("ring-2", "ring-emerald-400/60"), 600);
+        });
+      }
+      if (bottomBtn) {
+        bottomBtn.addEventListener("click", () => {
+          doCopy();
+          bottomBtn.classList.add("ring-2", "ring-emerald-400/60");
+          setTimeout(() => bottomBtn.classList.remove("ring-2", "ring-emerald-400/60"), 600);
+        });
+      }
+    }
 
     // -------------------------
     // Language toggle
     // -------------------------
-    function setLang(lang) {
-      state.lang = lang;
+    function setupLanguageToggle() {
+      const ptBtn = document.getElementById("lang-pt-btn");
+      const enBtn = document.getElementById("lang-en-btn");
 
-      if (lang === "pt") {
-        langPtBtn.classList.add("bg-blue-500", "text-white", "font-medium");
-        langEnBtn.classList.remove("bg-blue-500", "text-white", "font-medium");
-      } else {
-        langEnBtn.classList.add("bg-blue-500", "text-white", "font-medium");
-        langPtBtn.classList.remove("bg-blue-500", "text-white", "font-medium");
+      function updateButtons() {
+        if (state.lang === "pt") {
+          ptBtn.classList.add("bg-blue-500", "text-white");
+          enBtn.classList.remove("bg-blue-500", "text-white");
+          enBtn.classList.add("text-slate-200");
+        } else {
+          enBtn.classList.add("bg-blue-500", "text-white");
+          ptBtn.classList.remove("bg-blue-500", "text-white");
+          ptBtn.classList.add("text-slate-200");
+        }
       }
 
-      // Update page language attribute
-      document.documentElement.lang = (lang === "pt") ? "pt-BR" : "en";
+      ptBtn.addEventListener("click", () => {
+        state.lang = "pt";
+        applyI18n();
+        updateDerivedMetrics();
+        updateScoresAndOutput();
+        updateButtons();
+      });
 
-      applyI18n();
-      // After i18n, refresh slider labels and recompute everything
-      updateNeckMobilityUI(Number(neckMobilityEl.value || 0));
-      updateDiffHistoryUI(Number(diffHistoryEl.value || 0));
-      recompute();
+      enBtn.addEventListener("click", () => {
+        state.lang = "en";
+        applyI18n();
+        updateDerivedMetrics();
+        updateScoresAndOutput();
+        updateButtons();
+      });
+
+      updateButtons();
     }
 
-    langPtBtn.addEventListener("click", () => setLang("pt"));
-    langEnBtn.addEventListener("click", () => setLang("en"));
+    // -------------------------
+    // Wiring
+    // -------------------------
+    function setupListeners() {
+      const inputs = [
+        "age","sex","height","weight","asa","anesthesia-type","procedure",
+        "surgery-duration","emergency-surgery",
+        "mallampati","mouth-opening","tmd","jaw-limited","neck-mobility","diff-history",
+        "sb-snoring","sb-tired","sb-observed","sb-pressure","sb-neck",
+        "rcri-highrisk","rcri-ihd","rcri-chf","rcri-cva","rcri-insulin","rcri-creatinine",
+        "ariscat-spo2","ariscat-infection","ariscat-anemia","ariscat-incision",
+        "apfel-nonsmoker","apfel-history","apfel-opioids"
+      ];
+
+      inputs.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const evt = el.tagName === "SELECT" || el.type === "checkbox" ? "change" : "input";
+        el.addEventListener(evt, () => {
+          updateScoresAndOutput();
+          validateInputs();
+        });
+      });
+    }
 
     // -------------------------
     // Init
     // -------------------------
-    // Default slider positions: 0
-    neckMobilityEl.value = "0";
-    diffHistoryEl.value = "0";
-
-    applyI18n();
-    setLang("pt");
+    document.addEventListener("DOMContentLoaded", () => {
+      applyI18n();
+      setupLanguageToggle();
+      setupCopyButtons();
+      setupListeners();
+      updateScoresAndOutput();
+      validateInputs();
+    });
   </script>
 </body>
 </html>
