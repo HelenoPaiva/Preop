@@ -1,15 +1,15 @@
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.xxxxxxxx-blue)](https://doi.org/10.5281/zenodo.xxxxxxxx)
-[![GitHub Pages](https://img.shields.io/badge/live-GitHub%20Pages-brightgreen)](https://helenopaiva.github.io/<REPO_NAME>/)
-[![GitHub release](https://img.shields.io/github/v/release/HelenoPaiva/<REPO_NAME>)](https://github.com/HelenoPaiva/<REPO_NAME>/releases/tag/v1.0.0)
-![Last commit](https://img.shields.io/github/last-commit/HelenoPaiva/<REPO_NAME>)
-![License](https://img.shields.io/github/license/HelenoPaiva/<REPO_NAME>)
+[![GitHub Pages](https://img.shields.io/badge/live-GitHub%20Pages-brightgreen)](https://helenopaiva.github.io/Preop/)
+[![GitHub release](https://img.shields.io/github/v/release/HelenoPaiva/<REPO_NAME>)](https://github.com/HelenoPaiva/Preop/releases/tag/v1.0.0)
+![Last commit](https://img.shields.io/github/last-commit/HelenoPaiva/Preop)
+![License](https://img.shields.io/github/license/HelenoPaiva/Preop)
 
 # Preoperative Evaluation
 
 A lightweight, browser-based helper for **structured preoperative assessment and bilingual note generation**, designed for **anesthesiology practice**, teaching, and audit-friendly documentation.
 
 **Live website:**  
-https://helenopaiva.github.io/<REPO_NAME>/
+https://helenopaiva.github.io/Preop/
 
 ---
 
