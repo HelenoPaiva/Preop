@@ -94,7 +94,6 @@ This project is released under the **MIT License**.
 
 ## Author
 
-Developed and maintained by  
 **Heleno de Paiva Oliveira, MD, PhD**  
 Professor of Anesthesiology  
 Universidade Federal do Rio Grande do Norte (UFRN)
