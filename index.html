@@ -706,7 +706,7 @@
         duration_line: "Est. duration: {dur} h.",
 
         sb_line: "STOP-BANG: {score}/8 ({cat}).",
-        rcri_line: "RCRI: {score}/6 ({cat}).",
+        rcri_line: "RCRI: {score}/6 ({cat}) — risk {risk}.",
         ariscat_line: "ARISCAT: {score} ({cat}) — risk {risk}.",
         apfel_line: "Apfel: {score}/4 ({cat}) — risk ~{risk}.",
         egri_line: "El-Ganzouri: {score} ({cat}).",
@@ -848,7 +848,7 @@
         duration_line: "Duração estimada: {dur} h.",
 
         sb_line: "STOP-BANG: {score}/8 ({cat}).",
-        rcri_line: "RCRI: {score}/6 ({cat}).",
+        rcri_line: "RCRI: {score}/6 ({cat}) — risco {risk}.",
         ariscat_line: "ARISCAT: {score} ({cat}) — risco {risk}.",
         apfel_line: "Apfel: {score}/4 ({cat}) — risco est. ~{risk}.",
         egri_line: "El-Ganzouri: {score} ({cat}).",
@@ -1270,7 +1270,7 @@
 
       lines.push("");
       lines.push(template(t("sb_line"), { score: sbResult.score, cat: sbResult.category }));
-      lines.push(template(t("rcri_line"), { score: rcri.score, cat: rcri.category }));
+      lines.push(template(t("rcri_line"), { score: rcri.score, cat: rcri.category, risk: rcri.risk }));
       lines.push(template(t("ariscat_line"), { score: ariscat.score, cat: ariscat.category, risk: ariscat.risk }));
       lines.push(template(t("apfel_line"), { score: apfel.score, cat: apfel.category, risk: apfel.risk }));
       lines.push(template(t("egri_line"), { score: egriResult.score, cat: egriResult.category }));
