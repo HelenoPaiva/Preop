@@ -629,6 +629,70 @@
           </div>
         </div>
 
+        <div id="at4-card" class="glass transition-all duration-300">
+          <div class="p-5 flex items-center justify-between cursor-pointer" onclick="toggle4AT()">
+            <div class="flex items-center gap-3">
+              <svg id="at4-chevron" class="w-5 h-5 text-slate-400 transform transition-transform duration-200 chevron-down" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              <div>
+                <h2 class="text-lg font-semibold text-white">4AT</h2>
+                <div class="text-[10px] text-slate-400">Delirium Screening</div>
+              </div>
+            </div>
+            <div class="bg-slate-800 px-3 py-1 rounded-lg border border-slate-700">
+              <span class="text-xl font-bold text-white" id="at4-score">0</span><span class="text-xs text-slate-500">/12</span>
+            </div>
+          </div>
+
+          <div id="at4-content" class="px-5 pb-5 hidden">
+            <div class="grid gap-4 sm:grid-cols-1">
+              
+              <div>
+                <label class="block text-sm font-medium text-slate-200 mb-1" data-i18n="at4_alertness">Alertness</label>
+                <div class="text-[10px] text-slate-400 mb-2" data-i18n="at4_alertness_help">Observe state. If asleep, try to wake with speech/touch.</div>
+                <select id="at4-alertness" class="field w-full px-3 py-2 text-sm">
+                  <option value="0" data-i18n="at4_alert_0">Normal (fully alert, aroused)</option>
+                  <option value="0" data-i18n="at4_alert_mild">Mild sleepiness (<10s)</option>
+                  <option value="4" data-i18n="at4_alert_abnormal">Clearly abnormal</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-slate-200 mb-1">AMT4</label>
+                <div class="text-[10px] text-slate-400 mb-2" data-i18n="at4_amt4_help">Ask: Age, Date of Birth, Current Place, Current Year.</div>
+                <select id="at4-amt4" class="field w-full px-3 py-2 text-sm">
+                  <option value="0" data-i18n="at4_amt4_0">No mistakes</option>
+                  <option value="1" data-i18n="at4_amt4_1">1 mistake</option>
+                  <option value="2" data-i18n="at4_amt4_2">2 or more mistakes / Untestable</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-slate-200 mb-1" data-i18n="at4_attention">Attention</label>
+                <div class="text-[10px] text-slate-400 mb-2" data-i18n="at4_attention_help">Ask to recite months of the year backwards.</div>
+                <select id="at4-attention" class="field w-full px-3 py-2 text-sm">
+                  <option value="0" data-i18n="at4_att_0">Achieves 7 months or more</option>
+                  <option value="1" data-i18n="at4_att_1">Starts but scores < 7 months / refuses</option>
+                  <option value="2" data-i18n="at4_att_2">Untestable (unwell, drowsy, inattentive)</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-slate-200 mb-1" data-i18n="at4_change">Acute Change or Fluctuating Course</label>
+                <div class="text-[10px] text-slate-400 mb-2" data-i18n="at4_change_help">Significant fluctuation in mental status in last 2 weeks/24h?</div>
+                <select id="at4-change" class="field w-full px-3 py-2 text-sm">
+                  <option value="0" data-i18n="no">No</option>
+                  <option value="4" data-i18n="yes">Yes</option>
+                </select>
+              </div>
+
+            </div>
+            
+            <div class="mt-4 text-xs text-slate-400 border-t border-slate-700/50 pt-2 flex justify-between">
+               <span><span data-i18n="category_label">Category:</span> <span id="at4-category" class="text-white font-medium">—</span></span>
+            </div>
+          </div>
+        </div>
+
       </section>
 
       <section>
@@ -681,6 +745,8 @@
         select: "Select…",
         male: "Male",
         female: "Female",
+        yes: "Yes",
+        no: "No",
 
         section_patient_title: "General Data",
         age_label: "Age",
@@ -783,6 +849,27 @@
         frail_frail: "Frail",
         comorbidities_label: "Comorbidities:",
 
+        // 4AT
+        at4_alertness: "Alertness",
+        at4_alertness_help: "Observe state. If asleep, try to wake with speech/touch.",
+        at4_alert_0: "Normal (fully alert, aroused)",
+        at4_alert_mild: "Mild sleepiness (<10s)",
+        at4_alert_abnormal: "Clearly abnormal",
+        at4_amt4_help: "Ask: Age, Date of Birth, Current Place, Current Year.",
+        at4_amt4_0: "No mistakes",
+        at4_amt4_1: "1 mistake",
+        at4_amt4_2: "2 or more mistakes / Untestable",
+        at4_attention: "Attention",
+        at4_attention_help: "Ask to recite months of the year backwards.",
+        at4_att_0: "Achieves 7 months or more",
+        at4_att_1: "Starts but scores < 7 months / refuses",
+        at4_att_2: "Untestable (unwell, drowsy, inattentive)",
+        at4_change: "Acute Change or Fluctuating Course",
+        at4_change_help: "Significant fluctuation in mental status in last 2 weeks/24h?",
+        at4_unlikely: "Delirium unlikely",
+        at4_possible: "Possible cog. impairment",
+        at4_delirium: "Possible delirium",
+
         output_title: "Generated Text",
         output_hint: "Text updates automatically as you type.",
         copy: "Copy",
@@ -823,6 +910,7 @@
         apfel_line: "Apfel: {score}/4 ({cat}) — risk ~{risk}.",
         egri_line: "El-Ganzouri: {score} ({cat}).",
         frail_line: "FRAIL Scale: {score}/5 ({cat}).",
+        at4_line: "4AT Score: {score}/12 ({cat}).",
 
         vent_line: "If GA: consider lung-protective ventilation, TV ≈ {vt} mL (≈ 6-8 mL/kg IBW).",
 
@@ -849,6 +937,8 @@
         select: "Selecionar…",
         male: "Masculino",
         female: "Feminino",
+        yes: "Sim",
+        no: "Não",
 
         section_patient_title: "Dados Gerais",
         age_label: "Idade",
@@ -951,6 +1041,27 @@
         frail_frail: "Frágil",
         comorbidities_label: "Comorbidades:",
 
+        // 4AT
+        at4_alertness: "Alerta (Estado de consciência)",
+        at4_alertness_help: "Observe. Se dormindo, tente acordar com fala/toque.",
+        at4_alert_0: "Normal (totalmente alerta)",
+        at4_alert_mild: "Sonolência leve (<10s)",
+        at4_alert_abnormal: "Claramente anormal",
+        at4_amt4_help: "Pergunte: Idade, Data Nasc., Local, Ano atual.",
+        at4_amt4_0: "Sem erros",
+        at4_amt4_1: "1 erro",
+        at4_amt4_2: "2 ou mais erros / Não testável",
+        at4_attention: "Atenção",
+        at4_attention_help: "Pedir para falar meses do ano de trás pra frente.",
+        at4_att_0: "Consegue 7 meses ou mais",
+        at4_att_1: "Começa mas < 7 meses / recusa",
+        at4_att_2: "Não testável (inapto, sonolento)",
+        at4_change: "Alteração Aguda ou Flutuante",
+        at4_change_help: "Mudança no estado mental nas últimas 2sem/24h?",
+        at4_unlikely: "Delirium improvável",
+        at4_possible: "Déficit cognitivo possível",
+        at4_delirium: "Provável delirium",
+
         output_title: "Texto Gerado",
         output_hint: "O texto abaixo é atualizado automaticamente conforme você preenche os dados.",
         copy: "Copiar",
@@ -991,6 +1102,7 @@
         apfel_line: "Apfel: {score}/4 ({cat}) — risco est. ~{risk}.",
         egri_line: "El-Ganzouri: {score} ({cat}).",
         frail_line: "Escala FRAIL: {score}/5 ({cat}).",
+        at4_line: "Escore 4AT: {score}/12 ({cat}).",
 
         vent_line: "Se anestesia geral: considerar ventilação protetora com volume corrente ≈ {vt} mL (≈ 7 mL/kg peso ideal).",
 
@@ -1011,7 +1123,7 @@
     };
 
     // State
-    const state = { lang: "pt", wasGeriatric: false };
+    const state = { lang: "pt", wasGeriatric: false, was4ATTriggered: false };
 
     function t(key) {
       return (I18N[state.lang] && I18N[state.lang][key]) ?? I18N.en[key] ?? key;
@@ -1215,6 +1327,16 @@
       return { score, category: t(catKey) };
     }
 
+    function compute4AT(alertness, amt4, attention, change) {
+      let score = alertness + amt4 + attention + change;
+      let catKey;
+      if (score === 0) catKey = "at4_unlikely";
+      else if (score <= 3) catKey = "at4_possible";
+      else catKey = "at4_delirium";
+      
+      return { score, category: t(catKey) };
+    }
+
     // Toggle Frailty Card
     function toggleFrail() {
       const content = document.getElementById('frail-content');
@@ -1233,6 +1355,35 @@
     function setFrailState(expanded) {
       const content = document.getElementById('frail-content');
       const chevron = document.getElementById('frail-chevron');
+      if (expanded) {
+        content.classList.remove('hidden');
+        chevron.classList.remove('chevron-down');
+        chevron.classList.add('chevron-up');
+      } else {
+        content.classList.add('hidden');
+        chevron.classList.remove('chevron-up');
+        chevron.classList.add('chevron-down');
+      }
+    }
+
+    // Toggle 4AT Card
+    function toggle4AT() {
+      const content = document.getElementById('at4-content');
+      const chevron = document.getElementById('at4-chevron');
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        chevron.classList.remove('chevron-down');
+        chevron.classList.add('chevron-up');
+      } else {
+        content.classList.add('hidden');
+        chevron.classList.remove('chevron-up');
+        chevron.classList.add('chevron-down');
+      }
+    }
+
+    function set4ATState(expanded) {
+      const content = document.getElementById('at4-content');
+      const chevron = document.getElementById('at4-chevron');
       if (expanded) {
         content.classList.remove('hidden');
         chevron.classList.remove('chevron-down');
@@ -1309,13 +1460,10 @@
       }
 
       // FRAIL Visibility/State Logic
-      // Check if age just crossed threshold 60
       const isGeriatric = (age != null && age >= 60);
       if (isGeriatric && !state.wasGeriatric) {
-        // Just crossed into 60 -> Auto expand
         setFrailState(true);
       } 
-      // Update tracker
       state.wasGeriatric = isGeriatric;
 
       return { bmiValue, ibw, isGeriatric };
@@ -1382,11 +1530,16 @@
       const fAmbulation = document.getElementById("frail-ambulation").checked;
       const fWeight = document.getElementById("frail-weight").checked;
       
-      // Count illnesses
       const diseaseChecks = document.querySelectorAll(".disease-check");
       let diseaseCount = 0;
       diseaseChecks.forEach(c => { if(c.checked) diseaseCount++; });
       document.getElementById("frail-illnesses").checked = (diseaseCount >= 5);
+
+      // 4AT inputs
+      const at4Alertness = toNumber(document.getElementById("at4-alertness").value) || 0;
+      const at4Amt4 = toNumber(document.getElementById("at4-amt4").value) || 0;
+      const at4Attention = toNumber(document.getElementById("at4-attention").value) || 0;
+      const at4Change = toNumber(document.getElementById("at4-change").value) || 0;
 
       // Calculations
       const sbResult = computeSTOPBANG({
@@ -1433,6 +1586,18 @@
         egriBadge.className = "text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
       }
 
+      // 4AT Calc
+      const at4 = compute4AT(at4Alertness, at4Amt4, at4Attention, at4Change);
+      document.getElementById("at4-score").textContent = at4.score;
+      document.getElementById("at4-category").textContent = at4.category;
+
+      // 4AT Trigger Logic
+      const shouldTrigger4AT = (age >= 65) || (frail.score >= 1) || (emergency) || (ariscat.score >= 26);
+      if (shouldTrigger4AT && !state.was4ATTriggered) {
+        set4ATState(true);
+      }
+      state.was4ATTriggered = shouldTrigger4AT;
+
       // Slider labels
       const neckLabel = document.getElementById("neck-mobility-label");
       if (neckMobilityPoints === 0) neckLabel.textContent = t("neck0");
@@ -1446,11 +1611,11 @@
       else diffLabel.textContent = t("hist2");
       document.getElementById("diff-history-points").textContent = diffHistoryPoints;
 
-      buildOutput({ age, sex, height, weight, asa, anesthesiaType, procedure, duration, emergency, bmi: bmiValue, ibw, sbResult, rcri, ariscat, apfel, egriResult, frail, isGeriatric });
+      buildOutput({ age, sex, height, weight, asa, anesthesiaType, procedure, duration, emergency, bmi: bmiValue, ibw, sbResult, rcri, ariscat, apfel, egriResult, frail, isGeriatric, at4 });
     }
 
     function buildOutput(ctx) {
-      const { age, sex, asa, anesthesiaType, procedure, duration, emergency, bmi, ibw, sbResult, rcri, ariscat, apfel, egriResult, frail, isGeriatric } = ctx;
+      const { age, sex, asa, anesthesiaType, procedure, duration, emergency, bmi, ibw, sbResult, rcri, ariscat, apfel, egriResult, frail, isGeriatric, at4 } = ctx;
       const lines = [];
 
       const anesthesiaText = anesthesiaType
@@ -1517,6 +1682,12 @@
       
       if (isGeriatric) {
         lines.push(template(t("frail_line"), { score: frail.score, cat: frail.category }));
+      }
+
+      // 4AT Line logic: Show if score > 0 OR if auto-triggered
+      const at4Content = document.getElementById('at4-content');
+      if (at4.score > 0 || !at4Content.classList.contains('hidden')) {
+         lines.push(template(t("at4_line"), { score: at4.score, cat: at4.category }));
       }
 
       if (anesthesiaType === "general" && ibw != null) {
@@ -1637,7 +1808,8 @@
         "rcri-highrisk","rcri-ihd","rcri-chf","rcri-cva","rcri-insulin","rcri-creatinine",
         "ariscat-spo2","ariscat-infection","ariscat-anemia","ariscat-incision",
         "apfel-nonsmoker","apfel-history","apfel-opioids",
-        "frail-fatigue", "frail-resistance", "frail-ambulation", "frail-weight"
+        "frail-fatigue", "frail-resistance", "frail-ambulation", "frail-weight",
+        "at4-alertness", "at4-amt4", "at4-attention", "at4-change"
       ];
       inputs.forEach(id => {
         const el = document.getElementById(id);
