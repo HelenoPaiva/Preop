@@ -645,7 +645,7 @@
               <svg id="at4-chevron" class="w-5 h-5 text-slate-400 transform transition-transform duration-200 chevron-down" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
               <div>
                 <h2 class="text-lg font-semibold text-white">4AT</h2>
-                <div class="text-[10px] text-slate-400" data-i18n="at4_subtitle">Delirium Screening</div>
+                <div class="text-[10px] text-slate-400" data-i18n="at4_subtitle">Rastreio de Delirium</div>
               </div>
             </div>
             <div class="bg-slate-800 px-3 py-1 rounded-lg border border-slate-700">
@@ -1121,8 +1121,8 @@
         extras_title: "Pontos adicionais:",
         ponv_extra: "Risco elevado de NVPO: considerar profilaxia multimodal.",
         osa_extra: "STOP-BANG alto: considerar monitorização resp. intensificada.",
-        egri_extra: "EGRI alto: planejar estratégia de via aérea (videolaringoscópio, equipe, plano de resgate).",
-        obesity_extra: "Obesidade grave: considerar maior risco de via aérea difícil, hipóxia e atelectasia.",
+        egri_extra: "EGRI alto: planejar estratégia avançada de via aérea.",
+        obesity_extra: "Obesidade grave: riscos aumentados de VA e atelectasia.",
 
         // Categories
         rcri0: "Baixo", rcri1: "Baixo", rcri2: "Elevado", rcri3: "Alto",
@@ -1209,7 +1209,7 @@
     }
 
     // Apfel logic
-    function computeApfel({ sex, nonsmoker, historyPONV, opioids }) {
+    function computeApfel_HPO({ sex, nonsmoker, historyPONV, opioids }) {
       let score = 0;
       if (sex === "female") score += 1;
       if (nonsmoker) score += 1;
@@ -1228,7 +1228,7 @@
     }
 
     // ARISCAT Computation
-    function computeARISCAT(age, spo2, infection, anemia, incision, durationHours, emergency) {
+    function computeARISCAT_HPO(age, spo2, infection, anemia, incision, durationHours, emergency) {
       let score = 0;
       if (age != null) {
         if (age >= 51 && age <= 80) score += 3;
@@ -1259,7 +1259,7 @@
     }
 
     // EGRI Computation
-    function computeEGRI({ mallampati, mouthOpening, tmd, jawLimited, weightKg, neckMobilityPoints, diffHistoryPoints }) {
+    function computeEGRI_HPO({ mallampati, mouthOpening, tmd, jawLimited, weightKg, neckMobilityPoints, diffHistoryPoints }) {
       let score = 0;
       if (mallampati === 2) score += 1;
       if (mallampati === 3 || mallampati === 4) score += 2;
@@ -1287,7 +1287,7 @@
       return { score, category, badgeText, badgeClass };
     }
 
-    function computeSTOPBANG({ snoring, tired, observed, pressure, bmi, age, neckLarge, sex }) {
+    function computeSTOPBANG_HPO({ snoring, tired, observed, pressure, bmi, age, neckLarge, sex }) {
       let score = 0;
       if (snoring) score += 1;
       if (tired) score += 1;
@@ -1309,7 +1309,7 @@
       return { score, category, bmiHigh, ageHigh, male };
     }
 
-    function computeRCRI({ highRiskSurgery, ischemicHeartDisease, chf, cva, insulin, creatinineHigh }) {
+    function computeRCRI_HPO({ highRiskSurgery, ischemicHeartDisease, chf, cva, insulin, creatinineHigh }) {
       let score = 0;
       if (highRiskSurgery) score += 1;
       if (ischemicHeartDisease) score += 1;
@@ -1323,7 +1323,7 @@
       return { score, category, risk };
     }
 
-    function computeFRAIL(f, r, a, illnessesCheckedCount, l) {
+    function computeFRAIL_HPO(f, r, a, illnessesCheckedCount, l) {
       let score = 0;
       if (f) score += 1;
       if (r) score += 1;
@@ -1339,7 +1339,7 @@
       return { score, category: t(catKey) };
     }
 
-    function compute4AT(alertness, amt4, attention, change) {
+    function compute4AT_HPO(alertness, amt4, attention, change) {
       let score = alertness + amt4 + attention + change;
       let catKey;
       if (score === 0) catKey = "at4_unlikely";
@@ -1408,7 +1408,7 @@
     }
 
     // Main Update Loop
-    function updateDerivedMetrics() {
+    function updateDerivedMetrics_HPO() {
       const age = toNumber(document.getElementById("age").value);
       const sex = document.getElementById("sex").value;
       const height = toNumber(document.getElementById("height").value);
@@ -1481,8 +1481,8 @@
       return { bmiValue, ibw, isGeriatric };
     }
 
-    function updateScoresAndOutput() {
-      const { bmiValue, ibw, isGeriatric } = updateDerivedMetrics();
+    function updateScoresAndOutput_HPO() {
+      const { bmiValue, ibw, isGeriatric } = updateDerivedMetrics_HPO();
 
       // Auto-sync diseases logic (RCRI/SB -> Frail)
       if (document.getElementById('rcri-insulin').checked) document.getElementById('frail-ill-dm').checked = true;
@@ -1554,14 +1554,14 @@
       const at4Change = toNumber(document.getElementById("at4-change").value) || 0;
 
       // Calculations
-      const sbResult = computeSTOPBANG({
+      const sbResult = computeSTOPBANG_HPO({
         snoring: sbSnoring, tired: sbTired, observed: sbObserved, pressure: sbPressure,
         bmi: bmiValue, age, neckLarge: sbNeck, sex
       });
       document.getElementById("sb-score").textContent = sbResult.score;
       document.getElementById("sb-category").textContent = sbResult.category;
 
-      const rcri = computeRCRI({
+      const rcri = computeRCRI_HPO({
         highRiskSurgery: rcriHighRisk, ischemicHeartDisease: rcriIHD, chf: rcriCHF,
         cva: rcriCVA, insulin: rcriInsulin, creatinineHigh: rcriCreat
       });
@@ -1569,21 +1569,21 @@
       document.getElementById("rcri-category").textContent = rcri.category;
       document.getElementById("rcri-risk-percent").textContent = rcri.risk;
 
-      const ariscat = computeARISCAT(age, arSpO2, arInfection, arAnemia, arIncision, duration, emergency);
+      const ariscat = computeARISCAT_HPO(age, arSpO2, arInfection, arAnemia, arIncision, duration, emergency);
       document.getElementById("ariscat-score").textContent = ariscat.score;
       document.getElementById("ariscat-category").textContent = ariscat.category;
       document.getElementById("ariscat-risk").textContent = ariscat.risk;
 
-      const apfel = computeApfel({ sex, nonsmoker: apfelNonsmoker, historyPONV: apfelHistory, opioids: apfelOpioids });
+      const apfel = computeApfel_HPO({ sex, nonsmoker: apfelNonsmoker, historyPONV: apfelHistory, opioids: apfelOpioids });
       document.getElementById("apfel-score").textContent = apfel.score;
       document.getElementById("apfel-category").textContent = apfel.category;
       document.getElementById("apfel-risk").textContent = apfel.risk;
 
-      const frail = computeFRAIL(fFatigue, fResistance, fAmbulation, diseaseCount, fWeight);
+      const frail = computeFRAIL_HPO(fFatigue, fResistance, fAmbulation, diseaseCount, fWeight);
       document.getElementById("frail-score").textContent = frail.score;
       document.getElementById("frail-category").textContent = frail.category;
 
-      const egriResult = computeEGRI({
+      const egriResult = computeEGRI_HPO({
         mallampati: mallampatiVal, mouthOpening, tmd, jawLimited, weightKg: weight,
         neckMobilityPoints, diffHistoryPoints
       });
@@ -1599,7 +1599,7 @@
       }
 
       // 4AT Calc
-      const at4 = compute4AT(at4Alertness, at4Amt4, at4Attention, at4Change);
+      const at4 = compute4AT_HPO(at4Alertness, at4Amt4, at4Attention, at4Change);
       document.getElementById("at4-score").textContent = at4.score;
       document.getElementById("at4-category").textContent = at4.category;
 
@@ -1623,10 +1623,10 @@
       else diffLabel.textContent = t("hist2");
       document.getElementById("diff-history-points").textContent = diffHistoryPoints;
 
-      buildOutput({ age, sex, height, weight, asa, anesthesiaType, procedure, duration, emergency, bmi: bmiValue, ibw, sbResult, rcri, ariscat, apfel, egriResult, frail, isGeriatric, at4 });
+      buildOutput_HPO({ age, sex, height, weight, asa, anesthesiaType, procedure, duration, emergency, bmi: bmiValue, ibw, sbResult, rcri, ariscat, apfel, egriResult, frail, isGeriatric, at4 });
     }
 
-    function buildOutput(ctx) {
+    function buildOutput_HPO(ctx) {
       const { age, sex, asa, anesthesiaType, procedure, duration, emergency, bmi, ibw, sbResult, rcri, ariscat, apfel, egriResult, frail, isGeriatric, at4 } = ctx;
       const lines = [];
 
@@ -1790,16 +1790,16 @@
       ptBtn.addEventListener("click", () => {
         state.lang = "pt";
         applyI18n();
-        updateDerivedMetrics();
-        updateScoresAndOutput();
+        updateDerivedMetrics_HPO();
+        updateScoresAndOutput_HPO();
         updateButtons();
       });
 
       enBtn.addEventListener("click", () => {
         state.lang = "en";
         applyI18n();
-        updateDerivedMetrics();
-        updateScoresAndOutput();
+        updateDerivedMetrics_HPO();
+        updateScoresAndOutput_HPO();
         updateButtons();
       });
 
@@ -1828,7 +1828,7 @@
         if (!el) return;
         const evt = el.tagName === "SELECT" || el.type === "checkbox" || el.type === "range" ? "change" : "input";
         el.addEventListener(evt, () => {
-          updateScoresAndOutput();
+          updateScoresAndOutput_HPO();
           validateInputs();
         });
         if (el.tagName === "INPUT" && el.type !== "checkbox" && el.type !== "range") {
@@ -1838,10 +1838,10 @@
 
       // Special Listener for FRAIL diseases sub-chip
       document.querySelectorAll(".disease-check").forEach(chk => {
-        chk.addEventListener("change", updateScoresAndOutput);
+        chk.addEventListener("change", updateScoresAndOutput_HPO);
       });
 
-      updateScoresAndOutput();
+      updateScoresAndOutput_HPO();
       validateInputs();
     });
   </script>
