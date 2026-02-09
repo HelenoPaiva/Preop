@@ -226,7 +226,7 @@
 
           <a href="https://github.com/HelenoPaiva/Preop"
              target="_blank"
-             class="hidden sm:inline-block text-xs text-blue-400 hover:text-blue-300 hover:underline decoration-dotted transition-colors"
+             class="text-[10px] sm:text-xs text-blue-400 hover:text-blue-300 hover:underline decoration-dotted transition-colors shrink-0"
              data-i18n="github_link">
             GitHub
           </a>
@@ -1259,7 +1259,7 @@
     }
 
     // EGRI Computation
-    function computeEGRI_HPO({ mallampati, mouthOpening, tmd, jawLimited, weightKg, neckMobilityPoints, diffHistoryPoints }) {
+    function computeEGRI_HPO({ mallampati, mouthOpening, tmd, jawLimited, weightKg: weight, neckMobilityPoints, diffHistoryPoints }) {
       let score = 0;
       if (mallampati === 2) score += 1;
       if (mallampati === 3 || mallampati === 4) score += 2;
