@@ -1259,7 +1259,7 @@
     }
 
     // EGRI Computation
-    function computeEGRI_HPO({ mallampati, mouthOpening, tmd, jawLimited, weightKg: weight, neckMobilityPoints, diffHistoryPoints }) {
+    function computeEGRI_HPO({ mallampati, mouthOpening, tmd, jawLimited, weightKg, neckMobilityPoints, diffHistoryPoints }) {
       let score = 0;
       if (mallampati === 2) score += 1;
       if (mallampati === 3 || mallampati === 4) score += 2;
