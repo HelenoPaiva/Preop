@@ -257,7 +257,7 @@
           <div class="grid gap-4 sm:grid-cols-2">
             <label class="flex flex-col">
               <span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="age_label">Idade</span>
-              <input id="age" type="number" min="16" max="100" class="field px-3 py-2 text-sm" placeholder="52" data-i18n-placeholder="age_ph" />
+              <input id="age" type="number" inputmode="numeric" pattern="[0-9]*" step="1" min="16" max="100" class="field px-3 py-2 text-sm" placeholder="52" data-i18n-placeholder="age_ph" />
             </label>
 
             <label class="flex flex-col">
@@ -271,12 +271,12 @@
 
             <label class="flex flex-col">
               <span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="height_label">Altura (cm)</span>
-              <input id="height" type="number" min="120" max="220" class="field px-3 py-2 text-sm" placeholder="170" data-i18n-placeholder="height_ph" />
+              <input id="height" type="number" inputmode="numeric" pattern="[0-9]*" step="1" min="120" max="220" class="field px-3 py-2 text-sm" placeholder="170" data-i18n-placeholder="height_ph" />
             </label>
 
             <label class="flex flex-col">
               <span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="weight_label">Peso (kg)</span>
-              <input id="weight" type="number" min="30" max="300" class="field px-3 py-2 text-sm" placeholder="120" data-i18n-placeholder="weight_ph" />
+              <input id="weight" type="number" inputmode="numeric" pattern="[0-9]*" step="1" min="30" max="300" class="field px-3 py-2 text-sm" placeholder="120" data-i18n-placeholder="weight_ph" />
             </label>
 
             <label class="flex flex-col">
