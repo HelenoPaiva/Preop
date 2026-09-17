@@ -1,11 +1,1129 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Preoperative Evaluation / Avaliação Pré-operatória</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
+<meta charset="utf-8"/>
+<title>Preoperative Evaluation / Avaliação Pré-operatória</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!-- Utility CSS embedded: no external scripts, storage, or patient-data uploads. -->
+<style id="embedded-utilities">
+/*! tailwindcss v4.1.10 | MIT License | https://tailwindcss.com */
+@layer properties;
+@layer theme, base, components, utilities;
+@layer theme {
+  :root, :host {
+    --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+      "Courier New", monospace;
+    --color-amber-300: oklch(87.9% 0.169 91.605);
+    --color-emerald-400: oklch(76.5% 0.177 163.223);
+    --color-emerald-500: oklch(69.6% 0.17 162.48);
+    --color-emerald-900: oklch(37.8% 0.077 168.94);
+    --color-blue-300: oklch(80.9% 0.105 251.813);
+    --color-blue-400: oklch(70.7% 0.165 254.624);
+    --color-blue-500: oklch(62.3% 0.214 259.815);
+    --color-blue-600: oklch(54.6% 0.245 262.881);
+    --color-rose-100: oklch(94.1% 0.03 12.58);
+    --color-rose-200: oklch(89.2% 0.058 10.001);
+    --color-rose-400: oklch(71.2% 0.194 13.428);
+    --color-rose-500: oklch(64.5% 0.246 16.439);
+    --color-rose-800: oklch(45.5% 0.188 13.697);
+    --color-rose-950: oklch(27.1% 0.105 12.094);
+    --color-slate-200: oklch(92.9% 0.013 255.508);
+    --color-slate-300: oklch(86.9% 0.022 252.894);
+    --color-slate-400: oklch(70.4% 0.04 256.788);
+    --color-slate-500: oklch(55.4% 0.046 257.417);
+    --color-slate-600: oklch(44.6% 0.043 257.281);
+    --color-slate-700: oklch(37.2% 0.044 257.287);
+    --color-slate-800: oklch(27.9% 0.041 260.031);
+    --color-white: #fff;
+    --spacing: 0.25rem;
+    --container-6xl: 72rem;
+    --text-xs: 0.75rem;
+    --text-xs--line-height: calc(1 / 0.75);
+    --text-sm: 0.875rem;
+    --text-sm--line-height: calc(1.25 / 0.875);
+    --text-base: 1rem;
+    --text-base--line-height: calc(1.5 / 1);
+    --text-lg: 1.125rem;
+    --text-lg--line-height: calc(1.75 / 1.125);
+    --text-xl: 1.25rem;
+    --text-xl--line-height: calc(1.75 / 1.25);
+    --text-2xl: 1.5rem;
+    --text-2xl--line-height: calc(2 / 1.5);
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --tracking-tight: -0.025em;
+    --tracking-wider: 0.05em;
+    --leading-tight: 1.25;
+    --leading-snug: 1.375;
+    --leading-relaxed: 1.625;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --blur-sm: 8px;
+    --default-transition-duration: 150ms;
+    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    --default-font-family: var(--font-sans);
+    --default-mono-font-family: var(--font-mono);
+  }
+}
+@layer base {
+  *, ::after, ::before, ::backdrop, ::file-selector-button {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0 solid;
+  }
+  html, :host {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
+    font-feature-settings: var(--default-font-feature-settings, normal);
+    font-variation-settings: var(--default-font-variation-settings, normal);
+    -webkit-tap-highlight-color: transparent;
+  }
+  hr {
+    height: 0;
+    color: inherit;
+    border-top-width: 1px;
+  }
+  abbr:where([title]) {
+    -webkit-text-decoration: underline dotted;
+    text-decoration: underline dotted;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  a {
+    color: inherit;
+    -webkit-text-decoration: inherit;
+    text-decoration: inherit;
+  }
+  b, strong {
+    font-weight: bolder;
+  }
+  code, kbd, samp, pre {
+    font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+    font-feature-settings: var(--default-mono-font-feature-settings, normal);
+    font-variation-settings: var(--default-mono-font-variation-settings, normal);
+    font-size: 1em;
+  }
+  small {
+    font-size: 80%;
+  }
+  sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  sub {
+    bottom: -0.25em;
+  }
+  sup {
+    top: -0.5em;
+  }
+  table {
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+  }
+  :-moz-focusring {
+    outline: auto;
+  }
+  progress {
+    vertical-align: baseline;
+  }
+  summary {
+    display: list-item;
+  }
+  ol, ul, menu {
+    list-style: none;
+  }
+  img, svg, video, canvas, audio, iframe, embed, object {
+    display: block;
+    vertical-align: middle;
+  }
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+  button, input, select, optgroup, textarea, ::file-selector-button {
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    border-radius: 0;
+    background-color: transparent;
+    opacity: 1;
+  }
+  :where(select:is([multiple], [size])) optgroup {
+    font-weight: bolder;
+  }
+  :where(select:is([multiple], [size])) optgroup option {
+    padding-inline-start: 20px;
+  }
+  ::file-selector-button {
+    margin-inline-end: 4px;
+  }
+  ::placeholder {
+    opacity: 1;
+  }
+  @supports (not (-webkit-appearance: -apple-pay-button))  or (contain-intrinsic-size: 1px) {
+    ::placeholder {
+      color: currentcolor;
+      @supports (color: color-mix(in lab, red, red)) {
+        color: color-mix(in oklab, currentcolor 50%, transparent);
+      }
+    }
+  }
+  textarea {
+    resize: vertical;
+  }
+  ::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+  ::-webkit-date-and-time-value {
+    min-height: 1lh;
+    text-align: inherit;
+  }
+  ::-webkit-datetime-edit {
+    display: inline-flex;
+  }
+  ::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+  }
+  ::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field {
+    padding-block: 0;
+  }
+  :-moz-ui-invalid {
+    box-shadow: none;
+  }
+  button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-selector-button {
+    appearance: button;
+  }
+  ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+    height: auto;
+  }
+  [hidden]:where(:not([hidden="until-found"])) {
+    display: none !important;
+  }
+}
+@layer utilities {
+  .pointer-events-none {
+    pointer-events: none;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  .sticky {
+    position: sticky;
+  }
+  .top-24 {
+    top: calc(var(--spacing) * 24);
+  }
+  .mx-auto {
+    margin-inline: auto;
+  }
+  .mt-0\.5 {
+    margin-top: calc(var(--spacing) * 0.5);
+  }
+  .mt-1 {
+    margin-top: calc(var(--spacing) * 1);
+  }
+  .mt-1\.5 {
+    margin-top: calc(var(--spacing) * 1.5);
+  }
+  .mt-2 {
+    margin-top: calc(var(--spacing) * 2);
+  }
+  .mt-3 {
+    margin-top: calc(var(--spacing) * 3);
+  }
+  .mt-4 {
+    margin-top: calc(var(--spacing) * 4);
+  }
+  .mt-6 {
+    margin-top: calc(var(--spacing) * 6);
+  }
+  .mb-1 {
+    margin-bottom: calc(var(--spacing) * 1);
+  }
+  .mb-1\.5 {
+    margin-bottom: calc(var(--spacing) * 1.5);
+  }
+  .mb-2 {
+    margin-bottom: calc(var(--spacing) * 2);
+  }
+  .mb-3 {
+    margin-bottom: calc(var(--spacing) * 3);
+  }
+  .mb-4 {
+    margin-bottom: calc(var(--spacing) * 4);
+  }
+  .mb-6 {
+    margin-bottom: calc(var(--spacing) * 6);
+  }
+  .block {
+    display: block;
+  }
+  .flex {
+    display: flex;
+  }
+  .grid {
+    display: grid;
+  }
+  .hidden {
+    display: none;
+  }
+  .inline-flex {
+    display: inline-flex;
+  }
+  .h-1\.5 {
+    height: calc(var(--spacing) * 1.5);
+  }
+  .h-2 {
+    height: calc(var(--spacing) * 2);
+  }
+  .h-3\.5 {
+    height: calc(var(--spacing) * 3.5);
+  }
+  .h-4 {
+    height: calc(var(--spacing) * 4);
+  }
+  .h-5 {
+    height: calc(var(--spacing) * 5);
+  }
+  .h-\[600px\] {
+    height: 600px;
+  }
+  .h-full {
+    height: 100%;
+  }
+  .w-0\.5 {
+    width: calc(var(--spacing) * 0.5);
+  }
+  .w-2 {
+    width: calc(var(--spacing) * 2);
+  }
+  .w-3\.5 {
+    width: calc(var(--spacing) * 3.5);
+  }
+  .w-4 {
+    width: calc(var(--spacing) * 4);
+  }
+  .w-5 {
+    width: calc(var(--spacing) * 5);
+  }
+  .w-full {
+    width: 100%;
+  }
+  .max-w-6xl {
+    max-width: var(--container-6xl);
+  }
+  .min-w-0 {
+    min-width: calc(var(--spacing) * 0);
+  }
+  .shrink-0 {
+    flex-shrink: 0;
+  }
+  .transform {
+    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
+  }
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  .resize-y {
+    resize: vertical;
+  }
+  .list-disc {
+    list-style-type: disc;
+  }
+  .flex-col {
+    flex-direction: column;
+  }
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+  .items-baseline {
+    align-items: baseline;
+  }
+  .items-center {
+    align-items: center;
+  }
+  .items-start {
+    align-items: flex-start;
+  }
+  .justify-between {
+    justify-content: space-between;
+  }
+  .justify-center {
+    justify-content: center;
+  }
+  .gap-1\.5 {
+    gap: calc(var(--spacing) * 1.5);
+  }
+  .gap-2 {
+    gap: calc(var(--spacing) * 2);
+  }
+  .gap-3 {
+    gap: calc(var(--spacing) * 3);
+  }
+  .gap-4 {
+    gap: calc(var(--spacing) * 4);
+  }
+  .gap-6 {
+    gap: calc(var(--spacing) * 6);
+  }
+  .space-y-1 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 1) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 1) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-3 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-6 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .gap-x-4 {
+    column-gap: calc(var(--spacing) * 4);
+  }
+  .gap-y-1 {
+    row-gap: calc(var(--spacing) * 1);
+  }
+  .truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .rounded {
+    border-radius: 0.25rem;
+  }
+  .rounded-full {
+    border-radius: calc(infinity * 1px);
+  }
+  .rounded-lg {
+    border-radius: var(--radius-lg);
+  }
+  .rounded-md {
+    border-radius: var(--radius-md);
+  }
+  .rounded-xl {
+    border-radius: var(--radius-xl);
+  }
+  .border {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+  }
+  .border-t {
+    border-top-style: var(--tw-border-style);
+    border-top-width: 1px;
+  }
+  .border-emerald-500\/20 {
+    border-color: color-mix(in srgb, oklch(69.6% 0.17 162.48) 20%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-emerald-500) 20%, transparent);
+    }
+  }
+  .border-rose-500\/20 {
+    border-color: color-mix(in srgb, oklch(64.5% 0.246 16.439) 20%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-rose-500) 20%, transparent);
+    }
+  }
+  .border-rose-800\/40 {
+    border-color: color-mix(in srgb, oklch(45.5% 0.188 13.697) 40%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-rose-800) 40%, transparent);
+    }
+  }
+  .border-slate-500 {
+    border-color: var(--color-slate-500);
+  }
+  .border-slate-600 {
+    border-color: var(--color-slate-600);
+  }
+  .border-slate-700 {
+    border-color: var(--color-slate-700);
+  }
+  .border-slate-700\/50 {
+    border-color: color-mix(in srgb, oklch(37.2% 0.044 257.287) 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-slate-700) 50%, transparent);
+    }
+  }
+  .border-slate-800 {
+    border-color: var(--color-slate-800);
+  }
+  .bg-\[\#0B101E\] {
+    background-color: #0B101E;
+  }
+  .bg-emerald-500 {
+    background-color: var(--color-emerald-500);
+  }
+  .bg-emerald-500\/10 {
+    background-color: color-mix(in srgb, oklch(69.6% 0.17 162.48) 10%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-emerald-500) 10%, transparent);
+    }
+  }
+  .bg-rose-500\/10 {
+    background-color: color-mix(in srgb, oklch(64.5% 0.246 16.439) 10%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-rose-500) 10%, transparent);
+    }
+  }
+  .bg-rose-950\/20 {
+    background-color: color-mix(in srgb, oklch(27.1% 0.105 12.094) 20%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-rose-950) 20%, transparent);
+    }
+  }
+  .bg-slate-600 {
+    background-color: var(--color-slate-600);
+  }
+  .bg-slate-800 {
+    background-color: var(--color-slate-800);
+  }
+  .bg-slate-800\/80 {
+    background-color: color-mix(in srgb, oklch(27.9% 0.041 260.031) 80%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-slate-800) 80%, transparent);
+    }
+  }
+  .p-1 {
+    padding: calc(var(--spacing) * 1);
+  }
+  .p-3 {
+    padding: calc(var(--spacing) * 3);
+  }
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
+  }
+  .p-5 {
+    padding: calc(var(--spacing) * 5);
+  }
+  .px-1 {
+    padding-inline: calc(var(--spacing) * 1);
+  }
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
+  }
+  .px-3 {
+    padding-inline: calc(var(--spacing) * 3);
+  }
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
+  }
+  .px-5 {
+    padding-inline: calc(var(--spacing) * 5);
+  }
+  .py-0\.5 {
+    padding-block: calc(var(--spacing) * 0.5);
+  }
+  .py-1 {
+    padding-block: calc(var(--spacing) * 1);
+  }
+  .py-1\.5 {
+    padding-block: calc(var(--spacing) * 1.5);
+  }
+  .py-2 {
+    padding-block: calc(var(--spacing) * 2);
+  }
+  .py-3 {
+    padding-block: calc(var(--spacing) * 3);
+  }
+  .py-4 {
+    padding-block: calc(var(--spacing) * 4);
+  }
+  .py-6 {
+    padding-block: calc(var(--spacing) * 6);
+  }
+  .pt-2 {
+    padding-top: calc(var(--spacing) * 2);
+  }
+  .pt-3 {
+    padding-top: calc(var(--spacing) * 3);
+  }
+  .pt-4 {
+    padding-top: calc(var(--spacing) * 4);
+  }
+  .pt-6 {
+    padding-top: calc(var(--spacing) * 6);
+  }
+  .pb-5 {
+    padding-bottom: calc(var(--spacing) * 5);
+  }
+  .pl-6 {
+    padding-left: calc(var(--spacing) * 6);
+  }
+  .text-center {
+    text-align: center;
+  }
+  .text-right {
+    text-align: right;
+  }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+  .text-2xl {
+    font-size: var(--text-2xl);
+    line-height: var(--tw-leading, var(--text-2xl--line-height));
+  }
+  .text-base {
+    font-size: var(--text-base);
+    line-height: var(--tw-leading, var(--text-base--line-height));
+  }
+  .text-lg {
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading, var(--text-lg--line-height));
+  }
+  .text-sm {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
+  .text-xl {
+    font-size: var(--text-xl);
+    line-height: var(--tw-leading, var(--text-xl--line-height));
+  }
+  .text-xs {
+    font-size: var(--text-xs);
+    line-height: var(--tw-leading, var(--text-xs--line-height));
+  }
+  .text-\[10px\] {
+    font-size: 10px;
+  }
+  .text-\[11px\] {
+    font-size: 11px;
+  }
+  .leading-relaxed {
+    --tw-leading: var(--leading-relaxed);
+    line-height: var(--leading-relaxed);
+  }
+  .leading-snug {
+    --tw-leading: var(--leading-snug);
+    line-height: var(--leading-snug);
+  }
+  .leading-tight {
+    --tw-leading: var(--leading-tight);
+    line-height: var(--leading-tight);
+  }
+  .font-bold {
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+  }
+  .font-medium {
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
+  }
+  .font-normal {
+    --tw-font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-normal);
+  }
+  .font-semibold {
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+  }
+  .tracking-tight {
+    --tw-tracking: var(--tracking-tight);
+    letter-spacing: var(--tracking-tight);
+  }
+  .tracking-wider {
+    --tw-tracking: var(--tracking-wider);
+    letter-spacing: var(--tracking-wider);
+  }
+  .whitespace-nowrap {
+    white-space: nowrap;
+  }
+  .text-amber-300 {
+    color: var(--color-amber-300);
+  }
+  .text-blue-400 {
+    color: var(--color-blue-400);
+  }
+  .text-emerald-400 {
+    color: var(--color-emerald-400);
+  }
+  .text-rose-100\/80 {
+    color: color-mix(in srgb, oklch(94.1% 0.03 12.58) 80%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, var(--color-rose-100) 80%, transparent);
+    }
+  }
+  .text-rose-200 {
+    color: var(--color-rose-200);
+  }
+  .text-rose-400 {
+    color: var(--color-rose-400);
+  }
+  .text-slate-200 {
+    color: var(--color-slate-200);
+  }
+  .text-slate-300 {
+    color: var(--color-slate-300);
+  }
+  .text-slate-400 {
+    color: var(--color-slate-400);
+  }
+  .text-slate-500 {
+    color: var(--color-slate-500);
+  }
+  .text-white {
+    color: var(--color-white);
+  }
+  .uppercase {
+    text-transform: uppercase;
+  }
+  .decoration-dotted {
+    text-decoration-style: dotted;
+  }
+  .accent-blue-500 {
+    accent-color: var(--color-blue-500);
+  }
+  .opacity-0 {
+    opacity: 0%;
+  }
+  .shadow-\[0_0_8px_rgba\(16\,185\,129\,0\.6\)\] {
+    --tw-shadow: 0 0 8px var(--tw-shadow-color, rgba(16,185,129,0.6));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-inner {
+    --tw-shadow: inset 0 2px 4px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.05));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-lg {
+    --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-emerald-900\/20 {
+    --tw-shadow-color: color-mix(in srgb, oklch(37.8% 0.077 168.94) 20%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-shadow-color: color-mix(in oklab, color-mix(in oklab, var(--color-emerald-900) 20%, transparent) var(--tw-shadow-alpha), transparent);
+    }
+  }
+  .blur {
+    --tw-blur: blur(8px);
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .backdrop-blur-sm {
+    --tw-backdrop-blur: blur(var(--blur-sm));
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+  }
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-colors {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .transition-transform {
+    transition-property: transform, translate, scale, rotate;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .duration-200 {
+    --tw-duration: 200ms;
+    transition-duration: 200ms;
+  }
+  .duration-300 {
+    --tw-duration: 300ms;
+    transition-duration: 300ms;
+  }
+  .group-hover\:text-white {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        color: var(--color-white);
+      }
+    }
+  }
+  .peer-checked\:border-blue-500 {
+    &:is(:where(.peer):checked ~ *) {
+      border-color: var(--color-blue-500);
+    }
+  }
+  .peer-checked\:bg-blue-600 {
+    &:is(:where(.peer):checked ~ *) {
+      background-color: var(--color-blue-600);
+    }
+  }
+  .peer-checked\:opacity-100 {
+    &:is(:where(.peer):checked ~ *) {
+      opacity: 100%;
+    }
+  }
+  .hover\:text-blue-300 {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-blue-300);
+      }
+    }
+  }
+  .hover\:underline {
+    &:hover {
+      @media (hover: hover) {
+        text-decoration-line: underline;
+      }
+    }
+  }
+  .focus\:ring-1 {
+    &:focus {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .focus\:ring-blue-500\/50 {
+    &:focus {
+      --tw-ring-color: color-mix(in srgb, oklch(62.3% 0.214 259.815) 50%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        --tw-ring-color: color-mix(in oklab, var(--color-blue-500) 50%, transparent);
+      }
+    }
+  }
+  .focus\:outline-none {
+    &:focus {
+      --tw-outline-style: none;
+      outline-style: none;
+    }
+  }
+  .sm\:col-span-2 {
+    @media (width >= 40rem) {
+      grid-column: span 2 / span 2;
+    }
+  }
+  .sm\:hidden {
+    @media (width >= 40rem) {
+      display: none;
+    }
+  }
+  .sm\:h-\[calc\(100vh-250px\)\] {
+    @media (width >= 40rem) {
+      height: calc(100vh - 250px);
+    }
+  }
+  .sm\:grid-cols-1 {
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+  }
+  .sm\:grid-cols-2 {
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .sm\:grid-cols-3 {
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .sm\:px-4 {
+    @media (width >= 40rem) {
+      padding-inline: calc(var(--spacing) * 4);
+    }
+  }
+  .sm\:text-lg {
+    @media (width >= 40rem) {
+      font-size: var(--text-lg);
+      line-height: var(--tw-leading, var(--text-lg--line-height));
+    }
+  }
+  .sm\:text-xs {
+    @media (width >= 40rem) {
+      font-size: var(--text-xs);
+      line-height: var(--tw-leading, var(--text-xs--line-height));
+    }
+  }
+  .lg\:grid-cols-\[1\.2fr_1fr\] {
+    @media (width >= 64rem) {
+      grid-template-columns: 1.2fr 1fr;
+    }
+  }
+}
+@property --tw-rotate-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-y {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-z {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-y {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-space-y-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-tracking {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-inset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-ring-inset {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-offset-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+@property --tw-ring-offset-color {
+  syntax: "*";
+  inherits: false;
+  initial-value: #fff;
+}
+@property --tw-ring-offset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-blur {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-brightness {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-contrast {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-grayscale {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-hue-rotate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-invert {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-opacity {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-saturate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-sepia {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-drop-shadow-size {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-blur {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-brightness {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-contrast {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-grayscale {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-hue-rotate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-invert {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-opacity {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-saturate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-sepia {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-duration {
+  syntax: "*";
+  inherits: false;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-rotate-x: initial;
+      --tw-rotate-y: initial;
+      --tw-rotate-z: initial;
+      --tw-skew-x: initial;
+      --tw-skew-y: initial;
+      --tw-space-y-reverse: 0;
+      --tw-border-style: solid;
+      --tw-leading: initial;
+      --tw-font-weight: initial;
+      --tw-tracking: initial;
+      --tw-shadow: 0 0 #0000;
+      --tw-shadow-color: initial;
+      --tw-shadow-alpha: 100%;
+      --tw-inset-shadow: 0 0 #0000;
+      --tw-inset-shadow-color: initial;
+      --tw-inset-shadow-alpha: 100%;
+      --tw-ring-color: initial;
+      --tw-ring-shadow: 0 0 #0000;
+      --tw-inset-ring-color: initial;
+      --tw-inset-ring-shadow: 0 0 #0000;
+      --tw-ring-inset: initial;
+      --tw-ring-offset-width: 0px;
+      --tw-ring-offset-color: #fff;
+      --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-blur: initial;
+      --tw-brightness: initial;
+      --tw-contrast: initial;
+      --tw-grayscale: initial;
+      --tw-hue-rotate: initial;
+      --tw-invert: initial;
+      --tw-opacity: initial;
+      --tw-saturate: initial;
+      --tw-sepia: initial;
+      --tw-drop-shadow: initial;
+      --tw-drop-shadow-color: initial;
+      --tw-drop-shadow-alpha: 100%;
+      --tw-drop-shadow-size: initial;
+      --tw-backdrop-blur: initial;
+      --tw-backdrop-brightness: initial;
+      --tw-backdrop-contrast: initial;
+      --tw-backdrop-grayscale: initial;
+      --tw-backdrop-hue-rotate: initial;
+      --tw-backdrop-invert: initial;
+      --tw-backdrop-opacity: initial;
+      --tw-backdrop-saturate: initial;
+      --tw-backdrop-sepia: initial;
+      --tw-duration: initial;
+    }
+  }
+}
+
+</style>
+<style>
     /* Theme Variables */
     :root{
       --bg-deep: #020617; /* slate-950 */
@@ -200,547 +1318,510 @@
     /* Chevron rotation */
     .chevron-down { transform: rotate(0deg); transition: transform 0.2s; }
     .chevron-up { transform: rotate(180deg); transition: transform 0.2s; }
-  </style>
-</head>
-
+  
+    /* Shared history and explicit data-source styling. */
+    input[type="checkbox"] { flex-shrink: 0; accent-color: var(--primary); }
+    input:disabled, select:disabled { cursor: not-allowed; }
+    select.field:disabled { opacity: .65; }
+    .comorbidity-grid { border-top: 0; padding-top: 0; color: #cbd5e1; }
+    .comorbidity-grid label { min-height: 2.25rem; cursor: pointer; }
+    .check-row.items-start { align-items: flex-start; }
+    .peer:checked + div svg { opacity: 1; }
+    .field[aria-invalid="true"] { border-color: #fb7185; }
+    a, button, input, select { scroll-margin-top: 6rem; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid #60a5fa; outline-offset: 3px; }
+    @media (max-width: 639px) { input.field, select.field, textarea { font-size: 16px; } }
+</style>
+<meta content="2026-09-17-aub-has2" name="application-version"/></head>
 <body>
-
-  <div class="topbar">
-    <div class="max-w-6xl mx-auto px-4 py-3">
-      <div class="flex items-center justify-between gap-4">
-        <div class="min-w-0 flex flex-col justify-center">
-          <div class="text-base sm:text-lg font-bold leading-tight tracking-tight text-white" data-i18n="app_title">
+<div class="topbar">
+<div class="max-w-6xl mx-auto px-4 py-3">
+<div class="flex items-center justify-between gap-4">
+<div class="min-w-0 flex flex-col justify-center">
+<div class="text-base sm:text-lg font-bold leading-tight tracking-tight text-white" data-i18n="app_title">
             Preoperative Evaluation
           </div>
-          <div class="text-xs text-slate-400 mt-0.5" data-i18n="app_subtitle">
+<div class="text-xs text-slate-400 mt-0.5" data-i18n="app_subtitle">
             Ferramenta local para estruturar avaliação perioperatória.
           </div>
-        </div>
-
-        <div class="flex items-center gap-3 shrink-0">
-          
-          <div class="flex items-center bg-slate-800/80 rounded-lg p-1 border border-slate-700/50">
-            <button id="lang-pt-btn" class="px-3 py-1 rounded-md text-[11px] font-semibold transition-colors btn-toggle-active" aria-label="Português">PT</button>
-            <button id="lang-en-btn" class="px-3 py-1 rounded-md text-[11px] font-semibold transition-colors btn-toggle-inactive" aria-label="English">EN</button>
-          </div>
-
-          <a href="https://github.com/HelenoPaiva/Preop"
-             target="_blank"
-             class="text-[10px] sm:text-xs text-blue-400 hover:text-blue-300 hover:underline decoration-dotted transition-colors shrink-0"
-             data-i18n="github_link">
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<div class="flex items-center bg-slate-800/80 rounded-lg p-1 border border-slate-700/50">
+<button aria-label="Português" class="px-3 py-1 rounded-md text-[11px] font-semibold transition-colors btn-toggle-active" id="lang-pt-btn">PT</button>
+<button aria-label="English" class="px-3 py-1 rounded-md text-[11px] font-semibold transition-colors btn-toggle-inactive" id="lang-en-btn">EN</button>
+</div>
+<a class="text-[10px] sm:text-xs text-blue-400 hover:text-blue-300 hover:underline decoration-dotted transition-colors shrink-0" data-i18n="github_link" href="https://github.com/HelenoPaiva/Preop" rel="noopener noreferrer" target="_blank">
             GitHub
           </a>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-6xl mx-auto px-3 sm:px-4 py-6">
+<div class="hidden mb-6 rounded-xl border border-rose-800/40 bg-rose-950/20 px-4 py-3 text-sm backdrop-blur-sm" id="validation-banner">
+<div class="flex items-center gap-2 font-semibold text-rose-200">
+<svg class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span data-i18n="validation_title">Revise os itens abaixo:</span>
+</div>
+<ul class="mt-2 list-disc pl-6 text-rose-100/80 space-y-1 text-xs" id="validation-list"></ul>
+</div>
+<main class="grid gap-6 lg:grid-cols-[1.2fr_1fr] items-start">
+<section class="space-y-6">
+<div class="glass p-5">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-lg font-semibold text-white" data-i18n="section_patient_title">Dados Gerais</h2>
+<div class="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]"></div>
+</div>
+<div class="grid gap-4 sm:grid-cols-2">
+<label class="flex flex-col">
+<span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="age_label">Idade</span>
+<input class="field px-3 py-2 text-sm" data-i18n-placeholder="age_ph" id="age" inputmode="numeric" max="100" min="16" pattern="[0-9]*" placeholder="52" step="1" type="number"/>
+</label>
+<label class="flex flex-col">
+<span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="sex_label">Sexo</span>
+<select class="field px-3 py-2 text-sm" id="sex">
+<option data-i18n="select" value="">Selecionar…</option>
+<option data-i18n="male" value="male">Masculino</option>
+<option data-i18n="female" value="female">Feminino</option>
+</select>
+</label>
+<label class="flex flex-col">
+<span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="height_label">Altura (cm)</span>
+<input class="field px-3 py-2 text-sm" data-i18n-placeholder="height_ph" id="height" inputmode="decimal" max="220" min="120" placeholder="170" step="0.1" type="number"/>
+</label>
+<label class="flex flex-col">
+<span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="weight_label">Peso (kg)</span>
+<input class="field px-3 py-2 text-sm" data-i18n-placeholder="weight_ph" id="weight" inputmode="decimal" max="300" min="30" placeholder="120" step="0.1" type="number"/>
+</label>
+<label class="flex flex-col">
+<span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="asa_label">ASA</span>
+<select class="field px-3 py-2 text-sm" id="asa">
+<option data-i18n="select" value="">Selecionar…</option>
+<option value="I">ASA I</option>
+<option value="II">ASA II</option>
+<option value="III">ASA III</option>
+<option value="IV">ASA IV</option>
+<option value="V">ASA V</option>
+</select>
+</label>
+<label class="flex flex-col">
+<span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="anesthesia_label">Anestesia</span>
+<select class="field px-3 py-2 text-sm" id="anesthesia-type">
+<option data-i18n="select" value="">Selecionar…</option>
+<option data-i18n="an_general" value="general">Anestesia Geral</option>
+<option data-i18n="an_neuraxial" value="neuraxial">Anestesia de Neuroeixo</option>
+<option data-i18n="an_block" value="block">Bloqueio de Nervo</option>
+<option data-i18n="an_sedation" value="sedation">Sedação</option>
+</select>
+</label>
+<label class="flex flex-col sm:col-span-2">
+<span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="procedure_label">Procedimento</span>
+<input class="field px-3 py-2 text-sm" data-i18n-placeholder="procedure_ph" id="procedure" placeholder="Ex: Colecistectomia VLP"/>
+</label>
+<label class="flex flex-col">
+<span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="duration_label">Duração (h)</span>
+<input class="field px-3 py-2 text-sm" data-i18n-placeholder="duration_ph" id="surgery-duration" max="12" min="0" placeholder="2" step="0.5" type="number"/>
+</label>
 
-  <div class="max-w-6xl mx-auto px-3 sm:px-4 py-6">
-    <div id="validation-banner" class="hidden mb-6 rounded-xl border border-rose-800/40 bg-rose-950/20 px-4 py-3 text-sm backdrop-blur-sm">
-      <div class="flex items-center gap-2 font-semibold text-rose-200">
-        <svg class="w-4 h-4 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-        <span data-i18n="validation_title">Revise os itens abaixo:</span>
-      </div>
-      <ul id="validation-list" class="mt-2 list-disc pl-6 text-rose-100/80 space-y-1 text-xs"></ul>
-    </div>
+<label class="flex flex-col"><span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="urgency_label">Caráter da cirurgia</span>
+<select class="field px-3 py-2 text-sm" id="surgical-urgency">
+<option data-i18n="select" value="">Selecionar…</option><option data-i18n="urgency_elective" value="elective">Eletiva</option><option data-i18n="urgency_urgent" value="urgent">Urgente (não emergencial)</option><option data-i18n="urgency_emergency" value="emergency">Emergência</option></select>
+<span class="mt-1.5 text-[10px] text-slate-400" data-i18n="urgency_help">Urgência isolada não pontua como emergência.</span></label>
+<input aria-hidden="true" disabled="" hidden="" id="emergency-surgery" type="checkbox"/>
 
-    <main class="grid gap-6 lg:grid-cols-[1.2fr_1fr] items-start">
-      
-      <section class="space-y-6">
-        
-        <div class="glass p-5">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-lg font-semibold text-white" data-i18n="section_patient_title">Dados Gerais</h2>
-            <div class="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]"></div>
-          </div>
+</div>
+<div class="mt-6 grid gap-3 sm:grid-cols-3">
+<div class="metric-box px-4 py-3">
+<div class="text-[10px] text-slate-400 uppercase tracking-wider mb-1" data-i18n="bmi_chip">IMC</div>
+<div class="flex items-baseline gap-2">
+<div class="text-xl font-bold text-white" id="bmi-display">—</div>
+<div class="text-xs text-slate-500">kg/m²</div>
+</div>
+<div class="text-[11px] text-slate-400 mt-1 truncate" data-i18n="bmi_hint" id="bmi-category">Informe altura e peso</div>
+</div>
+<div class="metric-box px-4 py-3">
+<div class="text-[10px] text-slate-400 uppercase tracking-wider mb-1" data-i18n="ibw_chip">Peso Ideal</div>
+<div class="flex items-baseline gap-2">
+<div class="text-xl font-bold text-white" id="ibw-display">—</div>
+<div class="text-xs text-slate-500">kg</div>
+</div>
+<div class="text-[11px] text-slate-400 mt-1 truncate" data-i18n="ibw_hint" id="ibw-hint">Requer sexo + altura</div>
+</div>
+<div class="metric-box px-4 py-3">
+<div class="text-[10px] text-slate-400 uppercase tracking-wider mb-1" data-i18n="context_chip">Contexto</div>
+<div class="text-sm font-bold text-white leading-tight mt-0.5" id="context-display">—</div>
+<div class="text-[11px] text-slate-400 mt-1 leading-tight" data-i18n="context_hint">Compartilhado: AUB-HAS₂ / ARISCAT</div>
+</div>
+</div>
+</div>
+<div class="glass p-5" id="comorbidities-card"><h2 class="text-lg font-semibold text-white mb-2" data-i18n="history_title">Antecedentes e comorbidades</h2>
+<p class="text-[11px] text-slate-400 mb-3" data-i18n="history_help">Compartilhados com STOP-BANG, AUB-HAS₂, FRAIL e o texto gerado.</p><div class="disease-grid comorbidity-grid">
+<label class="flex gap-2 items-center"><input class="disease-check" id="frail-ill-htn" type="checkbox"/> <span data-i18n="ill_htn">Hipertensão</span></label>
+<label class="flex gap-2 items-center"><input class="disease-check" id="frail-ill-dm" type="checkbox"/> <span data-i18n="ill_dm">Diabetes</span></label>
+<label class="flex gap-2 items-center"><input class="disease-check" id="frail-ill-cancer" type="checkbox"/> <span data-i18n="ill_cancer">Câncer</span></label>
+<label class="flex gap-2 items-center"><input class="disease-check" id="frail-ill-copd" type="checkbox"/> <span data-i18n="ill_copd">DPOC</span></label>
+<label class="flex gap-2 items-center"><input class="disease-check" id="frail-ill-ami" type="checkbox"/> <span data-i18n="ill_ami">IAM</span></label>
+<label class="flex gap-2 items-center"><input class="disease-check" id="frail-ill-chf" type="checkbox"/> <span data-i18n="ill_chf">Insuf. Cardíaca</span></label>
+<label class="flex gap-2 items-center"><input class="disease-check" id="frail-ill-angina" type="checkbox"/> <span data-i18n="ill_angina">Angina</span></label>
+<label class="flex gap-2 items-center"><input class="disease-check" id="frail-ill-asthma" type="checkbox"/> <span data-i18n="ill_asthma">Asma</span></label>
+<label class="flex gap-2 items-center"><input class="disease-check" id="frail-ill-arth" type="checkbox"/> <span data-i18n="ill_arth">Artrite</span></label>
+<label class="flex gap-2 items-center"><input class="disease-check" id="frail-ill-stroke" type="checkbox"/> <span data-i18n="ill_stroke">AVC</span></label>
+<label class="flex gap-2 items-center"><input class="disease-check" id="frail-ill-ckd" type="checkbox"/> <span data-i18n="ill_ckd">Doença Renal</span></label>
+</div>
+<div class="mt-4 pt-3 border-t border-slate-700/50"><h3 class="text-xs font-medium text-slate-300 mb-2" data-i18n="history_additional">Outros antecedentes cardíacos — AUB-HAS₂</h3>
+<div class="grid gap-2 sm:grid-cols-2 text-xs text-slate-300">
+<label class="check-row"><input id="history-pci" type="checkbox"/><span data-i18n="history_pci">Angioplastia coronária prévia</span></label>
+<label class="check-row"><input id="history-cardiac-surgery" type="checkbox"/><span data-i18n="history_cardiac_surgery">Cirurgia cardíaca prévia</span></label>
+<label class="check-row"><input id="history-af" type="checkbox"/><span data-i18n="history_af">Fibrilação atrial</span></label>
+<label class="check-row"><input id="history-valve" type="checkbox"/><span data-i18n="history_valve">Valvopatia moderada/grave (eco)</span></label></div></div>
+<p class="mt-3 text-[10px] text-slate-400" data-i18n="history_angina_help">Angina nesta lista é um antecedente; sintomas atuais devem ser avaliados separadamente no AUB-HAS₂.</p></div><div class="glass p-5">
+<h2 class="text-lg font-semibold text-white mb-4" data-i18n="section_airway_title">Avaliação da Via Aérea</h2>
+<div class="grid gap-4 sm:grid-cols-2">
+<label class="flex flex-col">
+<span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="mallampati_label">Mallampati</span>
+<select class="field px-3 py-2 text-sm" id="mallampati">
+<option data-i18n="select" value="">Selecionar…</option>
+<option value="1">I</option>
+<option value="2">II</option>
+<option value="3">III</option>
+<option value="4">IV</option>
+</select>
+</label>
+<label class="flex flex-col">
+<span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="mouth_opening_label">Abertura bucal (cm)</span>
+<input class="field px-3 py-2 text-sm" data-i18n-placeholder="mouth_opening_ph" id="mouth-opening" max="10" min="0" placeholder="4.5" step="0.1" type="number"/>
+</label>
+<label class="flex flex-col">
+<span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="tmd_label">Dist. Tireomentoniana (cm)</span>
+<input class="field px-3 py-2 text-sm" data-i18n-placeholder="tmd_ph" id="tmd" max="15" min="0" placeholder="7.0" step="0.1" type="number"/>
+</label>
+<div class="flex items-center h-full pt-6">
+<label class="inline-flex items-center gap-3 cursor-pointer group">
+<input class="peer sr-only" id="jaw-limited" type="checkbox"/>
+<div class="h-5 w-5 rounded border border-slate-500 bg-slate-800 peer-checked:bg-blue-600 peer-checked:border-blue-500 transition-colors flex items-center justify-center">
+<svg class="w-3.5 h-3.5 text-white opacity-0 peer-checked:opacity-100" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path></svg>
+</div>
+<span class="text-sm text-slate-300 group-hover:text-white transition-colors" data-i18n="jaw_limited_label">Protrusão mandibular limitada</span>
+</label>
+</div>
+<div class="sm:col-span-2 glass-soft p-4 mt-1">
+<div class="flex items-center justify-between gap-3 mb-2">
+<div class="text-sm text-slate-200 font-medium" data-i18n="neck_mobility_title">Mobilidade cervical</div>
+<div class="text-xs px-2 py-0.5 rounded bg-slate-800 border border-slate-700">
+<span data-i18n="points_label">Pontos:</span> <span class="font-bold text-blue-400" id="neck-mobility-points">0</span>
+</div>
+</div>
+<input class="w-full accent-blue-500 cursor-pointer mb-1" id="neck-mobility" max="2" min="0" step="1" type="range" value="0"/>
+<div class="flex justify-between px-1 mb-2">
+<div class="w-0.5 h-1.5 bg-slate-600 rounded"></div>
+<div class="w-0.5 h-1.5 bg-slate-600 rounded"></div>
+<div class="w-0.5 h-1.5 bg-slate-600 rounded"></div>
+</div>
+<div class="text-xs text-slate-400 text-center">
+<span id="neck-mobility-label">—</span>
+</div>
+</div>
+<div class="sm:col-span-2 glass-soft p-4">
+<div class="flex items-center justify-between gap-3 mb-2">
+<div class="text-sm text-slate-200 font-medium" data-i18n="diff_history_title">História de intubação difícil</div>
+<div class="text-xs px-2 py-0.5 rounded bg-slate-800 border border-slate-700">
+<span data-i18n="points_label">Pontos:</span> <span class="font-bold text-blue-400" id="diff-history-points">0</span>
+</div>
+</div>
+<input class="w-full accent-blue-500 cursor-pointer mb-1" id="diff-history" max="2" min="0" step="1" type="range" value="0"/>
+<div class="flex justify-between px-1 mb-2">
+<div class="w-0.5 h-1.5 bg-slate-600 rounded"></div>
+<div class="w-0.5 h-1.5 bg-slate-600 rounded"></div>
+<div class="w-0.5 h-1.5 bg-slate-600 rounded"></div>
+</div>
+<div class="text-xs text-slate-400 text-center">
+<span id="diff-history-label">—</span>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-slate-700/50">
+<div class="flex items-center justify-between">
+<div>
+<span class="text-xs font-bold text-slate-400 uppercase tracking-wider" data-i18n="egri_chip">El-Ganzouri (EGRI)</span>
+<div class="text-2xl font-bold text-white mt-1"><span id="egri-score">0</span> <span class="text-sm font-normal text-slate-500">pts</span></div>
+</div>
+<div class="text-right">
+<div class="badge-ok text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" id="egri-badge">—</div>
+<div class="text-xs text-slate-400 mt-1" id="egri-category">—</div>
+</div>
+</div>
+</div>
+</div>
+<div class="glass p-5">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-lg font-semibold text-white" data-i18n="section_stopbang_title">STOP-BANG</h2>
+<div class="bg-slate-800 px-3 py-1 rounded-lg border border-slate-700">
+<span class="text-xl font-bold text-white" id="sb-score">0</span><span class="text-xs text-slate-500">/8</span>
+</div>
+</div>
+<div class="grid gap-3 sm:grid-cols-2 text-sm text-slate-300">
+<label class="check-row">
+<input id="sb-snoring" type="checkbox"/>
+<span data-i18n="sb_snoring">Ronco alto</span>
+</label>
+<label class="check-row">
+<input id="sb-tired" type="checkbox"/>
+<span data-i18n="sb_tired">Fadiga diurna</span>
+</label>
+<label class="check-row">
+<input id="sb-observed" type="checkbox"/>
+<span data-i18n="sb_observed">Apneia observada</span>
+</label>
+<label class="check-row">
+<input id="sb-pressure" type="checkbox"/>
+<span data-i18n="sb_pressure">Hipertensão</span>
+</label>
+<label class="check-row disabled">
+<input disabled="" id="sb-bmi" type="checkbox"/>
+<span data-i18n="sb_bmi">IMC &gt; 35 (auto)</span>
+</label>
+<label class="check-row disabled">
+<input disabled="" id="sb-age" type="checkbox"/>
+<span data-i18n="sb_age">Idade &gt; 50 (auto)</span>
+</label>
+<label class="check-row">
+<input id="sb-neck" type="checkbox"/>
+<span data-i18n="sb_neck">Pescoço &gt; 40cm</span>
+</label>
+<label class="check-row disabled">
+<input disabled="" id="sb-gender" type="checkbox"/>
+<span data-i18n="sb_gender">Sexo masc. (auto)</span>
+</label>
+</div>
+<div class="mt-3 text-xs text-right text-slate-400">
+<span data-i18n="category_label">Risco:</span> <span class="font-bold text-white uppercase" id="sb-category">—</span>
+</div>
+</div>
+<div class="glass p-5" id="aub-card">
+<div class="flex items-center justify-between gap-3 mb-3">
+<div><h2 class="text-lg font-semibold text-white">AUB-HAS₂</h2><div class="text-[10px] text-slate-400" data-i18n="aub_subtitle">Risco cardiovascular em 30 dias · 1 ponto por critério</div></div>
+<div class="bg-slate-800 px-3 py-1 rounded-lg border border-slate-700 whitespace-nowrap"><span class="text-xl font-bold text-white" id="aub-score">—</span><span class="text-xs text-slate-500">/6</span></div>
+</div>
+<p class="text-[11px] text-slate-400 mb-4" data-i18n="aub_scope">Para adultos em cirurgia não cardíaca. Não constitui liberação cirúrgica.</p>
+<div class="glass-soft p-3 mb-4">
+<div class="grid gap-3 sm:grid-cols-2">
+<label class="flex flex-col"><span class="text-xs text-slate-300 mb-1.5" data-i18n="hb_label">Hemoglobina (g/dL)</span><input aria-describedby="hb-sync-help" class="field px-3 py-2 text-sm" id="hemoglobin" inputmode="decimal" max="25" min="0.1" placeholder="13.0" step="0.1" type="number"/></label>
+<label class="flex flex-col"><span class="text-xs text-slate-300 mb-1.5" data-i18n="hb_band_label">Sem valor exato: faixa conhecida</span><select class="field px-3 py-2 text-sm" id="hemoglobin-band"><option data-i18n="unknown" value="">Não informado</option><option value="ge12">Hb ≥12 g/dL</option><option value="gt10lt12">10 &lt; Hb &lt;12 g/dL</option><option value="le10">Hb ≤10 g/dL</option></select></label>
+</div>
+<p class="mt-2 text-[10px] text-slate-400" data-i18n="hb_help" id="hb-sync-help">Compartilhada: AUB-HAS₂ usa Hb &lt;12; ARISCAT usa Hb ≤10 g/dL. Valor desconhecido não equivale a normal.</p>
+</div>
+<div class="grid gap-2 sm:grid-cols-2 text-sm text-slate-300">
+<label class="check-row items-start" id="aub-heart-row"><input aria-describedby="aub-heart-source" id="aub-heart" type="checkbox"/><span><span class="block font-medium" data-i18n="aub_heart">H · História de cardiopatia</span><span class="block text-[10px] text-slate-400 mt-1" id="aub-heart-source"></span></span></label>
+<label class="check-row items-start"><input aria-describedby="aub-symptoms-help" id="aub-symptoms" type="checkbox"/><span><span class="block font-medium" data-i18n="aub_symptoms">H · Angina ou dispneia</span><span class="block text-[10px] text-slate-400 mt-1" data-i18n="aub_symptoms_help" id="aub-symptoms-help">Sintomas atuais de angina ou dispneia. Não inferir apenas de fadiga, DPOC ou angina remota.</span></span></label>
+<label class="check-row disabled items-start"><input disabled="" id="aub-age" type="checkbox"/><span><span class="block font-medium" data-i18n="aub_age">A · Idade ≥75 anos</span><span class="block text-[10px] text-slate-400 mt-1" id="aub-age-source"></span></span></label>
+<label class="check-row disabled items-start"><input disabled="" id="aub-anemia" type="checkbox"/><span><span class="block font-medium" data-i18n="aub_anemia">A · Anemia: Hb &lt;12 g/dL</span><span class="block text-[10px] text-slate-400 mt-1" id="aub-anemia-source"></span></span></label>
+<label class="check-row items-start"><input id="aub-vascular" type="checkbox"/><span><span class="block font-medium" data-i18n="aub_vascular">S · Cirurgia vascular</span><span class="block text-[10px] text-slate-400 mt-1" data-i18n="aub_vascular_help">Confirme o tipo de cirurgia; não é inferido do nome do procedimento ou da incisão.</span></span></label>
+<label class="check-row disabled items-start"><input disabled="" id="aub-emergency" type="checkbox"/><span><span class="block font-medium" data-i18n="aub_emergency">S · Cirurgia de emergência</span><span class="block text-[10px] text-slate-400 mt-1" id="aub-emergency-source"></span></span></label>
+</div>
+<label class="check-row mt-4 border border-slate-700/50 text-xs text-slate-300 items-start"><input id="aub-reviewed" type="checkbox"/><span data-i18n="aub_reviewed">Revisei cardiopatia, sintomas e cirurgia vascular; os critérios clínicos não marcados estão ausentes.</span></label>
+<p aria-live="polite" class="text-xs mt-3 text-amber-300" id="aub-status" role="status"></p>
+<div class="mt-3 text-xs text-slate-400 border-t border-slate-700/50 pt-3 flex flex-wrap justify-between gap-2">
+<span><span data-i18n="aub_class_label">Faixa do índice:</span> <span class="text-white font-medium" id="aub-category">—</span></span>
+<span><span data-i18n="aub_rate_label">Taxa na validação:</span> <span class="text-blue-400 font-semibold" id="aub-risk-percent">—</span></span>
+</div>
+<p class="text-[10px] text-slate-400 mt-3 leading-relaxed" data-i18n="aub_rate_help">Morte por qualquer causa, IAM ou AVC em 30 dias. Taxas da coorte ACS-NSQIP (Dakik 2019), não probabilidades individuais calibradas. 0–1: baixo; 2–3: intermediário; 4–6: alto. “Baixo” no índice não significa necessariamente &lt;1%.</p>
+<div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-[10px] text-blue-400">
+<a class="hover:underline" href="https://www.mdcalc.com/calc/10439/american-university-beirut-aub-has2-cardiovascular-risk-index" rel="noopener noreferrer" target="_blank">MDCalc</a>
+<a class="hover:underline" href="https://doi.org/10.1016/j.jacc.2019.04.023" rel="noopener noreferrer" target="_blank">Dakik et al. · JACC 2019</a>
+<a class="hover:underline" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7660845/" rel="noopener noreferrer" target="_blank">JAHA 2020</a>
+</div>
+</div>
 
-          <div class="grid gap-4 sm:grid-cols-2">
-            <label class="flex flex-col">
-              <span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="age_label">Idade</span>
-              <input id="age" type="number" inputmode="numeric" pattern="[0-9]*" step="1" min="16" max="100" class="field px-3 py-2 text-sm" placeholder="52" data-i18n-placeholder="age_ph" />
-            </label>
-
-            <label class="flex flex-col">
-              <span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="sex_label">Sexo</span>
-              <select id="sex" class="field px-3 py-2 text-sm">
-                <option value="" data-i18n="select">Selecionar…</option>
-                <option value="male" data-i18n="male">Masculino</option>
-                <option value="female" data-i18n="female">Feminino</option>
-              </select>
-            </label>
-
-            <label class="flex flex-col">
-              <span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="height_label">Altura (cm)</span>
-              <input id="height" type="number" inputmode="numeric" pattern="[0-9]*" step="1" min="120" max="220" class="field px-3 py-2 text-sm" placeholder="170" data-i18n-placeholder="height_ph" />
-            </label>
-
-            <label class="flex flex-col">
-              <span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="weight_label">Peso (kg)</span>
-              <input id="weight" type="number" inputmode="numeric" pattern="[0-9]*" step="1" min="30" max="300" class="field px-3 py-2 text-sm" placeholder="120" data-i18n-placeholder="weight_ph" />
-            </label>
-
-            <label class="flex flex-col">
-              <span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="asa_label">ASA</span>
-              <select id="asa" class="field px-3 py-2 text-sm">
-                <option value="" data-i18n="select">Selecionar…</option>
-                <option value="I">ASA I</option>
-                <option value="II">ASA II</option>
-                <option value="III">ASA III</option>
-                <option value="IV">ASA IV</option>
-                <option value="V">ASA V</option>
-              </select>
-            </label>
-
-            <label class="flex flex-col">
-              <span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="anesthesia_label">Anestesia</span>
-              <select id="anesthesia-type" class="field px-3 py-2 text-sm">
-                <option value="" data-i18n="select">Selecionar…</option>
-                <option value="general" data-i18n="an_general">Anestesia Geral</option>
-                <option value="neuraxial" data-i18n="an_neuraxial">Anestesia de Neuroeixo</option>
-                <option value="block" data-i18n="an_block">Bloqueio de Nervo</option>
-                <option value="sedation" data-i18n="an_sedation">Sedação</option>
-              </select>
-            </label>
-
-            <label class="flex flex-col sm:col-span-2">
-              <span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="procedure_label">Procedimento</span>
-              <input id="procedure" class="field px-3 py-2 text-sm" placeholder="Ex: Colecistectomia VLP" data-i18n-placeholder="procedure_ph" />
-            </label>
-
-            <label class="flex flex-col">
-              <span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="duration_label">Duração (h)</span>
-              <input id="surgery-duration" type="number" step="0.5" min="0" max="12" class="field px-3 py-2 text-sm" placeholder="2" data-i18n-placeholder="duration_ph" />
-            </label>
-
-            <div class="flex items-center h-full pt-6">
-              <label class="inline-flex items-center gap-3 cursor-pointer group">
-                <input id="emergency-surgery" type="checkbox" class="peer sr-only" />
-                <div class="h-5 w-5 rounded border border-slate-500 bg-slate-800 peer-checked:bg-rose-600 peer-checked:border-rose-500 transition-colors flex items-center justify-center">
-                   <svg class="w-3.5 h-3.5 text-white opacity-0 peer-checked:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                </div>
-                <span class="text-sm text-slate-300 group-hover:text-white transition-colors" data-i18n="emergency_label">Urgência / Emergência</span>
-              </label>
-            </div>
-          </div>
-
-          <div class="mt-6 grid gap-3 sm:grid-cols-3">
-            <div class="metric-box px-4 py-3">
-              <div class="text-[10px] text-slate-400 uppercase tracking-wider mb-1" data-i18n="bmi_chip">IMC</div>
-              <div class="flex items-baseline gap-2">
-                 <div id="bmi-display" class="text-xl font-bold text-white">—</div>
-                 <div class="text-xs text-slate-500">kg/m²</div>
-              </div>
-              <div id="bmi-category" class="text-[11px] text-slate-400 mt-1 truncate" data-i18n="bmi_hint">Informe altura e peso</div>
-            </div>
-
-            <div class="metric-box px-4 py-3">
-              <div class="text-[10px] text-slate-400 uppercase tracking-wider mb-1" data-i18n="ibw_chip">Peso Ideal</div>
-              <div class="flex items-baseline gap-2">
-                 <div id="ibw-display" class="text-xl font-bold text-white">—</div>
-                 <div class="text-xs text-slate-500">kg</div>
-              </div>
-              <div id="ibw-hint" class="text-[11px] text-slate-400 mt-1 truncate" data-i18n="ibw_hint">Requer sexo + altura</div>
-            </div>
-
-            <div class="metric-box px-4 py-3">
-              <div class="text-[10px] text-slate-400 uppercase tracking-wider mb-1" data-i18n="context_chip">Contexto</div>
-              <div id="context-display" class="text-sm font-bold text-white leading-tight mt-0.5">—</div>
-              <div class="text-[11px] text-slate-400 mt-1 leading-tight" data-i18n="context_hint">Influencia ARISCAT</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="glass p-5">
-          <h2 class="text-lg font-semibold text-white mb-4" data-i18n="section_airway_title">Avaliação da Via Aérea</h2>
-
-          <div class="grid gap-4 sm:grid-cols-2">
-            <label class="flex flex-col">
-              <span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="mallampati_label">Mallampati</span>
-              <select id="mallampati" class="field px-3 py-2 text-sm">
-                <option value="" data-i18n="select">Selecionar…</option>
-                <option value="1">I</option>
-                <option value="2">II</option>
-                <option value="3">III</option>
-                <option value="4">IV</option>
-              </select>
-            </label>
-
-            <label class="flex flex-col">
-              <span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="mouth_opening_label">Abertura bucal (cm)</span>
-              <input id="mouth-opening" type="number" step="0.1" min="0" max="10" class="field px-3 py-2 text-sm" placeholder="4.5" data-i18n-placeholder="mouth_opening_ph" />
-            </label>
-
-            <label class="flex flex-col">
-              <span class="mb-1.5 text-xs font-medium text-slate-300" data-i18n="tmd_label">Dist. Tireomentoniana (cm)</span>
-              <input id="tmd" type="number" step="0.1" min="0" max="15" class="field px-3 py-2 text-sm" placeholder="7.0" data-i18n-placeholder="tmd_ph" />
-            </label>
-
-            <div class="flex items-center h-full pt-6">
-              <label class="inline-flex items-center gap-3 cursor-pointer group">
-                <input id="jaw-limited" type="checkbox" class="peer sr-only" />
-                <div class="h-5 w-5 rounded border border-slate-500 bg-slate-800 peer-checked:bg-blue-600 peer-checked:border-blue-500 transition-colors flex items-center justify-center">
-                   <svg class="w-3.5 h-3.5 text-white opacity-0 peer-checked:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                </div>
-                <span class="text-sm text-slate-300 group-hover:text-white transition-colors" data-i18n="jaw_limited_label">Protrusão mandibular limitada</span>
-              </label>
-            </div>
-
-            <div class="sm:col-span-2 glass-soft p-4 mt-1">
-              <div class="flex items-center justify-between gap-3 mb-2">
-                <div class="text-sm text-slate-200 font-medium" data-i18n="neck_mobility_title">Mobilidade cervical</div>
-                <div class="text-xs px-2 py-0.5 rounded bg-slate-800 border border-slate-700">
-                  <span data-i18n="points_label">Pontos:</span> <span id="neck-mobility-points" class="font-bold text-blue-400">0</span>
-                </div>
-              </div>
-              <input id="neck-mobility" type="range" min="0" max="2" step="1" value="0" class="w-full accent-blue-500 cursor-pointer mb-1" />
-              <div class="flex justify-between px-1 mb-2">
-                 <div class="w-0.5 h-1.5 bg-slate-600 rounded"></div>
-                 <div class="w-0.5 h-1.5 bg-slate-600 rounded"></div>
-                 <div class="w-0.5 h-1.5 bg-slate-600 rounded"></div>
-              </div>
-              <div class="text-xs text-slate-400 text-center">
-                <span id="neck-mobility-label">—</span>
-              </div>
-            </div>
-
-            <div class="sm:col-span-2 glass-soft p-4">
-              <div class="flex items-center justify-between gap-3 mb-2">
-                <div class="text-sm text-slate-200 font-medium" data-i18n="diff_history_title">História de intubação difícil</div>
-                <div class="text-xs px-2 py-0.5 rounded bg-slate-800 border border-slate-700">
-                  <span data-i18n="points_label">Pontos:</span> <span id="diff-history-points" class="font-bold text-blue-400">0</span>
-                </div>
-              </div>
-              <input id="diff-history" type="range" min="0" max="2" step="1" value="0" class="w-full accent-blue-500 cursor-pointer mb-1" />
-              <div class="flex justify-between px-1 mb-2">
-                 <div class="w-0.5 h-1.5 bg-slate-600 rounded"></div>
-                 <div class="w-0.5 h-1.5 bg-slate-600 rounded"></div>
-                 <div class="w-0.5 h-1.5 bg-slate-600 rounded"></div>
-              </div>
-              <div class="text-xs text-slate-400 text-center">
-                <span id="diff-history-label">—</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-4 pt-4 border-t border-slate-700/50">
-            <div class="flex items-center justify-between">
-              <div>
-                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider" data-i18n="egri_chip">El-Ganzouri (EGRI)</span>
-                <div class="text-2xl font-bold text-white mt-1"><span id="egri-score">0</span> <span class="text-sm font-normal text-slate-500">pts</span></div>
-              </div>
-              <div class="text-right">
-                <div id="egri-badge" class="badge-ok text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">—</div>
-                <div id="egri-category" class="text-xs text-slate-400 mt-1">—</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="glass p-5">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-lg font-semibold text-white" data-i18n="section_stopbang_title">STOP-BANG</h2>
-            <div class="bg-slate-800 px-3 py-1 rounded-lg border border-slate-700">
-              <span class="text-xl font-bold text-white" id="sb-score">0</span><span class="text-xs text-slate-500">/8</span>
-            </div>
-          </div>
-
-          <div class="grid gap-3 sm:grid-cols-2 text-sm text-slate-300">
-            <label class="check-row">
-              <input type="checkbox" id="sb-snoring" />
-              <span data-i18n="sb_snoring">Ronco alto</span>
-            </label>
-            <label class="check-row">
-              <input type="checkbox" id="sb-tired" />
-              <span data-i18n="sb_tired">Fadiga diurna</span>
-            </label>
-            <label class="check-row">
-              <input type="checkbox" id="sb-observed" />
-              <span data-i18n="sb_observed">Apneia observada</span>
-            </label>
-            <label class="check-row">
-              <input type="checkbox" id="sb-pressure" />
-              <span data-i18n="sb_pressure">Hipertensão</span>
-            </label>
-            
-            <label class="check-row disabled">
-              <input type="checkbox" id="sb-bmi" disabled />
-              <span data-i18n="sb_bmi">IMC > 35 (auto)</span>
-            </label>
-            <label class="check-row disabled">
-              <input type="checkbox" id="sb-age" disabled />
-              <span data-i18n="sb_age">Idade > 50 (auto)</span>
-            </label>
-            <label class="check-row">
-              <input type="checkbox" id="sb-neck" />
-              <span data-i18n="sb_neck">Pescoço > 40cm</span>
-            </label>
-            <label class="check-row disabled">
-              <input type="checkbox" id="sb-gender" disabled />
-              <span data-i18n="sb_gender">Sexo masc. (auto)</span>
-            </label>
-          </div>
-          
-          <div class="mt-3 text-xs text-right text-slate-400">
-            <span data-i18n="category_label">Risco:</span> <span id="sb-category" class="font-bold text-white uppercase">—</span>
-          </div>
-        </div>
-
-        <div class="glass p-5">
-          <div class="flex items-center justify-between mb-4">
-            <div>
-              <h2 class="text-lg font-semibold text-white" data-i18n="rcri_title">RCRI</h2>
-              <div class="text-[10px] text-slate-400">Risco Cardíaco</div>
-            </div>
-            <div class="bg-slate-800 px-3 py-1 rounded-lg border border-slate-700">
-              <span class="text-xl font-bold text-white" id="rcri-score">0</span><span class="text-xs text-slate-500">/6</span>
-            </div>
-          </div>
-          
-          <div class="grid gap-3 sm:grid-cols-2 text-sm text-slate-300">
-             <label class="check-row"><input type="checkbox" id="rcri-highrisk"> <span data-i18n="rcri_highrisk">Cirurgia alto risco</span></label>
-             <label class="check-row"><input type="checkbox" id="rcri-ihd"> <span data-i18n="rcri_ihd">Doença isquêmica</span></label>
-             <label class="check-row"><input type="checkbox" id="rcri-chf"> <span data-i18n="rcri_chf">Insuf. Cardíaca</span></label>
-             <label class="check-row"><input type="checkbox" id="rcri-cva"> <span data-i18n="rcri_cva">D. Cerebrovascular</span></label>
-             <label class="check-row"><input type="checkbox" id="rcri-insulin"> <span data-i18n="rcri_insulin">Insulinodependente</span></label>
-             <label class="check-row"><input type="checkbox" id="rcri-creatinine"> <span data-i18n="rcri_creat">Cr > 2.0</span></label>
-          </div>
-          <div class="mt-3 text-xs text-slate-400 border-t border-slate-700/50 pt-2 flex justify-between">
-             <span><span data-i18n="category_label">Risco:</span> <span id="rcri-category" class="text-white font-medium">—</span></span>
-             <span class="text-blue-400"><span data-i18n="risk_label">Risco:</span> <span id="rcri-risk-percent">—</span></span>
-          </div>
-        </div>
-
-        <div class="glass p-5">
-          <div class="flex items-center justify-between mb-4">
-            <div>
-              <h2 class="text-lg font-semibold text-white" data-i18n="ariscat_title">ARISCAT</h2>
-              <div class="text-[10px] text-slate-400">Complicação Pulmonar</div>
-            </div>
-            <div class="bg-slate-800 px-3 py-1 rounded-lg border border-slate-700">
-              <span class="text-xl font-bold text-white" id="ariscat-score">0</span> <span class="text-xs text-slate-500">pts</span>
-            </div>
-          </div>
-          
-          <div class="grid gap-4 sm:grid-cols-2">
-             <label class="block">
-               <span class="text-[10px] text-slate-400 uppercase font-bold" data-i18n="spo2_label">SpO2 Pré-op</span>
-               <input id="ariscat-spo2" type="number" class="field w-full px-2 py-1.5 text-xs mt-1" placeholder="98" />
-             </label>
-             <label class="block">
-               <span class="text-[10px] text-slate-400 uppercase font-bold" data-i18n="incision_label">Incisão</span>
-               <select id="ariscat-incision" class="field w-full px-2 py-1.5 text-xs mt-1">
-                  <option value="" data-i18n="select">...</option>
-                  <option value="peripheral" data-i18n="inc_peripheral">Periférica</option>
-                  <option value="upper-abdominal" data-i18n="inc_upper">Abd. Superior</option>
-                  <option value="intrathoracic" data-i18n="inc_thoracic">Intratorácica</option>
-               </select>
-             </label>
-          </div>
-          <div class="mt-4 grid gap-3 sm:grid-cols-2 text-sm text-slate-300">
-             <label class="check-row"><input type="checkbox" id="ariscat-infection"> <span data-i18n="ariscat_infection">Infecção resp. recente</span></label>
-             <label class="check-row"><input type="checkbox" id="ariscat-anemia"> <span data-i18n="ariscat_anemia">Hb ≤ 10 g/dL</span></label>
-          </div>
-          <div class="mt-3 text-xs text-slate-400 border-t border-slate-700/50 pt-2 flex justify-between">
-             <span><span data-i18n="category_label">Risco:</span> <span id="ariscat-category" class="text-white font-medium">—</span></span>
-             <span class="text-blue-400"><span data-i18n="risk_label">Risco:</span> <span id="ariscat-risk">—</span></span>
-          </div>
-        </div>
-
-        <div class="glass p-5">
-          <div class="flex items-center justify-between mb-4">
-            <div>
-              <h2 class="text-lg font-semibold text-white" data-i18n="apfel_title2">Apfel</h2>
-              <div class="text-[10px] text-slate-400">Náusea/Vômito (NVPO)</div>
-            </div>
-            <div class="bg-slate-800 px-3 py-1 rounded-lg border border-slate-700">
-              <span class="text-xl font-bold text-white" id="apfel-score">0</span><span class="text-xs text-slate-500">/4</span>
-            </div>
-          </div>
-          
-          <div class="grid gap-3 sm:grid-cols-2 text-sm text-slate-300">
-            <label class="check-row"><input type="checkbox" id="apfel-nonsmoker"> <span data-i18n="apfel_nonsmoker">Não tabagista</span></label>
-            <label class="check-row"><input type="checkbox" id="apfel-history"> <span data-i18n="apfel_history">História de NVPO</span></label>
-            <label class="check-row"><input type="checkbox" id="apfel-opioids"> <span data-i18n="apfel_opioids">Opioide pós-op</span></label>
-            
-            <label class="check-row disabled">
-               <input type="checkbox" id="apfel-female" disabled> 
-               <span data-i18n="apfel_female">Sexo feminino (auto)</span>
-            </label>
-          </div>
-          <div class="mt-3 text-xs text-slate-400 border-t border-slate-700/50 pt-2 flex justify-between">
-             <span><span data-i18n="category_label">Risco:</span> <span id="apfel-category" class="text-white font-medium">—</span></span>
-             <span class="text-blue-400"><span data-i18n="risk_label">Risco:</span> <span id="apfel-risk">—</span></span>
-          </div>
-        </div>
-
-        <div id="frail-card" class="glass transition-all duration-300">
-          <div class="p-5 flex items-center justify-between cursor-pointer" onclick="toggleFrail()">
-            <div class="flex items-center gap-3">
-              <svg id="frail-chevron" class="w-5 h-5 text-slate-400 transform transition-transform duration-200 chevron-down" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-              <div>
-                <h2 class="text-lg font-semibold text-white" data-i18n="frail_title">FRAIL Scale</h2>
-                <div class="text-[10px] text-slate-400">Fragilidade (>60 anos)</div>
-              </div>
-            </div>
-            <div class="bg-slate-800 px-3 py-1 rounded-lg border border-slate-700">
-              <span class="text-xl font-bold text-white" id="frail-score">0</span><span class="text-xs text-slate-500">/5</span>
-            </div>
-          </div>
-
-          <div id="frail-content" class="px-5 pb-5 hidden">
-            <div class="space-y-3 text-sm text-slate-300">
-              <label class="check-row">
-                <input type="checkbox" id="frail-fatigue"> 
-                <span data-i18n="frail_fatigue">Fadiga (Cansado quase todo tempo?)</span>
-              </label>
-              
-              <label class="check-row">
-                <input type="checkbox" id="frail-resistance"> 
-                <span data-i18n="frail_resistance">Resistência (Incapaz de subir 1 lance escada?)</span>
-              </label>
-              
-              <label class="check-row">
-                <input type="checkbox" id="frail-ambulation"> 
-                <span data-i18n="frail_ambulation">Ambulação (Incapaz de andar 100m?)</span>
-              </label>
-              
-              <div class="glass-soft p-3">
-                <div class="flex items-center justify-between mb-2">
-                  <label class="flex items-center gap-2 pointer-events-none">
-                    <input type="checkbox" id="frail-illnesses" disabled class="bg-slate-800 rounded border-slate-600">
-                    <span class="font-medium text-slate-200" data-i18n="frail_illnesses">Doenças (5 ou mais)</span>
-                  </label>
-                </div>
-                
-                <div class="disease-grid">
-                  <label class="flex gap-2 items-center"><input type="checkbox" id="frail-ill-htn" class="disease-check"> <span data-i18n="ill_htn">Hipertensão</span></label>
-                  <label class="flex gap-2 items-center"><input type="checkbox" id="frail-ill-dm" class="disease-check"> <span data-i18n="ill_dm">Diabetes</span></label>
-                  <label class="flex gap-2 items-center"><input type="checkbox" id="frail-ill-cancer" class="disease-check"> <span data-i18n="ill_cancer">Câncer</span></label>
-                  <label class="flex gap-2 items-center"><input type="checkbox" id="frail-ill-copd" class="disease-check"> <span data-i18n="ill_copd">DPOC</span></label>
-                  <label class="flex gap-2 items-center"><input type="checkbox" id="frail-ill-ami" class="disease-check"> <span data-i18n="ill_ami">IAM</span></label>
-                  <label class="flex gap-2 items-center"><input type="checkbox" id="frail-ill-chf" class="disease-check"> <span data-i18n="ill_chf">Insuf. Cardíaca</span></label>
-                  <label class="flex gap-2 items-center"><input type="checkbox" id="frail-ill-angina" class="disease-check"> <span data-i18n="ill_angina">Angina</span></label>
-                  <label class="flex gap-2 items-center"><input type="checkbox" id="frail-ill-asthma" class="disease-check"> <span data-i18n="ill_asthma">Asma</span></label>
-                  <label class="flex gap-2 items-center"><input type="checkbox" id="frail-ill-arth" class="disease-check"> <span data-i18n="ill_arth">Artrite</span></label>
-                  <label class="flex gap-2 items-center"><input type="checkbox" id="frail-ill-stroke" class="disease-check"> <span data-i18n="ill_stroke">AVC</span></label>
-                  <label class="flex gap-2 items-center"><input type="checkbox" id="frail-ill-ckd" class="disease-check"> <span data-i18n="ill_ckd">Doença Renal</span></label>
-                </div>
-              </div>
-
-              <label class="check-row">
-                <input type="checkbox" id="frail-weight"> 
-                <span data-i18n="frail_weight">Perda de peso (>5% em 1 ano)</span>
-              </label>
-            </div>
-
-            <div class="mt-3 text-xs text-slate-400 border-t border-slate-700/50 pt-2 flex justify-between">
-               <span><span data-i18n="category_label">Categoria:</span> <span id="frail-category" class="text-white font-medium">—</span></span>
-            </div>
-          </div>
-        </div>
-
-        <div id="at4-card" class="glass transition-all duration-300">
-          <div class="p-5 flex items-center justify-between cursor-pointer" onclick="toggle4AT()">
-            <div class="flex items-center gap-3">
-              <svg id="at4-chevron" class="w-5 h-5 text-slate-400 transform transition-transform duration-200 chevron-down" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-              <div>
-                <h2 class="text-lg font-semibold text-white">4AT</h2>
-                <div class="text-[10px] text-slate-400" data-i18n="at4_subtitle">Rastreio de Delirium</div>
-              </div>
-            </div>
-            <div class="bg-slate-800 px-3 py-1 rounded-lg border border-slate-700">
-              <span class="text-xl font-bold text-white" id="at4-score">0</span><span class="text-xs text-slate-500">/12</span>
-            </div>
-          </div>
-
-          <div id="at4-content" class="px-5 pb-5 hidden">
-            <div class="grid gap-4 sm:grid-cols-1">
-              
-              <div>
-                <label class="block text-sm font-medium text-slate-200 mb-1" data-i18n="at4_alertness">Alertness</label>
-                <div class="text-[10px] text-slate-400 mb-2" data-i18n="at4_alertness_help">Observe state. If asleep, try to wake with speech/touch.</div>
-                <select id="at4-alertness" class="field w-full px-3 py-2 text-sm">
-                  <option value="0" data-i18n="at4_alert_0">Normal (fully alert, aroused)</option>
-                  <option value="0" data-i18n="at4_alert_mild">Mild sleepiness (<10s)</option>
-                  <option value="4" data-i18n="at4_alert_abnormal">Clearly abnormal</option>
-                </select>
-              </div>
-
-              <div>
-                <label class="block text-sm font-medium text-slate-200 mb-1">AMT4</label>
-                <div class="text-[10px] text-slate-400 mb-2" data-i18n="at4_amt4_help">Ask: Age, Date of Birth, Current Place, Current Year.</div>
-                <select id="at4-amt4" class="field w-full px-3 py-2 text-sm">
-                  <option value="0" data-i18n="at4_amt4_0">No mistakes</option>
-                  <option value="1" data-i18n="at4_amt4_1">1 mistake</option>
-                  <option value="2" data-i18n="at4_amt4_2">2 or more mistakes / Untestable</option>
-                </select>
-              </div>
-
-              <div>
-                <label class="block text-sm font-medium text-slate-200 mb-1" data-i18n="at4_attention">Attention</label>
-                <div class="text-[10px] text-slate-400 mb-2" data-i18n="at4_attention_help">Ask to recite months of the year backwards.</div>
-                <select id="at4-attention" class="field w-full px-3 py-2 text-sm">
-                  <option value="0" data-i18n="at4_att_0">Achieves 7 months or more</option>
-                  <option value="1" data-i18n="at4_att_1">Starts but scores < 7 months / refuses</option>
-                  <option value="2" data-i18n="at4_att_2">Untestable (unwell, drowsy, inattentive)</option>
-                </select>
-              </div>
-
-              <div>
-                <label class="block text-sm font-medium text-slate-200 mb-1" data-i18n="at4_change">Acute Change or Fluctuating Course</label>
-                <div class="text-[10px] text-slate-400 mb-2" data-i18n="at4_change_help">Significant fluctuation in mental status in last 2 weeks/24h?</div>
-                <select id="at4-change" class="field w-full px-3 py-2 text-sm">
-                  <option value="0" data-i18n="no">No</option>
-                  <option value="4" data-i18n="yes">Yes</option>
-                </select>
-              </div>
-
-            </div>
-            
-            <div class="mt-4 text-xs text-slate-400 border-t border-slate-700/50 pt-2 flex justify-between">
-               <span><span data-i18n="category_label">Category:</span> <span id="at4-category" class="text-white font-medium">—</span></span>
-            </div>
-          </div>
-        </div>
-
-      </section>
-
-      <section>
-        <div class="glass p-5 sticky top-24">
-          <div class="flex items-center justify-between gap-3 mb-4">
-            <h2 class="text-lg font-semibold text-white" data-i18n="output_title">Texto Gerado</h2>
-            <button id="copy-output-btn" class="btn btn-primary text-xs px-3 py-1.5 flex items-center gap-1.5 shadow-lg shadow-emerald-900/20">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
-              <span data-i18n="copy">Copiar</span>
-            </button>
-          </div>
-
-          <p class="text-[11px] text-slate-400 mb-3" data-i18n="output_hint">
+<div class="glass p-5">
+<div class="flex items-center justify-between mb-4">
+<div>
+<h2 class="text-lg font-semibold text-white" data-i18n="ariscat_title">ARISCAT</h2>
+<div class="text-[10px] text-slate-400" data-i18n="ariscat_subtitle">Complicações pulmonares</div>
+</div>
+<div class="bg-slate-800 px-3 py-1 rounded-lg border border-slate-700">
+<span class="text-xl font-bold text-white" id="ariscat-score">0</span> <span class="text-xs text-slate-500">pts</span>
+</div>
+</div>
+<div class="grid gap-4 sm:grid-cols-2">
+<label class="block">
+<span class="text-[10px] text-slate-400 uppercase font-bold" data-i18n="spo2_label">SpO2 Pré-op</span>
+<input class="field w-full px-2 py-1.5 text-xs mt-1" id="ariscat-spo2" placeholder="98" type="number">
+</input></label>
+<label class="block">
+<span class="text-[10px] text-slate-400 uppercase font-bold" data-i18n="incision_label">Incisão</span>
+<select class="field w-full px-2 py-1.5 text-xs mt-1" id="ariscat-incision">
+<option data-i18n="select" value="">...</option>
+<option data-i18n="inc_peripheral" value="peripheral">Periférica</option>
+<option data-i18n="inc_upper" value="upper-abdominal">Abd. Superior</option>
+<option data-i18n="inc_thoracic" value="intrathoracic">Intratorácica</option>
+</select>
+</label>
+</div>
+<div class="mt-4 grid gap-3 sm:grid-cols-2 text-sm text-slate-300">
+<label class="check-row"><input id="ariscat-infection" type="checkbox"/> <span data-i18n="ariscat_infection">Infecção resp. recente</span></label>
+<label class="check-row" id="ariscat-anemia-row"><input aria-describedby="ariscat-anemia-help" id="ariscat-anemia" type="checkbox"/> <span data-i18n="ariscat_anemia">Hb ≤ 10 g/dL</span></label>
+</div><p class="text-[10px] text-slate-400 mt-2" id="ariscat-anemia-help"></p>
+<div class="mt-3 text-xs text-slate-400 border-t border-slate-700/50 pt-2 flex justify-between">
+<span><span data-i18n="category_label">Risco:</span> <span class="text-white font-medium" id="ariscat-category">—</span></span>
+<span class="text-blue-400"><span data-i18n="risk_label">Risco:</span> <span id="ariscat-risk">—</span></span>
+</div>
+</div>
+<div class="glass p-5">
+<div class="flex items-center justify-between mb-4">
+<div>
+<h2 class="text-lg font-semibold text-white" data-i18n="apfel_title2">Apfel</h2>
+<div class="text-[10px] text-slate-400" data-i18n="apfel_subtitle">Náusea/vômito (NVPO)</div>
+</div>
+<div class="bg-slate-800 px-3 py-1 rounded-lg border border-slate-700">
+<span class="text-xl font-bold text-white" id="apfel-score">0</span><span class="text-xs text-slate-500">/4</span>
+</div>
+</div>
+<div class="grid gap-3 sm:grid-cols-2 text-sm text-slate-300">
+<label class="check-row"><input id="apfel-nonsmoker" type="checkbox"/> <span data-i18n="apfel_nonsmoker">Não tabagista</span></label>
+<label class="check-row"><input id="apfel-history" type="checkbox"/> <span data-i18n="apfel_history">História de NVPO</span></label>
+<label class="check-row"><input id="apfel-opioids" type="checkbox"/> <span data-i18n="apfel_opioids">Opioide pós-op</span></label>
+<label class="check-row disabled">
+<input disabled="" id="apfel-female" type="checkbox"/>
+<span data-i18n="apfel_female">Sexo feminino (auto)</span>
+</label>
+</div>
+<div class="mt-3 text-xs text-slate-400 border-t border-slate-700/50 pt-2 flex justify-between">
+<span><span data-i18n="category_label">Risco:</span> <span class="text-white font-medium" id="apfel-category">—</span></span>
+<span class="text-blue-400"><span data-i18n="risk_label">Risco:</span> <span id="apfel-risk">—</span></span>
+</div>
+</div>
+<div class="glass transition-all duration-300" id="frail-card">
+<div class="p-5 flex items-center justify-between cursor-pointer" onclick="toggleFrail()">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 text-slate-400 transform transition-transform duration-200 chevron-down" fill="none" id="frail-chevron" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<div>
+<h2 class="text-lg font-semibold text-white" data-i18n="frail_title">FRAIL Scale</h2>
+<div class="text-[10px] text-slate-400" data-i18n="frail_subtitle">Fragilidade (≥60 anos)</div>
+</div>
+</div>
+<div class="bg-slate-800 px-3 py-1 rounded-lg border border-slate-700">
+<span class="text-xl font-bold text-white" id="frail-score">0</span><span class="text-xs text-slate-500">/5</span>
+</div>
+</div>
+<div class="px-5 pb-5 hidden" id="frail-content">
+<div class="space-y-3 text-sm text-slate-300">
+<label class="check-row">
+<input id="frail-fatigue" type="checkbox"/>
+<span data-i18n="frail_fatigue">Fadiga (Cansado quase todo tempo?)</span>
+</label>
+<label class="check-row">
+<input id="frail-resistance" type="checkbox"/>
+<span data-i18n="frail_resistance">Resistência (Incapaz de subir 1 lance escada?)</span>
+</label>
+<label class="check-row">
+<input id="frail-ambulation" type="checkbox"/>
+<span data-i18n="frail_ambulation">Ambulação (Incapaz de andar 100m?)</span>
+</label>
+<div class="glass-soft p-3">
+<div class="flex items-center justify-between mb-2">
+<label class="flex items-center gap-2 pointer-events-none">
+<input class="bg-slate-800 rounded border-slate-600" disabled="" id="frail-illnesses" type="checkbox"/>
+<span class="font-medium text-slate-200" data-i18n="frail_illnesses">Doenças (5 ou mais)</span>
+</label>
+</div>
+<p class="text-xs text-slate-400" data-i18n="frail_shared_help">As 11 doenças da escala são contadas nos Antecedentes acima. Os quatro itens cardíacos adicionais não alteram essa contagem.</p><p class="text-xs text-slate-300 mt-2" id="frail-disease-count"></p>
+</div>
+<label class="check-row">
+<input id="frail-weight" type="checkbox"/>
+<span data-i18n="frail_weight">Perda de peso (&gt;5% em 1 ano)</span>
+</label>
+</div>
+<div class="mt-3 text-xs text-slate-400 border-t border-slate-700/50 pt-2 flex justify-between">
+<span><span data-i18n="category_label">Categoria:</span> <span class="text-white font-medium" id="frail-category">—</span></span>
+</div>
+</div>
+</div>
+<div class="glass transition-all duration-300" id="at4-card">
+<div class="p-5 flex items-center justify-between cursor-pointer" onclick="toggle4AT()">
+<div class="flex items-center gap-3">
+<svg class="w-5 h-5 text-slate-400 transform transition-transform duration-200 chevron-down" fill="none" id="at4-chevron" stroke="currentColor" viewbox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<div>
+<h2 class="text-lg font-semibold text-white">4AT</h2>
+<div class="text-[10px] text-slate-400" data-i18n="at4_subtitle">Rastreio de Delirium</div>
+</div>
+</div>
+<div class="bg-slate-800 px-3 py-1 rounded-lg border border-slate-700">
+<span class="text-xl font-bold text-white" id="at4-score">0</span><span class="text-xs text-slate-500">/12</span>
+</div>
+</div>
+<div class="px-5 pb-5 hidden" id="at4-content">
+<div class="grid gap-4 sm:grid-cols-1">
+<div>
+<label class="block text-sm font-medium text-slate-200 mb-1" data-i18n="at4_alertness">Alertness</label>
+<div class="text-[10px] text-slate-400 mb-2" data-i18n="at4_alertness_help">Observe state. If asleep, try to wake with speech/touch.</div>
+<select class="field w-full px-3 py-2 text-sm" id="at4-alertness">
+<option data-i18n="at4_alert_0" value="0">Normal (fully alert, aroused)</option>
+<option data-i18n="at4_alert_mild" value="0">Mild sleepiness (&lt;10s)</option>
+<option data-i18n="at4_alert_abnormal" value="4">Clearly abnormal</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-200 mb-1">AMT4</label>
+<div class="text-[10px] text-slate-400 mb-2" data-i18n="at4_amt4_help">Ask: Age, Date of Birth, Current Place, Current Year.</div>
+<select class="field w-full px-3 py-2 text-sm" id="at4-amt4">
+<option data-i18n="at4_amt4_0" value="0">No mistakes</option>
+<option data-i18n="at4_amt4_1" value="1">1 mistake</option>
+<option data-i18n="at4_amt4_2" value="2">2 or more mistakes / Untestable</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-200 mb-1" data-i18n="at4_attention">Attention</label>
+<div class="text-[10px] text-slate-400 mb-2" data-i18n="at4_attention_help">Ask to recite months of the year backwards.</div>
+<select class="field w-full px-3 py-2 text-sm" id="at4-attention">
+<option data-i18n="at4_att_0" value="0">Achieves 7 months or more</option>
+<option data-i18n="at4_att_1" value="1">Starts but scores &lt; 7 months / refuses</option>
+<option data-i18n="at4_att_2" value="2">Untestable (unwell, drowsy, inattentive)</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-200 mb-1" data-i18n="at4_change">Acute Change or Fluctuating Course</label>
+<div class="text-[10px] text-slate-400 mb-2" data-i18n="at4_change_help">Significant fluctuation in mental status in last 2 weeks/24h?</div>
+<select class="field w-full px-3 py-2 text-sm" id="at4-change">
+<option data-i18n="no" value="0">No</option>
+<option data-i18n="yes" value="4">Yes</option>
+</select>
+</div>
+</div>
+<div class="mt-4 text-xs text-slate-400 border-t border-slate-700/50 pt-2 flex justify-between">
+<span><span data-i18n="category_label">Category:</span> <span class="text-white font-medium" id="at4-category">—</span></span>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="glass p-5 sticky top-24">
+<div class="flex items-center justify-between gap-3 mb-4">
+<h2 class="text-lg font-semibold text-white" data-i18n="output_title">Texto Gerado</h2>
+<button class="btn btn-primary text-xs px-3 py-1.5 flex items-center gap-1.5 shadow-lg shadow-emerald-900/20" id="copy-output-btn">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span data-i18n="copy">Copiar</span>
+</button>
+</div>
+<p class="text-[11px] text-slate-400 mb-3" data-i18n="output_hint">
             O texto abaixo é atualizado automaticamente conforme você preenche os dados.
           </p>
-
-          <textarea id="output" readonly
-                    class="w-full h-[600px] sm:h-[calc(100vh-250px)] rounded-xl border border-slate-800 bg-[#0B101E] px-4 py-4 text-sm font-mono leading-relaxed text-slate-300 focus:outline-none focus:ring-1 focus:ring-blue-500/50 resize-y shadow-inner"
-                    spellcheck="false"></textarea>
-
-          <div class="mt-4 text-[10px] leading-snug text-slate-500 text-center px-4" data-i18n="disclaimer">
+<textarea class="w-full h-[600px] sm:h-[calc(100vh-250px)] rounded-xl border border-slate-800 bg-[#0B101E] px-4 py-4 text-sm font-mono leading-relaxed text-slate-300 focus:outline-none focus:ring-1 focus:ring-blue-500/50 resize-y shadow-inner" id="output" readonly="" spellcheck="false"></textarea>
+<div aria-live="polite" class="mt-2 text-xs text-emerald-400" id="copy-status" role="status"></div><div class="mt-4 text-[10px] leading-snug text-slate-500 text-center px-4" data-i18n="disclaimer">
             Esta ferramenta não substitui julgamento clínico. Verifique todos os escores antes de utilizar.
           </div>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <div class="bottombar sm:hidden">
-    <div class="px-4 py-3 flex items-center justify-between">
-      <div class="text-xs text-slate-400" data-i18n="footer_hint">Pronto para prontuário</div>
-      <button id="copy-output-btn-bottom" class="btn btn-primary text-xs px-4 py-2 font-bold">
-        <span data-i18n="copy_summary">COPIAR</span>
-      </button>
-    </div>
-  </div>
-
-  <script>
+</div>
+</section>
+</main>
+</div>
+<div class="bottombar sm:hidden">
+<div class="px-4 py-3 flex items-center justify-between">
+<div class="text-xs text-slate-400" data-i18n="footer_hint">Pronto para prontuário</div>
+<button class="btn btn-primary text-xs px-4 py-2 font-bold" id="copy-output-btn-bottom">
+<span data-i18n="copy_summary">COPIAR</span>
+</button>
+</div>
+</div>
+<script>
     /* -------------------------------------------------------------------------
        CORE LOGIC
        ------------------------------------------------------------------------- */
@@ -809,14 +1890,13 @@
         sb_age: "Age > 50 (auto)",
         sb_neck: "Neck > 40cm",
         sb_gender: "Male sex (auto)",
-        
-        rcri_title: "RCRI",
-        rcri_highrisk: "High-risk surgery",
-        rcri_ihd: "Ischemic heart dis.",
-        rcri_chf: "Heart failure",
-        rcri_cva: "Cerebrovascular dis.",
-        rcri_insulin: "Insulin diabetic",
-        rcri_creat: "Creatinine > 2.0",
+
+
+
+
+
+
+
 
         ariscat_title: "ARISCAT",
         spo2_label: "Pre-op SpO₂",
@@ -916,7 +1996,7 @@
         duration_line: "Est. duration: {dur} h.",
 
         sb_line: "STOP-BANG: {score}/8 ({cat}).",
-        rcri_line: "RCRI: {score}/6 ({cat}) — risk {risk}.",
+
         ariscat_line: "ARISCAT: {score} ({cat}) — risk {risk}.",
         apfel_line: "Apfel: {score}/4 ({cat}) — risk ~{risk}.",
         egri_line: "El-Ganzouri: {score} ({cat}).",
@@ -932,7 +2012,7 @@
         obesity_extra: "Severe obesity: airway and atelectasis risks.",
 
         // Categories
-        rcri0: "Low", rcri1: "Low", rcri2: "Elevated", rcri3: "High",
+
         sb_low: "Low", sb_int: "Intermediate", sb_high: "High",
         egri_low: "Low risk", egri_high: "High risk",
         ar_low: "Low", ar_int: "Intermed", ar_high: "High",
@@ -1003,13 +2083,12 @@
         sb_neck: "Pescoço > 40cm",
         sb_gender: "Sexo masc. (auto)",
 
-        rcri_title: "RCRI",
-        rcri_highrisk: "Cirurgia alto risco",
-        rcri_ihd: "Doença isquêmica",
-        rcri_chf: "Insuf. Cardíaca",
-        rcri_cva: "D. Cerebrovascular",
-        rcri_insulin: "Insulinodependente",
-        rcri_creat: "Cr > 2.0",
+
+
+
+
+
+
 
         ariscat_title: "ARISCAT",
         spo2_label: "SpO₂ Pré-op",
@@ -1109,7 +2188,7 @@
         duration_line: "Duração estimada: {dur} h.",
 
         sb_line: "STOP-BANG: {score}/8 ({cat}).",
-        rcri_line: "RCRI: {score}/6 ({cat}) — risco {risk}.",
+
         ariscat_line: "ARISCAT: {score} ({cat}) — risco {risk}.",
         apfel_line: "Apfel: {score}/4 ({cat}) — risco est. ~{risk}.",
         egri_line: "El-Ganzouri: {score} ({cat}).",
@@ -1125,7 +2204,7 @@
         obesity_extra: "Obesidade grave: riscos aumentados de VA e atelectasia.",
 
         // Categories
-        rcri0: "Baixo", rcri1: "Baixo", rcri2: "Elevado", rcri3: "Alto",
+
         sb_low: "Baixo", sb_int: "Intermediário", sb_high: "Alto",
         egri_low: "Baixo risco", egri_high: "Alto risco",
         ar_low: "Baixo", ar_int: "Intermediário", ar_high: "Alto",
@@ -1134,14 +2213,200 @@
       }
     };
 
+
+    // Revised shared clinical inputs and note text.
+    Object.assign(I18N.pt, {
+  "urgency_label": "Caráter da cirurgia",
+  "urgency_elective": "Eletiva",
+  "urgency_urgent": "Urgente (não emergencial)",
+  "urgency_emergency": "Emergência",
+  "urgency_help": "Urgência isolada não pontua como emergência.",
+  "context_hint": "Compartilhado: AUB-HAS₂ / ARISCAT",
+  "urgent": "Cirurgia de urgência (não emergencial).",
+  "emergency": "Cirurgia de emergência.",
+  "urgency_unknown": "Caráter da cirurgia não informado.",
+  "unknown": "Não informado",
+  "history_title": "Antecedentes e comorbidades",
+  "history_help": "Compartilhados com STOP-BANG, AUB-HAS₂, FRAIL e o texto gerado.",
+  "history_additional": "Outros antecedentes cardíacos — AUB-HAS₂",
+  "history_pci": "Angioplastia coronária prévia",
+  "history_cardiac_surgery": "Cirurgia cardíaca prévia",
+  "history_af": "Fibrilação atrial",
+  "history_valve": "Valvopatia moderada/grave (eco)",
+  "history_angina_help": "Angina nesta lista é um antecedente; sintomas atuais devem ser avaliados separadamente no AUB-HAS₂.",
+  "frail_shared_help": "As 11 doenças da escala são contadas nos Antecedentes acima. Os quatro itens cardíacos adicionais não alteram essa contagem.",
+  "frail_disease_count": "{count}/11 doenças da FRAIL selecionadas.",
+  "hb_label": "Hemoglobina (g/dL)",
+  "hb_band_label": "Sem valor exato: faixa conhecida",
+  "hb_help": "Compartilhada: AUB-HAS₂ usa Hb <12; ARISCAT usa Hb ≤10 g/dL. Valor desconhecido não equivale a normal.",
+  "aub_subtitle": "Risco cardiovascular em 30 dias · 1 ponto por critério",
+  "aub_scope": "Para adultos em cirurgia não cardíaca. Não constitui liberação cirúrgica.",
+  "aub_heart": "H · História de cardiopatia",
+  "aub_symptoms": "H · Angina ou dispneia",
+  "aub_age": "A · Idade ≥75 anos",
+  "aub_anemia": "A · Anemia: Hb <12 g/dL",
+  "aub_vascular": "S · Cirurgia vascular",
+  "aub_emergency": "S · Cirurgia de emergência",
+  "aub_symptoms_help": "Sintomas atuais de angina ou dispneia. Não inferir apenas de fadiga, DPOC ou angina remota.",
+  "aub_vascular_help": "Confirme o tipo de cirurgia; não é inferido do nome do procedimento ou da incisão.",
+  "aub_heart_manual_help": "IAM, angioplastia, cirurgia cardíaca, IC, FA ou valvopatia moderada/grave ao eco. Marque aqui se não registrado acima.",
+  "aub_heart_auto": "Automático pelos antecedentes: {sources}. Edite os itens de origem acima.",
+  "aub_reviewed": "Revisei cardiopatia, sintomas e cirurgia vascular; os critérios clínicos não marcados estão ausentes.",
+  "aub_class_label": "Faixa do índice:",
+  "aub_rate_label": "Taxa na validação:",
+  "aub_rate_help": "Morte por qualquer causa, IAM ou AVC em 30 dias. Taxas da coorte ACS-NSQIP (Dakik 2019), não probabilidades individuais calibradas. 0–1: baixo; 2–3: intermediário; 4–6: alto. “Baixo” no índice não significa necessariamente <1%.",
+  "aub_low": "Baixo",
+  "aub_intermediate": "Intermediário",
+  "aub_high": "Alto",
+  "aub_incomplete": "Incompleto",
+  "aub_complete": "Seis critérios revisados. Fatores presentes: {factors}.",
+  "aub_pending": "Incompleto — pendências: {items}. Sem faixa de risco ou taxa final.",
+  "aub_scope_warning": "AUB-HAS₂ não validado para menores de 18 anos; estimativa de risco não fornecida.",
+  "aub_missing_age": "idade válida",
+  "aub_missing_hb": "hemoglobina ou faixa conhecida",
+  "aub_missing_urgency": "caráter da cirurgia",
+  "aub_missing_review": "revisão dos critérios clínicos",
+  "aub_auto_age": "Automático: {age} anos",
+  "aub_auto_context": "Automático: {context}",
+  "aub_none": "nenhum",
+  "aub_factor_heart": "história de cardiopatia",
+  "aub_factor_symptoms": "angina/dispneia",
+  "aub_factor_age": "idade ≥75 anos",
+  "aub_factor_anemia": "Hb <12 g/dL",
+  "aub_factor_vascular": "cirurgia vascular",
+  "aub_factor_emergency": "cirurgia de emergência",
+  "aub_line": "AUB-HAS₂: {score}/6 (faixa do índice: {cat}). Morte por qualquer causa/IAM/AVC em 30 dias: {risk} observados na coorte de validação ACS-NSQIP (Dakik 2019); referência populacional, não probabilidade individual calibrada.",
+  "aub_factors_line": "Critérios positivos do AUB-HAS₂ (1 ponto cada): {factors}.",
+  "aub_incomplete_line": "AUB-HAS₂ incompleto: pelo menos {score}/6 critérios positivos. Pendências: {items}. Sem classificação final ou estimativa de taxa de eventos.",
+  "aub_heart_unspecified": "História de cardiopatia (critério AUB-HAS₂ confirmado; diagnóstico não especificado)",
+  "height_weight_line": "Altura: {height} cm; peso: {weight} kg.",
+  "height_only_line": "Altura: {height} cm; peso não informado.",
+  "weight_only_line": "Peso: {weight} kg; altura não informada.",
+  "anthro_missing": "Altura e peso não informados.",
+  "hb_line": "Hemoglobina pré-operatória: {hb} g/dL.",
+  "hb_band_line": "Hemoglobina pré-operatória: {band} (faixa informada).",
+  "hb_invalid": "Hemoglobina inválida: informe um valor >0 e ≤25 g/dL.",
+  "hb_missing": "Hemoglobina não informada",
+  "hb_auto": "Automático: Hb {hb} g/dL",
+  "hb_band_auto": "Automático: {band}",
+  "ariscat_hb_numeric": "Preenchido pela hemoglobina acima (≤10 g/dL); edite o valor na origem.",
+  "ariscat_hb_manual": "Sem valor numérico, marcar confirma Hb ≤10 e atualiza o AUB-HAS₂. Desmarcar não confirma Hb ≥12.",
+  "ariscat_hb_unknown": "Hemoglobina não informada; o critério de anemia não pode ser avaliado. ARISCAT provisório.",
+  "ariscat_incomplete_line": "ARISCAT (provisório): {score} pontos; hemoglobina não informada ou inválida, critério de anemia não avaliável. Sem classificação final ou estimativa de risco.",
+  "procedure_unspecified": "o procedimento planejado (não informado)",
+  "intro_age_neutral": "Paciente de {age} anos {scheduled_for} {procedure} {under} {anesthesia}.",
+  "patient_intro_male_noage": "Paciente masculino (idade não informada) {scheduled_for} {procedure} {under} {anesthesia}.",
+  "patient_intro_female_noage": "Paciente feminino (idade não informada) {scheduled_for} {procedure} {under} {anesthesia}.",
+  "copy_done": "Copiado.",
+  "copy_manual": "Cópia automática indisponível. Texto selecionado; use Copiar / Ctrl+C.",
+  "invalid_age": "Idade deve ser um número inteiro de 16 a 100.",
+  "invalid_height": "Altura: informe 120–220 cm.",
+  "invalid_weight": "Peso: informe 30–300 kg.",
+  "ariscat_subtitle": "Complicações pulmonares",
+  "apfel_subtitle": "Náusea/vômito (NVPO)",
+  "frail_subtitle": "Fragilidade (≥60 anos)"
+});
+    Object.assign(I18N.en, {
+  "urgency_label": "Surgical urgency",
+  "urgency_elective": "Elective",
+  "urgency_urgent": "Urgent (not emergency)",
+  "urgency_emergency": "Emergency",
+  "urgency_help": "Urgency alone does not count as emergency surgery.",
+  "context_hint": "Shared: AUB-HAS₂ / ARISCAT",
+  "urgent": "Urgent surgery (not emergency).",
+  "emergency": "Emergency surgery.",
+  "urgency_unknown": "Surgical urgency not specified.",
+  "unknown": "Not specified",
+  "history_title": "History and comorbidities",
+  "history_help": "Shared with STOP-BANG, AUB-HAS₂, FRAIL and the generated note.",
+  "history_additional": "Additional cardiac history — AUB-HAS₂",
+  "history_pci": "Previous coronary angioplasty",
+  "history_cardiac_surgery": "Previous cardiac surgery",
+  "history_af": "Atrial fibrillation",
+  "history_valve": "Moderate/severe valve disease (echo)",
+  "history_angina_help": "Angina here denotes a history; assess current symptoms separately in AUB-HAS₂.",
+  "frail_shared_help": "The 11 FRAIL illnesses are counted from the history above. The four additional cardiac items do not change that count.",
+  "frail_disease_count": "{count}/11 FRAIL illnesses selected.",
+  "hb_label": "Hemoglobin (g/dL)",
+  "hb_band_label": "No exact value: known range",
+  "hb_help": "Shared: AUB-HAS₂ uses Hb <12; ARISCAT uses Hb ≤10 g/dL. Unknown is not normal.",
+  "aub_subtitle": "30-day cardiovascular risk · 1 point per criterion",
+  "aub_scope": "For adults undergoing noncardiac surgery. Not surgical clearance.",
+  "aub_heart": "H · History of heart disease",
+  "aub_symptoms": "H · Angina or dyspnea",
+  "aub_age": "A · Age ≥75 years",
+  "aub_anemia": "A · Anemia: Hb <12 g/dL",
+  "aub_vascular": "S · Vascular surgery",
+  "aub_emergency": "S · Emergency surgery",
+  "aub_symptoms_help": "Current angina or dyspnea. Do not infer from fatigue, COPD or remote angina alone.",
+  "aub_vascular_help": "Confirm the surgery type; not inferred from the procedure name or incision.",
+  "aub_heart_manual_help": "MI, coronary angioplasty, cardiac surgery, HF, AF or echo-confirmed moderate/severe valve disease. Select here if not recorded above.",
+  "aub_heart_auto": "Auto from history: {sources}. Edit the source items above.",
+  "aub_reviewed": "I reviewed heart disease, symptoms and vascular surgery; unchecked clinical criteria are absent.",
+  "aub_class_label": "Index category:",
+  "aub_rate_label": "Validation event rate:",
+  "aub_rate_help": "All-cause death, MI or stroke within 30 days. ACS-NSQIP cohort rates (Dakik 2019), not calibrated individual probabilities. 0–1: low; 2–3: intermediate; 4–6: high. “Low” does not necessarily mean <1%.",
+  "aub_low": "Low",
+  "aub_intermediate": "Intermediate",
+  "aub_high": "High",
+  "aub_incomplete": "Incomplete",
+  "aub_complete": "All six criteria reviewed. Positive factors: {factors}.",
+  "aub_pending": "Incomplete — pending: {items}. No final category or event rate shown.",
+  "aub_scope_warning": "AUB-HAS₂ not validated for patients under 18 years; no risk estimate provided.",
+  "aub_missing_age": "valid age",
+  "aub_missing_hb": "hemoglobin or known range",
+  "aub_missing_urgency": "surgical urgency",
+  "aub_missing_review": "clinical-criteria review",
+  "aub_auto_age": "Auto: {age} years",
+  "aub_auto_context": "Auto: {context}",
+  "aub_none": "none",
+  "aub_factor_heart": "history of heart disease",
+  "aub_factor_symptoms": "angina/dyspnea",
+  "aub_factor_age": "age ≥75",
+  "aub_factor_anemia": "Hb <12 g/dL",
+  "aub_factor_vascular": "vascular surgery",
+  "aub_factor_emergency": "emergency surgery",
+  "aub_line": "AUB-HAS₂: {score}/6 ({cat} index category). 30-day all-cause death/MI/stroke: {risk} observed in the ACS-NSQIP validation cohort (Dakik 2019); population reference, not an individually calibrated probability.",
+  "aub_factors_line": "AUB-HAS₂ positive criteria (1 point each): {factors}.",
+  "aub_incomplete_line": "AUB-HAS₂ incomplete: at least {score}/6 positive criteria. Pending: {items}. No final risk category or event-rate estimate.",
+  "aub_heart_unspecified": "History of heart disease (AUB-HAS₂ criterion confirmed; diagnosis unspecified)",
+  "height_weight_line": "Height: {height} cm; weight: {weight} kg.",
+  "height_only_line": "Height: {height} cm; weight not specified.",
+  "weight_only_line": "Weight: {weight} kg; height not specified.",
+  "anthro_missing": "Height and weight not specified.",
+  "hb_line": "Preoperative hemoglobin: {hb} g/dL.",
+  "hb_band_line": "Preoperative hemoglobin: {band} (reported range).",
+  "hb_invalid": "Invalid hemoglobin: enter a value >0 and ≤25 g/dL.",
+  "hb_missing": "Hemoglobin not specified",
+  "hb_auto": "Auto: Hb {hb} g/dL",
+  "hb_band_auto": "Auto: {band}",
+  "ariscat_hb_numeric": "Automatically set from hemoglobin above (≤10 g/dL); edit the value at its source.",
+  "ariscat_hb_manual": "Without a numeric value, checking this confirms Hb ≤10 and updates AUB-HAS₂. Unchecking does not confirm Hb ≥12.",
+  "ariscat_hb_unknown": "Hemoglobin not specified; anemia cannot be assessed. ARISCAT is provisional.",
+  "ariscat_incomplete_line": "ARISCAT (provisional): {score} points; hemoglobin missing or invalid, so the anemia criterion cannot be assessed. No final category or risk estimate.",
+  "procedure_unspecified": "the planned procedure (not specified)",
+  "intro_age_neutral": "Patient aged {age} years {scheduled_for} {procedure} {under} {anesthesia}.",
+  "patient_intro_male_noage": "Male patient (age not specified) {scheduled_for} {procedure} {under} {anesthesia}.",
+  "patient_intro_female_noage": "Female patient (age not specified) {scheduled_for} {procedure} {under} {anesthesia}.",
+  "copy_done": "Copied.",
+  "copy_manual": "Automatic copy failed. The text is selected; use Copy / Ctrl+C.",
+  "invalid_age": "Age must be a whole number from 16 to 100.",
+  "invalid_height": "Height: enter 120–220 cm.",
+  "invalid_weight": "Weight: enter 30–300 kg.",
+  "ariscat_subtitle": "Pulmonary complications",
+  "apfel_subtitle": "Postoperative nausea/vomiting",
+  "frail_subtitle": "Frailty (≥60 years)"
+});
+
     // State
-    const state = { lang: "pt", wasGeriatric: false, was4ATTriggered: false };
+    const state = { lang: "pt", wasGeriatric: false, was4ATTriggered: false, aubHeartManual: false };
 
     function t(key) {
       return (I18N[state.lang] && I18N[state.lang][key]) ?? I18N.en[key] ?? key;
     }
 
     function applyI18n() {
+      document.documentElement.lang = state.lang === "pt" ? "pt-BR" : "en";
       document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
         el.textContent = t(key);
@@ -1158,10 +2423,17 @@
 
     // Helpers
     function toNumber(value) {
-      const n = parseFloat(String(value).replace(",", "."));
+      const raw = String(value ?? "").trim().replace(",", ".");
+      if (!raw) return null;
+      const n = Number(raw);
       return Number.isFinite(n) ? n : null;
     }
     function fmt1(n) { return (Math.round(n * 10) / 10).toFixed(1); }
+    function fmtClinical(n, digits = 20) {
+      return new Intl.NumberFormat(state.lang === "pt" ? "pt-BR" : "en-US", {
+        maximumFractionDigits: digits, useGrouping: false
+      }).format(n);
+    }
     function clamp(num, min, max) { return Math.min(Math.max(num, min), max); }
     function template(str, vars) {
       return str.replace(/\{(\w+)\}/g, (_, k) => (vars[k] ?? ""));
@@ -1182,22 +2454,6 @@
       if (score <= 2) return t("sb_low");
       if (score <= 4) return t("sb_int");
       return t("sb_high");
-    }
-
-    // RCRI Category logic
-    function classifyRCRI(score) {
-      if (score === 0) return t("rcri0");
-      if (score === 1) return t("rcri1");
-      if (score === 2) return t("rcri2");
-      return t("rcri3");
-    }
-
-    // RCRI Risk % logic
-    function getRCRIRisk(score) {
-      if (score === 0) return "0.5%";
-      if (score === 1) return "1.1%";
-      if (score === 2) return "5%";
-      return "10%"; // >= 3
     }
 
     function devineIBW(sex, heightCm) {
@@ -1309,18 +2565,118 @@
       return { score, category, bmiHigh, ageHigh, male };
     }
 
-    function computeRCRI_HPO({ highRiskSurgery, ischemicHeartDisease, chf, cva, insulin, creatinineHigh }) {
-      let score = 0;
-      if (highRiskSurgery) score += 1;
-      if (ischemicHeartDisease) score += 1;
-      if (chf) score += 1;
-      if (cva) score += 1;
-      if (insulin) score += 1;
-      if (creatinineHigh) score += 1;
-      
-      const category = classifyRCRI(score);
-      const risk = getRCRIRisk(score);
-      return { score, category, risk };
+    /* AUB-HAS2: Dakik et al., JACC 2019;73:3067–3078.
+     * DOI 10.1016/j.jacc.2019.04.023. Six equally weighted criteria.
+     * ORIGINAL ACS-NSQIP VALIDATION cohort's all-cause death / MI / stroke
+     * rates at 30 days, NOT individually calibrated probabilities.
+     * Scores 4, 5 and 6 share the published >3 stratum. Do not extrapolate.
+     * Criteria checked against MDCalc and JAHA 2020 (PMC7660845), 2026-09-17.
+     */
+    const AUB_VALIDATION_RATES = Object.freeze([0.3, 1.6, 5.6, 11.0, 17.5, 17.5, 17.5]);
+    const AUB_HISTORY_SOURCES = Object.freeze([
+      ["frail-ill-ami", "ill_ami"], ["frail-ill-chf", "ill_chf"],
+      ["history-pci", "history_pci"], ["history-cardiac-surgery", "history_cardiac_surgery"],
+      ["history-af", "history_af"], ["history-valve", "history_valve"]
+    ]);
+    const HB_BANDS = Object.freeze({
+      ge12: { label: "Hb ≥12 g/dL", aub: false, ariscat: false },
+      gt10lt12: { label: "10 < Hb <12 g/dL", aub: true, ariscat: false },
+      le10: { label: "Hb ≤10 g/dL", aub: true, ariscat: true }
+    });
+    function getHemoglobinState_HPO() {
+      const input = document.getElementById("hemoglobin");
+      const raw = input.value.trim(), value = toNumber(raw);
+      const hasNumericInput = raw !== "" || input.validity.badInput;
+      if (hasNumericInput) {
+        const valid = value != null && value > 0 && value <= 25;
+        return { known: valid, invalid: !valid, hasNumericInput, value: valid ? value : null,
+          band: null, aub: valid ? value < 12 : null, ariscat: valid ? value <= 10 : null };
+      }
+      const band = HB_BANDS[document.getElementById("hemoglobin-band").value] || null;
+      return { known: !!band, invalid: false, hasNumericInput: false, value: null,
+        band, aub: band ? band.aub : null, ariscat: band ? band.ariscat : null };
+    }
+    function synchronizeSharedClinicalData_HPO(changedId = "") {
+      // Last explicit edit wins for a shared diagnosis; no sticky OR-loop.
+      const pressure = document.getElementById("sb-pressure"), htn = document.getElementById("frail-ill-htn");
+      if (changedId === "sb-pressure") htn.checked = pressure.checked;
+      if (changedId === "frail-ill-htn") pressure.checked = htn.checked;
+      if (changedId === "aub-heart") state.aubHeartManual = document.getElementById("aub-heart").checked;
+      if (changedId === "hemoglobin") document.getElementById("hemoglobin-band").value = "";
+      if (changedId === "ariscat-anemia" && !getHemoglobinState_HPO().hasNumericInput) {
+        const band = document.getElementById("hemoglobin-band");
+        if (document.getElementById("ariscat-anemia").checked) band.value = "le10";
+        else if (band.value === "le10") band.value = "";
+      }
+      const urgency = document.getElementById("surgical-urgency").value;
+      document.getElementById("emergency-surgery").checked = urgency === "emergency";
+      document.getElementById("aub-emergency").checked = urgency === "emergency";
+      document.getElementById("aub-emergency").indeterminate = !urgency;
+      document.getElementById("aub-emergency-source").textContent = urgency
+        ? template(t("aub_auto_context"), { context: t("urgency_" + urgency) }) : t("unknown");
+      const age = toNumber(document.getElementById("age").value);
+      const ageValid = age != null && Number.isInteger(age) && age >= 16 && age <= 100;
+      document.getElementById("aub-age").checked = ageValid && age >= 75;
+      document.getElementById("aub-age").indeterminate = !ageValid;
+      document.getElementById("aub-age-source").textContent = ageValid
+        ? template(t("aub_auto_age"), { age }) : t("unknown");
+      // Specific diagnoses remain independent; any combination contributes one H point.
+      // Selecting generic heart disease NEVER fabricates MI, heart failure, or other history.
+      const sources = AUB_HISTORY_SOURCES.filter(([id]) => document.getElementById(id).checked);
+      const heart = document.getElementById("aub-heart");
+      heart.checked = state.aubHeartManual || sources.length > 0;
+      heart.disabled = sources.length > 0;
+      document.getElementById("aub-heart-row").classList.toggle("disabled", sources.length > 0);
+      document.getElementById("aub-heart-source").textContent = sources.length
+        ? template(t("aub_heart_auto"), { sources: sources.map(([, key]) => t(key)).join(", ") }) : t("aub_heart_manual_help");
+      const hb = getHemoglobinState_HPO();
+      document.getElementById("hemoglobin-band").disabled = hb.hasNumericInput;
+      document.getElementById("hemoglobin").setAttribute("aria-invalid", String(hb.invalid));
+      document.getElementById("aub-anemia").checked = hb.aub === true;
+      document.getElementById("aub-anemia").indeterminate = !hb.known;
+      document.getElementById("aub-anemia-source").textContent = hb.invalid ? t("hb_invalid")
+        : hb.value != null ? template(t("hb_auto"), { hb: fmtClinical(hb.value) })
+        : hb.band ? template(t("hb_band_auto"), { band: hb.band.label }) : t("hb_missing");
+      const arAnemia = document.getElementById("ariscat-anemia");
+      arAnemia.checked = hb.ariscat === true;
+      arAnemia.indeterminate = !hb.known;
+      arAnemia.disabled = hb.hasNumericInput;
+      document.getElementById("ariscat-anemia-row").classList.toggle("disabled", hb.hasNumericInput);
+      document.getElementById("ariscat-anemia-help").textContent = hb.hasNumericInput
+        ? (hb.invalid ? t("hb_invalid") : t("ariscat_hb_numeric"))
+        : t("ariscat_hb_manual") + (hb.known ? "" : " " + t("ariscat_hb_unknown"));
+      return { hb, sources, urgency };
+    }
+    function computeAUBHAS2_HPO({ age, heartDisease, symptoms, anemia, vascular, urgency, reviewed }) {
+      const validAge = age != null && Number.isInteger(age) && age >= 16 && age <= 100;
+      const factors = [
+        ["aub_factor_heart", heartDisease === true], ["aub_factor_symptoms", symptoms === true],
+        ["aub_factor_age", validAge && age >= 75], ["aub_factor_anemia", anemia === true],
+        ["aub_factor_vascular", vascular === true], ["aub_factor_emergency", urgency === "emergency"]
+      ];
+      const positiveKeys = factors.filter(([, present]) => present).map(([key]) => key);
+      const score = positiveKeys.length, missing = [];
+      if (!validAge) missing.push("aub_missing_age");
+      if (anemia !== true && anemia !== false) missing.push("aub_missing_hb");
+      if (!["elective", "urgent", "emergency"].includes(urgency)) missing.push("aub_missing_urgency");
+      if (!reviewed) missing.push("aub_missing_review");
+      const outOfScope = validAge && age < 18;
+      const complete = !outOfScope && missing.length === 0;
+      const categoryKey = score <= 1 ? "aub_low" : score <= 3 ? "aub_intermediate" : "aub_high";
+      return { score, complete, missing, outOfScope, positiveKeys,
+        category: complete ? t(categoryKey) : t("aub_incomplete"),
+        rate: complete ? AUB_VALIDATION_RATES[score] : null,
+        risk: complete ? fmtClinical(AUB_VALIDATION_RATES[score]) + "%" : "—" };
+    }
+    function renderAUBHAS2_HPO(aub) {
+      document.getElementById("aub-score").textContent = aub.outOfScope ? "—" : (aub.complete ? "" : "≥") + aub.score;
+      document.getElementById("aub-category").textContent = aub.category;
+      document.getElementById("aub-risk-percent").textContent = aub.risk;
+      const status = document.getElementById("aub-status");
+      status.textContent = aub.outOfScope ? t("aub_scope_warning")
+        : aub.complete ? template(t("aub_complete"), { factors: aub.positiveKeys.map(t).join("; ") || t("aub_none") })
+        : template(t("aub_pending"), { items: aub.missing.map(t).join("; ") });
+      status.className = "text-xs mt-3 " + (!aub.complete ? "text-amber-300" : "text-slate-400");
     }
 
     function computeFRAIL_HPO(f, r, a, illnessesCheckedCount, l) {
@@ -1444,13 +2800,9 @@
       }
 
       const contextDisplay = document.getElementById("context-display");
-      if (emergency) {
-        contextDisplay.textContent = state.lang === 'pt' ? "Emergência" : "Emergency";
-        contextDisplay.className = "text-sm font-bold text-rose-400 leading-tight mt-0.5";
-      } else {
-        contextDisplay.textContent = state.lang === 'pt' ? "Eletiva" : "Elective";
-        contextDisplay.className = "text-sm font-bold text-emerald-400 leading-tight mt-0.5";
-      }
+      const urgency = document.getElementById("surgical-urgency").value;
+      contextDisplay.textContent = urgency ? t("urgency_" + urgency) : "—";
+      contextDisplay.className = "text-sm font-bold leading-tight mt-0.5 " + (emergency ? "text-rose-400" : "text-white");
 
       // STOP-BANG auto flags
       const sbBmi = document.getElementById("sb-bmi");
@@ -1481,16 +2833,9 @@
       return { bmiValue, ibw, isGeriatric };
     }
 
-    function updateScoresAndOutput_HPO() {
+    function updateScoresAndOutput_HPO(changedId = "") {
+      const shared = synchronizeSharedClinicalData_HPO(changedId);
       const { bmiValue, ibw, isGeriatric } = updateDerivedMetrics_HPO();
-
-      // Auto-sync diseases logic (RCRI/SB -> Frail)
-      if (document.getElementById('rcri-insulin').checked) document.getElementById('frail-ill-dm').checked = true;
-      if (document.getElementById('rcri-creatinine').checked) document.getElementById('frail-ill-ckd').checked = true;
-      if (document.getElementById('rcri-cva').checked) document.getElementById('frail-ill-stroke').checked = true;
-      if (document.getElementById('rcri-chf').checked) document.getElementById('frail-ill-chf').checked = true;
-      if (document.getElementById('rcri-ihd').checked) document.getElementById('frail-ill-ami').checked = true;
-      if (document.getElementById('sb-pressure').checked) document.getElementById('frail-ill-htn').checked = true;
 
       const age = toNumber(document.getElementById("age").value);
       const sex = document.getElementById("sex").value;
@@ -1517,13 +2862,16 @@
       const sbPressure = document.getElementById("sb-pressure").checked;
       const sbNeck = document.getElementById("sb-neck").checked;
 
-      // RCRI
-      const rcriHighRisk = document.getElementById("rcri-highrisk").checked;
-      const rcriIHD = document.getElementById("rcri-ihd").checked;
-      const rcriCHF = document.getElementById("rcri-chf").checked;
-      const rcriCVA = document.getElementById("rcri-cva").checked;
-      const rcriInsulin = document.getElementById("rcri-insulin").checked;
-      const rcriCreat = document.getElementById("rcri-creatinine").checked;
+      // One point per AUB-HAS₂ criterion, derived from shared inputs.
+      const aub = computeAUBHAS2_HPO({ age,
+        heartDisease: document.getElementById("aub-heart").checked,
+        symptoms: document.getElementById("aub-symptoms").checked,
+        anemia: shared.hb.aub,
+        vascular: document.getElementById("aub-vascular").checked,
+        urgency: shared.urgency,
+        reviewed: document.getElementById("aub-reviewed").checked
+      });
+      renderAUBHAS2_HPO(aub);
 
       // ARISCAT
       const arSpO2 = toNumber(document.getElementById("ariscat-spo2").value);
@@ -1546,6 +2894,7 @@
       let diseaseCount = 0;
       diseaseChecks.forEach(c => { if(c.checked) diseaseCount++; });
       document.getElementById("frail-illnesses").checked = (diseaseCount >= 5);
+      document.getElementById("frail-disease-count").textContent = template(t("frail_disease_count"), { count: diseaseCount });
 
       // 4AT inputs
       const at4Alertness = toNumber(document.getElementById("at4-alertness").value) || 0;
@@ -1561,18 +2910,10 @@
       document.getElementById("sb-score").textContent = sbResult.score;
       document.getElementById("sb-category").textContent = sbResult.category;
 
-      const rcri = computeRCRI_HPO({
-        highRiskSurgery: rcriHighRisk, ischemicHeartDisease: rcriIHD, chf: rcriCHF,
-        cva: rcriCVA, insulin: rcriInsulin, creatinineHigh: rcriCreat
-      });
-      document.getElementById("rcri-score").textContent = rcri.score;
-      document.getElementById("rcri-category").textContent = rcri.category;
-      document.getElementById("rcri-risk-percent").textContent = rcri.risk;
-
       const ariscat = computeARISCAT_HPO(age, arSpO2, arInfection, arAnemia, arIncision, duration, emergency);
       document.getElementById("ariscat-score").textContent = ariscat.score;
-      document.getElementById("ariscat-category").textContent = ariscat.category;
-      document.getElementById("ariscat-risk").textContent = ariscat.risk;
+      document.getElementById("ariscat-category").textContent = shared.hb.known ? ariscat.category : t("aub_incomplete");
+      document.getElementById("ariscat-risk").textContent = shared.hb.known ? ariscat.risk : "—";
 
       const apfel = computeApfel_HPO({ sex, nonsmoker: apfelNonsmoker, historyPONV: apfelHistory, opioids: apfelOpioids });
       document.getElementById("apfel-score").textContent = apfel.score;
@@ -1623,22 +2964,22 @@
       else diffLabel.textContent = t("hist2");
       document.getElementById("diff-history-points").textContent = diffHistoryPoints;
 
-      buildOutput_HPO({ age, sex, height, weight, asa, anesthesiaType, procedure, duration, emergency, bmi: bmiValue, ibw, sbResult, rcri, ariscat, apfel, egriResult, frail, isGeriatric, at4 });
+      buildOutput_HPO({ age, sex, height, weight, asa, anesthesiaType, procedure, duration, emergency, urgency: shared.urgency, hb: shared.hb, bmi: bmiValue, ibw, sbResult, aub, ariscat, apfel, egriResult, frail, isGeriatric, at4 });
     }
 
     function buildOutput_HPO(ctx) {
-      const { age, sex, asa, anesthesiaType, procedure, duration, emergency, bmi, ibw, sbResult, rcri, ariscat, apfel, egriResult, frail, isGeriatric, at4 } = ctx;
+      const { age, sex, height, weight, asa, anesthesiaType, procedure, duration, emergency, urgency, hb, bmi, ibw, sbResult, aub, ariscat, apfel, egriResult, frail, isGeriatric, at4 } = ctx;
       const lines = [];
 
       const anesthesiaText = anesthesiaType
         ? document.querySelector(`#anesthesia-type option[value="${anesthesiaType}"]`)?.textContent
         : t("anesthesia_unspecified");
 
-      const procText = procedure || (state.lang === "pt" ? "cirurgia eletiva" : "elective surgery");
+      const procText = procedure || t("procedure_unspecified");
       let introTemplate;
-      if (sex === "male") introTemplate = t("patient_intro_male");
-      else if (sex === "female") introTemplate = t("patient_intro_female");
-      else introTemplate = t("patient_intro_neutral");
+      if (sex === "male") introTemplate = t(age == null ? "patient_intro_male_noage" : "patient_intro_male");
+      else if (sex === "female") introTemplate = t(age == null ? "patient_intro_female_noage" : "patient_intro_female");
+      else introTemplate = t(age == null ? "patient_intro_neutral" : "intro_age_neutral");
 
       lines.push(template(introTemplate, {
         age: age != null ? age : "",
@@ -1648,7 +2989,11 @@
         anesthesia: anesthesiaText
       }).trim());
 
-      lines.push(emergency ? t("emergency") : t("elective"));
+      lines.push(urgency ? t(urgency) : t("urgency_unknown"));
+      if (height != null && weight != null) lines.push(template(t("height_weight_line"), { height: fmtClinical(height), weight: fmtClinical(weight) }));
+      else if (height != null) lines.push(template(t("height_only_line"), { height: fmtClinical(height) }));
+      else if (weight != null) lines.push(template(t("weight_only_line"), { weight: fmtClinical(weight) }));
+      else lines.push(t("anthro_missing"));
       
       // Add Comorbidities from Frail list
       const diseaseList = [];
@@ -1669,6 +3014,10 @@
         }
       });
 
+      AUB_HISTORY_SOURCES.slice(2).forEach(([id, key]) => {
+        if (document.getElementById(id).checked) diseaseList.push(t(key));
+      });
+      if (state.aubHeartManual && !AUB_HISTORY_SOURCES.some(([id]) => document.getElementById(id).checked)) diseaseList.push(t("aub_heart_unspecified"));
       if (diseaseList.length > 0) {
         lines.push(t("comorbidities_label") + " " + diseaseList.join(", ") + ".");
       }
@@ -1685,10 +3034,23 @@
 
       if (ibw != null) lines.push(template(t("ibw_line"), { ibw: fmt1(ibw) }));
 
+      if (hb.value != null) lines.push(template(t("hb_line"), { hb: fmtClinical(hb.value) }));
+      else if (hb.band) lines.push(template(t("hb_band_line"), { band: hb.band.label }));
+      else if (hb.invalid) lines.push(t("hb_invalid"));
+
       lines.push("");
       lines.push(template(t("sb_line"), { score: sbResult.score, cat: sbResult.category }));
-      lines.push(template(t("rcri_line"), { score: rcri.score, cat: rcri.category, risk: rcri.risk }));
-      lines.push(template(t("ariscat_line"), { score: ariscat.score, cat: ariscat.category, risk: ariscat.risk }));
+      if (aub.outOfScope) lines.push(t("aub_scope_warning"));
+      else if (aub.complete) {
+        lines.push(template(t("aub_line"), { score: aub.score, cat: aub.category, risk: aub.risk }));
+        lines.push(template(t("aub_factors_line"), { factors: aub.positiveKeys.map(t).join("; ") || t("aub_none") }));
+      } else {
+        lines.push(template(t("aub_incomplete_line"), { score: aub.score, items: aub.missing.map(t).join("; ") }));
+        if (aub.positiveKeys.length) lines.push(template(t("aub_factors_line"), { factors: aub.positiveKeys.map(t).join("; ") }));
+      }
+      lines.push(hb.known
+        ? template(t("ariscat_line"), { score: ariscat.score, cat: ariscat.category, risk: ariscat.risk })
+        : template(t("ariscat_incomplete_line"), { score: ariscat.score }));
       lines.push(template(t("apfel_line"), { score: apfel.score, cat: apfel.category, risk: apfel.risk }));
       lines.push(template(t("egri_line"), { score: egriResult.score, cat: egriResult.category }));
       
@@ -1730,16 +3092,16 @@
       const height = toNumber(document.getElementById("height").value);
       const weight = toNumber(document.getElementById("weight").value);
 
-      if (age == null || age < 16 || age > 100) {
-        issues.push(state.lang === "pt" ? "Idade (16–100)" : "Age (16–100)");
-      }
+      if (age == null || !Number.isInteger(age) || age < 16 || age > 100) issues.push(t("invalid_age"));
       if (height == null || height < 120 || height > 220) {
-        issues.push(state.lang === "pt" ? "Altura (120–220)" : "Height (120–220)");
+        issues.push(t("invalid_height"));
       }
       if (weight == null || weight < 30 || weight > 300) {
-        issues.push(state.lang === "pt" ? "Peso (30–300)" : "Weight (30–300)");
+        issues.push(t("invalid_weight"));
       }
 
+      const hb = getHemoglobinState_HPO();
+      if (hb.invalid) issues.push(t("hb_invalid"));
       const banner = document.getElementById("validation-banner");
       const list = document.getElementById("validation-list");
       if (!banner || !list) return;
@@ -1757,15 +3119,26 @@
       }
     }
 
-    // Copy setup
+    // Clipboard with a local-file fallback; failures are not hidden.
     function setupCopyButtons() {
-      function doCopy() {
-        const text = document.getElementById("output").value;
-        if (!text) return;
-        navigator.clipboard.writeText(text).catch(() => {});
+      async function doCopy() {
+        const output = document.getElementById("output");
+        if (!output.value) return;
+        let copied = false;
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(output.value);
+            copied = true;
+          }
+        } catch (_) { /* Try the local-file fallback. */ }
+        if (!copied) {
+          output.focus(); output.select(); output.setSelectionRange(0, output.value.length);
+          try { copied = document.execCommand("copy"); } catch (_) { copied = false; }
+        }
+        document.getElementById("copy-status").textContent = t(copied ? "copy_done" : "copy_manual");
       }
-      document.getElementById("copy-output-btn")?.addEventListener("click", doCopy);
-      document.getElementById("copy-output-btn-bottom")?.addEventListener("click", doCopy);
+      document.getElementById("copy-output-btn").addEventListener("click", doCopy);
+      document.getElementById("copy-output-btn-bottom").addEventListener("click", doCopy);
     }
 
     // Lang Toggle
@@ -1793,6 +3166,8 @@
         updateDerivedMetrics_HPO();
         updateScoresAndOutput_HPO();
         updateButtons();
+        validateInputs();
+        document.getElementById("copy-status").textContent = "";
       });
 
       enBtn.addEventListener("click", () => {
@@ -1801,6 +3176,8 @@
         updateDerivedMetrics_HPO();
         updateScoresAndOutput_HPO();
         updateButtons();
+        validateInputs();
+        document.getElementById("copy-status").textContent = "";
       });
 
       updateButtons();
@@ -1812,33 +3189,20 @@
       setupLanguageToggle();
       setupCopyButtons();
       
-      const inputs = [
-        "age","sex","height","weight","asa","anesthesia-type","procedure",
-        "surgery-duration","emergency-surgery",
-        "mallampati","mouth-opening","tmd","jaw-limited","neck-mobility","diff-history",
-        "sb-snoring","sb-tired","sb-observed","sb-pressure","sb-neck",
-        "rcri-highrisk","rcri-ihd","rcri-chf","rcri-cva","rcri-insulin","rcri-creatinine",
-        "ariscat-spo2","ariscat-infection","ariscat-anemia","ariscat-incision",
-        "apfel-nonsmoker","apfel-history","apfel-opioids",
-        "frail-fatigue", "frail-resistance", "frail-ambulation", "frail-weight",
-        "at4-alertness", "at4-amt4", "at4-attention", "at4-change"
-      ];
-      inputs.forEach(id => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        const evt = el.tagName === "SELECT" || el.type === "checkbox" || el.type === "range" ? "change" : "input";
+      // Reconcile initial restored values once, then use the last explicit edit.
+      state.aubHeartManual = document.getElementById("aub-heart").checked;
+      const initialHTN = document.getElementById("sb-pressure").checked || document.getElementById("frail-ill-htn").checked;
+      document.getElementById("sb-pressure").checked = initialHTN;
+      document.getElementById("frail-ill-htn").checked = initialHTN;
+      if (document.getElementById("ariscat-anemia").checked && !document.getElementById("hemoglobin").value && !document.getElementById("hemoglobin-band").value) document.getElementById("hemoglobin-band").value = "le10";
+      document.querySelectorAll("input, select").forEach(el => {
+        const evt = el.tagName === "SELECT" || el.type === "checkbox" ? "change" : "input";
         el.addEventListener(evt, () => {
-          updateScoresAndOutput_HPO();
+          updateScoresAndOutput_HPO(el.id);
           validateInputs();
+          document.getElementById("copy-status").textContent = "";
         });
-        if (el.tagName === "INPUT" && el.type !== "checkbox" && el.type !== "range") {
-           el.addEventListener("blur", validateInputs);
-        }
-      });
-
-      // Special Listener for FRAIL diseases sub-chip
-      document.querySelectorAll(".disease-check").forEach(chk => {
-        chk.addEventListener("change", updateScoresAndOutput_HPO);
+        if (el.tagName === "INPUT" && el.type !== "checkbox" && el.type !== "range") el.addEventListener("blur", validateInputs);
       });
 
       updateScoresAndOutput_HPO();
